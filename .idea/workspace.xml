@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d89837a2-ca9e-405b-bcb1-42228a7f7c7f" name="Default Changelist" comment="" />
+    <list default="true" id="d89837a2-ca9e-405b-bcb1-42228a7f7c7f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ItemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/site.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/site.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/addCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/addCategory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/editCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/editCategory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/items.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/messages.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/showAllCategories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/showAllCategories.blade.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +25,9 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -121,6 +137,7 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1nQURDA6YB930HCdytleOd6UtRR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -128,9 +145,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -182,7 +201,15 @@
       <workItem from="1612192063119" duration="7697000" />
       <workItem from="1612277526290" duration="11064000" />
       <workItem from="1612362791851" duration="18757000" />
-      <workItem from="1612712337015" duration="974000" />
+      <workItem from="1612712337015" duration="1577000" />
+      <workItem from="1613054439355" duration="408000" />
+      <workItem from="1613158699831" duration="594000" />
+      <workItem from="1613322448842" duration="4702000" />
+      <workItem from="1613400870362" duration="10021000" />
+      <workItem from="1613493642575" duration="11000" />
+      <workItem from="1613493680853" duration="2194000" />
+      <workItem from="1613496383857" duration="5706000" />
+      <workItem from="1613579931739" duration="4291000" />
     </task>
     <servers />
   </component>
@@ -207,10 +234,15 @@
     </state>
     <state x="526" y="318" key="NewPhpFileDialog/0.0.1366.768/1366.0.1440.900@0.0.1366.768" timestamp="1611690630270" />
     <state x="1920" y="373" key="NewPhpFileDialog/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612288671625" />
-    <state x="1742" y="205" key="run.anything.popup" timestamp="1612031671497">
-      <screen x="1366" y="0" width="1440" height="900" />
+    <state x="184" y="26" key="SettingsEditor" timestamp="1613582212991">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="184" y="26" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1613582212991" />
+    <state x="357" y="175" key="run.anything.popup" timestamp="1613501460013">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="1742" y="205" key="run.anything.popup/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612031671497" />
+    <state x="357" y="175" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1613501460013" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1611954994331">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

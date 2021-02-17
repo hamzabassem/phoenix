@@ -61,9 +61,15 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @php
+                                $count = 0;
+                                @endphp
                                 @foreach($categories as $value)
+                                    @php
+                                    $count ++
+                                    @endphp
                                 <tr>
-                                    <th scope="row">{{$value->id}}</th>
+                                    <th scope="row">{{$count}}</th>
                                     <td>{{$value->name}}</td>
                                     <td>{{$value->description}}</td>
                                     <td>{{$value->buying_price}}</td>

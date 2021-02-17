@@ -16,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('user_id',Auth::user()->id)->paginate(10);
-        return view('dashboard.showAllCategories',compact('categories'));
+        $categories = Category::where('user_id', Auth::user()->id)->paginate(10);
+        return view('dashboard.showAllCategories', compact('categories'));
     }
 
     /**
@@ -27,36 +27,39 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->days == 0) {
+            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+        }
         return view('dashboard.addCategory');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name' =>'required',
-            'description' =>'required',
-            'buying_price' =>'required|integer',
-            'selling_price' =>'required|integer',
-            'notify' =>'required|integer',
+            'name' => 'required',
+            'description' => 'required',
+            'buying_price' => 'required|integer',
+            'selling_price' => 'required|integer',
+            'notify' => 'required|integer',
 
         ]);
 
         $data = $request->all();
-        $data['user_id'] =  Auth::user()->id;
+        $data['user_id'] = Auth::user()->id;
         Category::create($data);
-        return redirect()->route('addcategory')->with('success','category has been added successfully');
+        return redirect()->route('addcategory')->with('success', 'category has been added successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param \App\Category $category
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
@@ -67,53 +70,60 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param \App\Category $category
      * @param integer $id
+     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $category = Category::all()->where('id',$id);
-        return view('dashboard.editCategory',compact('category'));
+        if (auth()->user()->days == 0) {
+            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+        }
+        $category = Category::all()->where('id', $id);
+        return view('dashboard.editCategory', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Category $category
      * @param integer $id
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' =>'required',
-            'description' =>'required',
-            'buying_price' =>'required|integer',
-            'selling_price' =>'required|integer',
-            'notify' =>'required|integer',
+            'name' => 'required',
+            'description' => 'required',
+            'buying_price' => 'required|integer',
+            'selling_price' => 'required|integer',
+            'notify' => 'required|integer',
 
         ]);
 
-        $category =  Category::findOrFail($id);
+        $category = Category::findOrFail($id);
         $category->update($request->all());
-        return redirect()->route('categoriesinfo')->with('success','category has been edited successfully');
+        return redirect()->route('categoriesinfo')->with('success', 'category has been edited successfully');
     }
 
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
-     * @return \Illuminate\Http\Response
+     * @param \App\Category $category
      * @param integer $id
+     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Item::where('category_id',$id)->delete();
+        if (auth()->user()->days == 0) {
+            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+        }
+        Item::where('category_id', $id)->delete();
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->back()->with('success','category has been deleted successfully');
+        return redirect()->back()->with('success', 'category has been deleted successfully');
     }
+
 }

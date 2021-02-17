@@ -22,7 +22,7 @@ return [
     'Submit' =>'Submit',
     'Reset' =>'Reset',
     'Edit Category' =>'Edit Category',
-    'Description' =>'notify',
+    'Description' =>'Description',
     'Notify me when less than' =>'Notify me when less than',
     'Edit operation on this item' =>'Edit operation on this item',
     'Edit Operation' =>'Edit Operation',
@@ -49,6 +49,8 @@ return [
     'Caregories Information' =>'Caregories Information',
     'Home' =>'Home',
     'days' => 'days',
+    'Categories' => 'Categories',
+    'daysnoti' => 'The number of subscribing days is less than 5'
 
 
 

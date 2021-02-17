@@ -49,4 +49,6 @@ return [
     'Caregories Information' =>'معلومات الاصناف',
     'Home' =>'الرئيسية',
     'days' => 'الايام',
+    'Categories' => 'الأصناف',
+    'daysnoti' => 'عدد ايام اشتراكك اقل من 5 ايام'
 ];

@@ -15,15 +15,18 @@
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
-                                <li class="breadcrumb-item"><a href="{{route('dashhome')}}" class="text-muted">{{Lang::get('site.Home')}}</a></li>
-                                <li class="breadcrumb-item text-muted active" aria-current="page">{{Lang::get('site.Add New')}}</li>
+                                <li class="breadcrumb-item"><a href="{{route('dashhome')}}"
+                                                               class="text-muted">{{Lang::get('site.Home')}}</a></li>
+                                <li class="breadcrumb-item text-muted active"
+                                    aria-current="page">{{Lang::get('site.Add New')}}</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
                 <div class="col-5 align-self-center">
                     <div class="customize-input float-right">
-                        <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
+                        <select
+                            class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
                             <option selected>{{date('Y-m-d')}}</option>
                         </select>
                     </div>
@@ -61,7 +64,8 @@
                                         <div class="col-md-11">
                                             <div class="form-group">
                                                 <label class="col-lg-3">{{Lang::get('site.Description')}}</label>
-                                                <textarea class="form-control" name="description" placeholder="description" rows="3"></textarea>
+                                                <textarea class="form-control" name="description"
+                                                          placeholder="description" rows="3"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +73,8 @@
                                         <div class="col-md-11">
                                             <div class="form-group">
                                                 <label class="col-lg-3">{{Lang::get('site.buying price')}}</label>
-                                                <input type="text" class="form-control" name="buying_price" placeholder="Buying Price">
+                                                <input type="text" class="form-control" name="buying_price"
+                                                       placeholder="Buying Price">
                                             </div>
                                         </div>
                                     </div>
@@ -77,7 +82,8 @@
                                         <div class="col-md-11">
                                             <div class="form-group">
                                                 <label class="col-lg-3">{{Lang::get('site.selling')}}</label>
-                                                <input type="text" class="form-control" name="selling_price" placeholder="Selling Price">
+                                                <input type="text" class="form-control" name="selling_price"
+                                                       placeholder="Selling Price">
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +91,8 @@
                                         <div class="col-md-11">
                                             <div class="form-group">
                                                 <label class="col-lg-3">{{Lang::get('site.notify')}}</label>
-                                                <input type="text" class="form-control" name="notify" placeholder="Notify Me When Less Than">
+                                                <input type="number" class="form-control" name="notify"
+                                                       placeholder="Notify Me When Less Than">
                                             </div>
                                         </div>
                                     </div>
