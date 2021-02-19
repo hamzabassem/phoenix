@@ -29,14 +29,21 @@ Route::group(
 
 
     Route::prefix('dashboard')->middleware('auth')->group(function(){
-        // dash home route
-        Route::get('/','DashboardController@index')->name('dashhome');
-        Route::get('/edituser/{id}','UserController@edit')->name('edituser');
-        Route::get('/deleteuser/{id}','UserController@destroy')->name('deleteuser');
-        Route::post('/updateuser/{id}','UserController@update')->name('updateuser');
-        Route::get('/manager','UserController@index')->name('manager');
 
-        // category route
+        // dash home routes
+        Route::get('/','DashboardController@index')->name('dashhome');
+        Route::get('/edituser','UserController@edit')->name('edituser');
+        Route::post('/updateuser','UserController@update')->name('updateuser');
+
+        // manager routes
+        Route::get('/manager','ManagerController@index')->name('manager');
+        Route::get('/deleteuser/{id}','ManagerController@destroy')->name('deleteuser');
+        Route::get('/editmanagerinfo','ManagerController@edit')->name('editmanagerinfo');
+        Route::post('/updatemanager','ManagerController@update')->name('updatemanager');
+        Route::get('/addmanager','ManagerController@create')->name('addmanager');
+        Route::post('/storemanager','ManagerController@store')->name('storemanager');
+
+        // category routes
         Route::get('/categoriesinfo','CategoryController@index')->name('categoriesinfo');
         Route::get('/addcategory','CategoryController@create')->name('addcategory');
         Route::post('/storecategory','CategoryController@store')->name('storecategory');

@@ -62,7 +62,7 @@
             var form = '';
             var today = new Date($.now());
 
-            var defaultEvents = [{
+            var defaultEvents = [/*{
                     title: 'Meeting #3',
                     start: new Date($.now() + 506800000),
                     className: 'bg-info'
@@ -99,7 +99,7 @@
                     title: 'Seminar #5',
                     start: new Date($.now() + 348000000),
                     className: 'bg-success'
-                }
+                }*/
             ];
 
             var $this = this;
@@ -126,7 +126,7 @@
                 eventClick: function(calEvent, jsEvent, view) { $this.onEventClick(calEvent, jsEvent, view); }
 
             });
-            
+
         },
 
         //init CalendarApp

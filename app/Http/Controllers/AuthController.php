@@ -25,8 +25,9 @@ class AuthController extends Controller
 
     if(Auth::attempt($login_info)){
         foreach ($manager as $value){
-        if (Auth::user()->email ==  $value->email){return redirect()->route('manager');}
-        else{return redirect()->route('dashhome');}
+        if (Auth::user()->email ==  $value->email){return redirect()->route('manager');
+        }
+        return redirect()->route('dashhome');
     }
     }else{
         return redirect()->back();

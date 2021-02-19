@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Manager;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class ManagerController extends Controller
 {
@@ -14,7 +17,8 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::paginate(10);
+        return view('dashboard.manager.manager',compact('users'));
     }
 
     /**
@@ -24,7 +28,7 @@ class ManagerController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.manager.addManager');
     }
 
     /**
@@ -35,7 +39,30 @@ class ManagerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'email' => 'required|email|unique:users',
+            'name' => 'required|string',
+            'phone' => 'required|unique:users',
+            'password' => 'required',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'phone' => $request->phone,
+            'days' => $request->days,
+        ]);
+        Manager::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'phone' => $request->phone,
+            'days' => $request->days,
+        ]);
+
+        return redirect()->route('manager')->with('success','the manager has been added successfully');
+
     }
 
     /**
@@ -57,7 +84,8 @@ class ManagerController extends Controller
      */
     public function edit(Manager $manager)
     {
-        //
+        $user = User::where('id',Auth::user()->id)->get();
+        return view('dashboard.manager.editInfo',compact('user'));
     }
 
     /**
@@ -65,21 +93,58 @@ class ManagerController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Manager  $manager
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Manager $manager)
+    public function update(Request $request)
     {
-        //
+
+        $manager = Manager::where('email',$request->email)->get();
+        $id = Auth::user()->id;
+        $request->validate([
+            'email' => 'required|email',
+            'name' => 'required|string',
+            'phone' => 'required',
+            'password' => 'required',
+        ]);
+
+
+
+
+        $user = User::findOrFail($id);
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $user->update($data);
+foreach ($manager as $value) {
+    $managerr = Manager::findOrFail($value->id);
+    $data = $request->all();
+    $data['password'] = bcrypt($request->password);
+    $managerr->update($data);
+}
+        return redirect()->route('manager')->with('success','your info has been edited successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Manager  $manager
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Manager $manager)
+    public function destroy($id)
     {
-        //
+
+        $m =  Manager::all();
+        $user = User::findOrFail($id);
+        foreach ($m as $value){
+            if ($user->email == $value->email){
+                $manager = Manager::findOrFail($value->id);
+                $manager->delete();
+
+            }
+        }
+        $user->delete();
+
+        return redirect()->back()->with('success','the user has been deleted successfully');
     }
 }

@@ -46,7 +46,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">{{Lang::get('site.My Info')}}</h4>
-                            <form action="{{route('updateuser',['id' => \Illuminate\Support\Facades\Auth::user()->id])}}" method="post">
+                            <form action="{{route('updateuser')}}" method="post">
                                 @csrf
                                 @foreach($user as $value)
                                 <div class="form-body">

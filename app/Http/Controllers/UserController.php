@@ -16,8 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
-        return view('dashboard.manager',compact('users'));
+
     }
 
     /**
@@ -75,7 +74,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
         $user = User::where('id',Auth::user()->id)->get();
         return view('dashboard.editUser',compact('user'));
@@ -88,7 +87,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
 
         $request->validate([
@@ -98,7 +97,7 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $user = User::findOrFail($id);
+        $user = User::findOrFail(Auth::user()->id);
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
         $data['days'] = Crypt::decryptString($request->days);
@@ -114,8 +113,6 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $item = User::findOrFail($id);
-        $item->delete();
-        return redirect()->back()->with('success','the user has been deleted successfully');
+
     }
 }

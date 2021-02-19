@@ -37,7 +37,8 @@ class ItemController extends Controller
         if (auth()->user()->days == 0) {
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
-        return view('dashboard.operation', compact(['id', 'action']));
+        $category = Category::findOrFail($id);
+        return view('dashboard.operation', compact(['id', 'action','category']));
     }
 
     /**
@@ -59,7 +60,12 @@ class ItemController extends Controller
         $quantity = $request->quantity;
         if ($request->action == 'export') {
             $quantity = -$request->quantity;
-        }
+            $item =Item::where('category_id' ,$request->categoryid);
+            $sum = $item->sum('quantity');
+            if ($sum <= 0 || $sum + $quantity <= 0){
+                return redirect()->back()->with('error','you can not do this action');
+            }
+        }else{
         Item::create([
             'operation' => $request->action,
             'description' => $request->description,
@@ -70,6 +76,7 @@ class ItemController extends Controller
 
         ]);
         return redirect()->route('items', ['id' => $request->categoryid])->with('success', 'action has been added successfully');
+    }
     }
 
     /**

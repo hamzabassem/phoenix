@@ -14,15 +14,18 @@
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
-                                <li class="breadcrumb-item"><a href="{{route('dashhome')}}" class="text-muted">{{Lang::get('site.Home')}}</a></li>
-                                <li class="breadcrumb-item text-muted active" aria-current="page">{{Lang::get('site.Categories Info')}}</li>
+                                <li class="breadcrumb-item"><a href="{{route('dashhome')}}"
+                                                               class="text-muted">{{Lang::get('site.Home')}}</a></li>
+                                <li class="breadcrumb-item text-muted active"
+                                    aria-current="page">{{Lang::get('site.Categories Info')}}</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
                 <div class="col-5 align-self-center">
                     <div class="customize-input float-right">
-                        <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
+                        <select
+                            class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
                             <option selected>{{date('Y-m-d')}}</option>
                         </select>
                     </div>
@@ -62,26 +65,32 @@
                                 </thead>
                                 <tbody>
                                 @php
-                                $count = 0;
+                                    $count = 0;
                                 @endphp
                                 @foreach($categories as $value)
                                     @php
-                                    $count ++
+                                        $count ++
                                     @endphp
-                                <tr>
-                                    <th scope="row">{{$count}}</th>
-                                    <td>{{$value->name}}</td>
-                                    <td>{{$value->description}}</td>
-                                    <td>{{$value->buying_price}}</td>
-                                    <td>{{$value->selling_price}}</td>
-                                    <td>{{$value->notify}}</td>
-                                    <td>{{$value->created_at}}</td>
-                                    <td><a href="{{route('editcategory', ['id' => $value->id])}}"><button type="button" class="btn btn-success"><i class=" fas fa-pencil-alt"></i>
-                                                {{Lang::get('site.Edit')}}</button></a>
-                                       <a href="{{route('deletecategory', ['id' => $value->id])}}"> <button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
-                                               {{Lang::get('site.Delete')}}</button></a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <th scope="row">{{$count}}</th>
+                                        <td>{{$value->name}}</td>
+                                        <td>{{$value->description}}</td>
+                                        <td>{{$value->buying_price}}</td>
+                                        <td>{{$value->selling_price}}</td>
+                                        <td>{{$value->notify}}</td>
+                                        <td>{{$value->created_at}}</td>
+                                        <td><a href="{{route('editcategory', ['id' => $value->id])}}">
+                                                <button type="button" class="btn btn-success"><i
+                                                        class=" fas fa-pencil-alt"></i>
+                                                    {{Lang::get('site.Edit')}}</button>
+                                            </a>
+                                            <a href="{{route('deletecategory', ['id' => $value->id])}}">
+                                                <button type="button" class="btn btn-danger"><i
+                                                        class="fas fa-trash-alt"></i>
+                                                    {{Lang::get('site.Delete')}}</button>
+                                            </a>
+                                        </td>
+                                    </tr>
                                 @endforeach
                                 </tbody>
                             </table>

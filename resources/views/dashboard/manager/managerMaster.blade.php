@@ -92,45 +92,7 @@
                 <!-- ============================================================== -->
                 <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                     <!-- Notification -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
-                           id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
-                           aria-expanded="false">
-                            <span><i data-feather="bell" class="svg-icon"></i></span>
-
-                            <span class="badge badge-primary notify-no rounded-circle"></span>
-
-
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
-                            <ul class="list-style-none">
-                                <li>
-                                    <div class="message-center notifications position-relative">
-                                        <!-- Message -->
-
-
-
-
-                                        <a href=""
-                                           class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                            <div class="btn btn-danger rounded-circle btn-circle"><i
-                                                    data-feather="airplay" class="text-white"></i></div>
-
-                                            <div class="w-75 d-inline-block v-middle pl-2">
-                                                <h6 class="message-title mb-0 mt-1">Notification</h6>
-                                                <span class="font-12 text-nowrap d-block text-muted">You have (  ) category less than (  )</span>
-
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
-
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </div>
-
-                    </li>
+                    
                     <!-- End Notification -->
                     <!-- ============================================================== -->
                     <!-- create new -->
@@ -141,7 +103,7 @@
                             <i data-feather="settings" class="svg-icon"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{route('edituser',['id' => \Illuminate\Support\Facades\Auth::user()->id])}}">Edit My Info</a>
+                            <a class="dropdown-item" href="{{route('editmanagerinfo')}}">Edit My Info</a>
                             <div class="dropdown-divider"></div>
                         </div>
                     </li>
@@ -196,16 +158,9 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
 
-                            <a href="" class="dropdown-item" ><i data-feather="home"
-                                                                 class="svg-icon mr-2 ml-1"></i>
-                                View Profile
-                            </a>
+
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href=""><i data-feather="mail"
-                                                                class="svg-icon mr-2 ml-1"></i>
-                                Inbox</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href=""><i data-feather="settings"
+                            <a class="dropdown-item" href="{{route('editmanagerinfo')}}"><i data-feather="settings"
                                                                 class="svg-icon mr-2 ml-1"></i>
                                 Account Setting</a>
 

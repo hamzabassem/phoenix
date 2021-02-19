@@ -149,7 +149,7 @@
                     </a>
                     <div id="noti2" class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item"
-                           href="{{route('edituser',['id' => \Illuminate\Support\Facades\Auth::user()->id])}}">{{Lang::get('site.Edit My Info')}}</a>
+                           href="{{route('edituser',['id' => auth()->user()->id])}}">{{Lang::get('site.Edit My Info')}}</a>
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
@@ -211,7 +211,7 @@
 
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item"
-                           href="{{route('edituser',['id' => \Illuminate\Support\Facades\Auth::user()->id])}}"><i
+                           href="{{route('edituser')}}"><i
                                 data-feather="settings"
                                 class="svg-icon mr-2 ml-1"></i>
                             {{Lang::get('site.Account Setting')}}</a>

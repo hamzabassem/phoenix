@@ -2,18 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d89837a2-ca9e-405b-bcb1-42228a7f7c7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/manager/addManager.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/manager/editInfo.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ItemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ItemController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/site.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/site.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/addCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/addCategory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/editCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/editCategory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/items.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ManagerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ManagerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Manager.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Manager.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_11_000000_create_managers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_11_000000_create_managers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/extra-libs/taskboard/js/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/extra-libs/taskboard/js/jquery-ui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/libs/fullcalendar/dist/fullcalendar.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/libs/fullcalendar/dist/fullcalendar.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/libs/fullcalendar/dist/fullcalendar.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/libs/fullcalendar/dist/fullcalendar.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/libs/moment/min/moment.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/libs/moment/min/moment.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/js/pages/calendar/cal-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/pages/calendar/cal-init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/editUser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/editUser.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/managerMaster.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/manager/managerMaster.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/messages.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/messages.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/manager.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/manager/manager.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operation.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/showAllCategories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/showAllCategories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,15 +160,16 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\work y4_s1\laravel\phoenix\resources\views\dashboard" />
-      <recent name="D:\work y4_s1\laravel\phoenix\resources\views\fontsite\layout" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\work y4_s1\laravel\phoenix\resources\lang\en" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\phoenix\resources\views\dashboard\manager" />
+      <recent name="D:\work y4_s1\laravel\phoenix\resources\views\dashboard" />
+      <recent name="D:\work y4_s1\laravel\phoenix\resources\views\fontsite\layout" />
     </key>
   </component>
   <component name="RunManager">
@@ -177,6 +189,7 @@
         </serviceView>
       </list>
     </option>
+    <option name="showServicesTree" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -209,7 +222,10 @@
       <workItem from="1613493642575" duration="11000" />
       <workItem from="1613493680853" duration="2194000" />
       <workItem from="1613496383857" duration="5706000" />
-      <workItem from="1613579931739" duration="4291000" />
+      <workItem from="1613579931739" duration="14987000" />
+      <workItem from="1613650342256" duration="14054000" />
+      <workItem from="1613755211822" duration="486000" />
+      <workItem from="1613755949701" duration="11096000" />
     </task>
     <servers />
   </component>
@@ -221,23 +237,25 @@
       <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state x="1840" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1611926467658" />
-    <state x="1816" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1612288278863">
-      <screen x="1366" y="0" width="1440" height="900" />
+    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1613674972367">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="1816" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612288278863" />
+    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1613674972367" />
     <state x="1866" y="204" key="FileChooserDialogImpl" timestamp="1612026124203">
       <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state x="1866" y="204" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612026124203" />
-    <state x="1920" y="373" key="NewPhpFileDialog" timestamp="1612288671625">
-      <screen x="1366" y="0" width="1440" height="900" />
+    <state x="526" y="318" key="NewPhpFileDialog" timestamp="1613763818974">
+      <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="526" y="318" key="NewPhpFileDialog/0.0.1366.768/1366.0.1440.900@0.0.1366.768" timestamp="1611690630270" />
     <state x="1920" y="373" key="NewPhpFileDialog/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612288671625" />
-    <state x="184" y="26" key="SettingsEditor" timestamp="1613582212991">
+    <state x="526" y="318" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1613763818974" />
+    <state x="184" y="26" key="SettingsEditor" timestamp="1613668516324">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="184" y="26" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1613582212991" />
+    <state x="184" y="26" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1613668516324" />
     <state x="357" y="175" key="run.anything.popup" timestamp="1613501460013">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
