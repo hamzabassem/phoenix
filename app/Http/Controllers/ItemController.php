@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\User;
+//use Barryvdh\DomPDF\PDF;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\Category;
 use Illuminate\Support\Facades\Auth;
@@ -142,5 +144,28 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $item->delete();
         return redirect()->back()->with('success', 'the action has been deleted successfully');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function createPDF($id) {
+        // retreive all records from db
+        $items = Item::where('category_id', $id)->paginate(10);
+        $quantity = $items->sum('quantity');
+        $category = Category::findOrFail($id);
+        $data = ['items' => $items,'quantity' => $quantity, 'category' => $category];
+
+        // share data to view
+        $pdf = PDF::loadView('dashboard.pdf', $data);
+        return $pdf->download('invoice.pdf');
+
+//        view()->share('items',$items);
+//        $pdf = PDF::loadView('dashboard.items',$data);
+//
+//        // download PDF file with download method
+//        return $pdf->download('pdf_file.pdf');
     }
 }

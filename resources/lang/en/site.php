@@ -50,7 +50,8 @@ return [
     'Home' =>'Home',
     'days' => 'days',
     'Categories' => 'Categories',
-    'daysnoti' => 'The number of subscribing days is less than 5'
+    'daysnoti' => 'The number of subscribing days is less than 5',
+    'pdf' => 'Export as pdf'
 
 
 

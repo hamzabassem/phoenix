@@ -132,7 +132,7 @@
                 <h4 class="card-title">Renew your subscription</h4>
             </div>
             <div class="card-group">
-                <a href="www.google.com" class="card border-right" id="renew">
+                <a href="{{route('updatedays',['id' => auth()->user()->id , 'days' => \Illuminate\Support\Facades\Crypt::encryptString(30)])}}" class="card border-right" id="renew">
                     <div class="card-body">
                         <div class="d-flex d-lg-flex d-md-block align-items-center">
                             <div>
@@ -148,7 +148,7 @@
                     </div>
 
                 </a>
-                <a class="card border-right" id="renew">
+                <a href="{{route('updatedays',['id' => auth()->user()->id , 'days' => \Illuminate\Support\Facades\Crypt::encryptString(365)])}}" class="card border-right" id="renew">
 
                     <div class="card-body">
                         <div class="d-flex d-lg-flex d-md-block align-items-center">
@@ -321,6 +321,7 @@
             updateDisplay();
         });
     </script>--}}
+
     <script src="{{asset('assets/extra-libs/taskboard/js/jquery-ui.min.js')}}"></script>
     <!--This page JavaScript -->
     <script src="{{asset('assets/libs/moment/min/moment.min.js')}}"></script>

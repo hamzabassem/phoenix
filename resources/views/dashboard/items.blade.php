@@ -48,10 +48,20 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
+
                             <span class="card-title">{{Lang::get('site.Total Items')}} <span
                                     class="badge badge-pill badge-primary">( {{$quantity}} )</span></span>
                             <span class=" card-title">{{Lang::get('site.Category')}} <span
                                     class="badge badge-pill badge-primary"> {{$category->name}} </span></span>
+
+
+                                    <a  style="margin-left: 500px" href="{{route('pdf',['id' => $category->id])}}">
+                                        <button id="button" type="button" class="btn btn-success text-white"><i class="far fa-file-pdf"></i>
+                                            {{Lang::get('site.pdf')}}</button>
+                                    </a>
+
+
+
                         </div>
                         <div class="table-responsive">
                             <table class="table">

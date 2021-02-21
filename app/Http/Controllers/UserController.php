@@ -102,7 +102,7 @@ class UserController extends Controller
         $data['password'] = bcrypt($request->password);
         $data['days'] = Crypt::decryptString($request->days);
         $user->update($data);
-        return redirect()->route('dashhome')->with('success','your info has beed edited successfully');
+        return redirect()->route('dashhome')->with('success','your info has been edited successfully');
     }
 
     /**
@@ -113,6 +113,25 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        //
+    }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @param  int  $days
+     * @return \Illuminate\Http\Response
+     */
+    public function updatedays($id , $days)
+    {
+        $day = Crypt::decryptString($days);
+        $users = User::where('id', $id)->get();
+        foreach ($users as $user)
+            $user->update([
+                'days' => $user->days + $day,
+            ]);
+
+        return redirect()->route('dashhome')->with('success','your info has been edited successfully');
     }
 }

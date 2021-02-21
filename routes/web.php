@@ -34,6 +34,8 @@ Route::group(
         Route::get('/','DashboardController@index')->name('dashhome');
         Route::get('/edituser','UserController@edit')->name('edituser');
         Route::post('/updateuser','UserController@update')->name('updateuser');
+        Route::get('/updatedays/{id}/{days}','UserController@updatedays')->name('updatedays');
+
 
         // manager routes
         Route::get('/manager','ManagerController@index')->name('manager');
@@ -59,6 +61,7 @@ Route::group(
         Route::get('/edititem/{id}','ItemController@edit')->name('edititem');
         Route::post('/updateitem/{id}','ItemController@update')->name('updateitem');
         Route::get('/deleteitem/{id}','ItemController@destroy')->name('deleteitem');
+        Route::get('/pdf/{id}','ItemController@createPDF')->name('pdf');
 
 
 
