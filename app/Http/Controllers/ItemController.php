@@ -20,10 +20,15 @@ class ItemController extends Controller
      */
     public function index($id)
     {
-        $items = Item::where('category_id', $id)->paginate(10);
+        $condition = ['category_id' => $id, 'user_id' => Auth::user()->id];
+        $items = Item::where($condition)->paginate(10);
         $quantity = $items->sum('quantity');
         $category = Category::findOrFail($id);
-        return view('dashboard.items', compact(['items', 'quantity', 'category']));
+        if ($category->user_id == Auth::user()->id) {
+            return view('dashboard.items', compact(['items', 'quantity', 'category']));
+        } else {
+            return redirect()->back()->with('error', 'wrong id number');
+        }
     }
 
     /**
@@ -40,7 +45,11 @@ class ItemController extends Controller
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
         $category = Category::findOrFail($id);
-        return view('dashboard.operation', compact(['id', 'action','category']));
+        if ($category->user_id == Auth::user()->id) {
+            return view('dashboard.operation', compact(['id', 'action', 'category']));
+        } else {
+            return redirect()->back()->with('error', 'wrong id number');
+        }
     }
 
     /**
@@ -62,23 +71,23 @@ class ItemController extends Controller
         $quantity = $request->quantity;
         if ($request->action == 'export') {
             $quantity = -$request->quantity;
-            $item =Item::where('category_id' ,$request->categoryid);
-            $sum = $item->sum('quantity');
-            if ($sum <= 0 || $sum + $quantity <= 0){
-                return redirect()->back()->with('error','you can not do this action');
-            }
-        }else{
-        Item::create([
-            'operation' => $request->action,
-            'description' => $request->description,
-            'quantity' => $quantity,
-            'storage' => $request->storage,
-            'user_id' => Auth::user()->id,
-            'category_id' => $request->categoryid,
+        }
+        $item = Item::where('category_id', $request->categoryid);
+        $sum = $item->sum('quantity');
+        if ($request->action == 'export' && ($sum <= 0 || $sum + $quantity < 0)) {
+            return redirect()->back()->with('error', 'you dont have enough items to make this action ');
+        } else {
+            Item::create([
+                'operation' => $request->action,
+                'description' => $request->description,
+                'quantity' => $quantity,
+                'storage' => $request->storage,
+                'user_id' => Auth::user()->id,
+                'category_id' => $request->categoryid,
 
-        ]);
-        return redirect()->route('items', ['id' => $request->categoryid])->with('success', 'action has been added successfully');
-    }
+            ]);
+            return redirect()->route('items', ['id' => $request->categoryid])->with('success', 'action has been added successfully');
+        }
     }
 
     /**
@@ -104,8 +113,14 @@ class ItemController extends Controller
         if (auth()->user()->days == 0) {
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
-        $item = Item::all()->where('id', $id);
-        return view('dashboard.editItem', compact(['item']));
+        $item = Item::where('id', $id)->get();
+        foreach ($item as $value) {
+            if ($value->user_id == Auth::user()->id) {
+                return view('dashboard.editItem', compact(['item']));
+            } else {
+                return redirect()->back()->with('error', 'wrong id number');
+            }
+        }
     }
 
     /**
@@ -125,8 +140,12 @@ class ItemController extends Controller
 
         ]);
         $item = Item::findOrFail($id);
-        $item->update($request->all());
-        return redirect()->route('items', ['id' => $request->categoryid])->with('success', 'the action has been edited successfully');
+        if ($item->user_id == Auth::user()->id) {
+            $item->update($request->all());
+            return redirect()->route('items', ['id' => $request->categoryid])->with('success', 'the action has been edited successfully');
+        } else {
+            return redirect()->back()->with('error', 'wrong id number');
+        }
     }
 
     /**
@@ -142,30 +161,62 @@ class ItemController extends Controller
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
         $item = Item::findOrFail($id);
-        $item->delete();
-        return redirect()->back()->with('success', 'the action has been deleted successfully');
+        if ($item->user_id == Auth::user()->id) {
+            $item->delete();
+            return redirect()->back()->with('success', 'the action has been deleted successfully');
+        } else {
+            return redirect()->back()->with('error', 'wrong id number');
+        }
     }
+
     /**
      * Display a listing of the resource.
      *
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function createPDF($id) {
+    public function createPDF($id)
+    {
         // retreive all records from db
         $items = Item::where('category_id', $id)->paginate(10);
         $quantity = $items->sum('quantity');
         $category = Category::findOrFail($id);
-        $data = ['items' => $items,'quantity' => $quantity, 'category' => $category];
+        $data = ['items' => $items, 'quantity' => $quantity, 'category' => $category];
 
         // share data to view
         $pdf = PDF::loadView('dashboard.pdf', $data);
         return $pdf->download('invoice.pdf');
 
-//        view()->share('items',$items);
-//        $pdf = PDF::loadView('dashboard.items',$data);
-//
-//        // download PDF file with download method
-//        return $pdf->download('pdf_file.pdf');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function imports()
+    {
+        $condition = ['operation' => 'import', 'user_id' => Auth::user()->id];
+        $items = Item::where($condition)->paginate(10);
+        $category = Category::all();
+
+        return view('dashboard.imports', compact(['items', 'category']));
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function exports()
+    {
+        $condition = ['operation' => 'export', 'user_id' => Auth::user()->id];
+        $items = Item::where($condition)->paginate(10);
+        $category = Category::all();
+
+        return view('dashboard.exports', compact(['items', 'category']));
     }
 }

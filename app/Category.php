@@ -8,7 +8,7 @@ class Category extends Model
 {
 
     public function items(){
-        return $this->hasMany('App\Item');
+        return $this->hasMany(Item::class);
     }
 
     public function user(){

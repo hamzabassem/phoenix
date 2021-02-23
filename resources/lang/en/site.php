@@ -51,7 +51,9 @@ return [
     'days' => 'days',
     'Categories' => 'Categories',
     'daysnoti' => 'The number of subscribing days is less than 5',
-    'pdf' => 'Export as pdf'
+    'pdf' => 'Export as pdf',
+    'imports' => 'Imports',
+    'exports' => 'Exports'
 
 
 

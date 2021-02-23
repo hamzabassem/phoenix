@@ -119,14 +119,14 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     *
      * @param  int  $days
      * @return \Illuminate\Http\Response
      */
-    public function updatedays($id , $days)
+    public function updatedays($days)
     {
         $day = Crypt::decryptString($days);
-        $users = User::where('id', $id)->get();
+        $users = User::where('id', Auth::user()->id)->get();
         foreach ($users as $user)
             $user->update([
                 'days' => $user->days + $day,

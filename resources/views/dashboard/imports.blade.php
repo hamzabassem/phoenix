@@ -17,7 +17,7 @@
                                 <li class="breadcrumb-item"><a href="{{route('dashhome')}}"
                                                                class="text-muted">{{Lang::get('site.Home')}}</a></li>
                                 <li class="breadcrumb-item text-muted active"
-                                    aria-current="page">{{$category->name}}</li>
+                                    aria-current="page">{{Lang::get('site.imports')}}</li>
                             </ol>
                         </nav>
                     </div>
@@ -49,17 +49,15 @@
                     <div class="card">
                         <div class="card-body">
 
-                            <span class="card-title">{{Lang::get('site.Total Items')}} <span
-                                    class="badge badge-pill badge-primary">( {{$quantity}} )</span></span>
-                            <span class=" card-title">{{Lang::get('site.Category')}} <span 
-                                    class="badge badge-pill badge-primary"> {{$category->name}} </span></span>
+                            <span class="card-title">{{Lang::get('site.imports')}}</span>
 
+                            {{--
 
-                            <a class="text-center" href="{{route('pdf',['id' => $category->id])}}">
-                                <button id="button" type="button" class="btn btn-success text-white"><i
-                                        class="far fa-file-pdf"></i>
-                                    {{Lang::get('site.pdf')}}</button>
-                            </a>
+                                                        <a  style="margin-left: 500px" href="{{route('pdf',['id' => $category->id])}}">
+                                                            <button id="button" type="button" class="btn btn-success text-white"><i class="far fa-file-pdf"></i>
+                                                                {{Lang::get('site.pdf')}}</button>
+                                                        </a>
+                            --}}
 
 
                         </div>
@@ -72,6 +70,7 @@
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
                                     <th scope="col">{{Lang::get('site.storage')}}</th>
+                                    <th scope="col">{{Lang::get('site.Category')}}</th>
                                     <th scope="col">{{Lang::get('site.created at')}}</th>
                                     <th scope="col">{{Lang::get('site.Edit')}}</th>
                                 </tr>
@@ -91,6 +90,11 @@
                                         <td>{{$value->description}}</td>
                                         <td>{{$value->quantity}}</td>
                                         <td>{{$value->storage}}</td>
+                                        @foreach($category as $cvalue)
+                                            @if($value->category_id == $cvalue->id)
+                                                <td>{{$cvalue->name}}</td>
+                                            @endif
+                                        @endforeach
                                         <td>{{$value->created_at}}</td>
                                         <td>
 
@@ -114,18 +118,6 @@
 
                         </div>
                     </div>
-                </div>
-            </div>
-            <div style="margin-right: 30px" class="form-actions">
-                <div class="text-right">
-                    <a href="{{route('operation',['id' => $category->id,'action' =>'import'])}}">
-                        <button id="button" type="button" class="btn btn-primary"><i class=" fas fa-level-down-alt"></i>
-                            {{Lang::get('site.Import')}}</button>
-                    </a>
-                    <a href="{{route('operation',['id' => $category->id,'action' =>'export'])}}">
-                        <button id="button" type="button" class="btn btn-dark"><i class="fas fa-level-up-alt"></i>
-                            {{Lang::get('site.Export')}}</button>
-                    </a>
                 </div>
             </div>
             <br>

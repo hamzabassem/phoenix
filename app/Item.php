@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
 
-    public function category(){
-        return $this->belongsTo('App\Category');
+    public function Category(){
+        return $this->belongsTo(Category::class);
     }
 
     protected $fillable = [

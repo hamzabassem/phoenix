@@ -80,7 +80,14 @@ class CategoryController extends Controller
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
         $category = Category::all()->where('id', $id);
-        return view('dashboard.editCategory', compact('category'));
+        foreach ($category as $value) {
+            if ($value->user_id == Auth::user()->id) {
+
+                return view('dashboard.editCategory', compact('category'));
+            } else {
+                return redirect()->back()->with('error', 'wrong id number');
+            }
+        }
     }
 
     /**
@@ -103,8 +110,12 @@ class CategoryController extends Controller
         ]);
 
         $category = Category::findOrFail($id);
-        $category->update($request->all());
-        return redirect()->route('categoriesinfo')->with('success', 'category has been edited successfully');
+        if ($category->user_id == Auth::user()->id) {
+            $category->update($request->all());
+            return redirect()->route('categoriesinfo')->with('success', 'category has been edited successfully');
+        } else {
+            return redirect()->back()->with('error', 'wrong id number');
+        }
     }
 
 
@@ -120,10 +131,14 @@ class CategoryController extends Controller
         if (auth()->user()->days == 0) {
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
-        Item::where('category_id', $id)->delete();
         $category = Category::findOrFail($id);
-        $category->delete();
-        return redirect()->back()->with('success', 'category has been deleted successfully');
+        if ($category->user_id == Auth::user()->id) {
+            Item::where('category_id', $id)->delete();
+            $category->delete();
+            return redirect()->back()->with('success', 'category has been deleted successfully');
+        } else {
+            return redirect()->back()->with('error', 'wrong id number');
+        }
     }
 
 }

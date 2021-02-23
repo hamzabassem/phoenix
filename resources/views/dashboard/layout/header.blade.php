@@ -149,7 +149,7 @@
                     </a>
                     <div id="noti2" class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item"
-                           href="{{route('edituser',['id' => auth()->user()->id])}}">{{Lang::get('site.Edit My Info')}}</a>
+                           href="{{route('edituser')}}">{{Lang::get('site.Edit My Info')}}</a>
                         <div class="dropdown-divider"></div>
                     </div>
                 </li>
@@ -282,7 +282,16 @@
                                             aria-expanded="false"><i data-feather="plus" class="feather-icon"></i><span
                             class="hide-menu">{{Lang::get('site.Add New')}}</span></a></li>
 
-
+                <li class="sidebar-item"><a class="sidebar-link" href="{{route('imports')}}"
+                                            aria-expanded="false"><i data-feather="arrow-down" class="feather-icon"></i><span
+                            class="hide-menu">{{Lang::get('site.imports')}}
+                                </span></a>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link" href="{{route('exports')}}"
+                                            aria-expanded="false"><i data-feather="arrow-up" class="feather-icon"></i><span
+                            class="hide-menu">{{Lang::get('site.exports')}}
+                                </span></a>
+                </li>
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

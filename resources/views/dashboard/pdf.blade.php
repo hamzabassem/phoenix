@@ -16,8 +16,8 @@
     </style>
 </head>
 <body>
-<h2 class="text-center">Category {{$category->name}}</h2>
-<h2 class="text-center">Quantity {{$quantity}}</h2>
+<h2 class="text-center">Category ( {{$category->name}} )</h2>
+<h2 class="text-center">Quantity ( {{$quantity}} )</h2>
 <div class="table-responsive">
     <table class="table table-bordered">
         <thead class="thead-light">
