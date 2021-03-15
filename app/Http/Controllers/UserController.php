@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Store;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,12 +24,13 @@ class UserController extends Controller
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
-     * @param  int  $days
+     * @param  int  $store
      *
      */
-    public function create($days)
+    public function create($store)
     {
-        return view('auth.register',compact('days'));
+        $company = Store::where('name',$store)->get();
+        return view('auth.register',compact('company'));
     }
 
     /**
@@ -46,13 +48,18 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'phone' => $request->phone,
-            'days' => Crypt::decryptString($request->days),
-        ]);
+
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'phone' => $request->phone,
+                'store_id' => $request->store_id,
+
+
+            ]);
+
+
         return redirect()->route('login')->with('success','your account created successfully please login');
 
     }
@@ -77,7 +84,7 @@ class UserController extends Controller
     public function edit()
     {
         $user = User::where('id',Auth::user()->id)->get();
-        return view('dashboard.editUser',compact('user'));
+        return view('dashboard.user.editUser',compact('user'));
     }
 
     /**
@@ -126,7 +133,7 @@ class UserController extends Controller
     public function updatedays($days)
     {
         $day = Crypt::decryptString($days);
-        $users = User::where('id', Auth::user()->id)->get();
+        $users = Store::where('id', Auth::user()->store_id)->get();
         foreach ($users as $user)
             $user->update([
                 'days' => $user->days + $day,

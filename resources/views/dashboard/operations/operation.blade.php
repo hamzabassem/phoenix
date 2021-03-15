@@ -11,14 +11,15 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Add New Category')}}</h4>
+                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Add Operation On Item')}}
+                        ( {{$category->name}} )</h4>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashhome')}}"
                                                                class="text-muted">{{Lang::get('site.Home')}}</a></li>
                                 <li class="breadcrumb-item text-muted active"
-                                    aria-current="page">{{Lang::get('site.Add New')}}</li>
+                                    aria-current="page">{{Lang::get('site.Add New Operation')}}</li>
                             </ol>
                         </nav>
                     </div>
@@ -48,54 +49,85 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{Lang::get('site.Category Info')}}</h4>
-                            <form action="{{route('storecategory')}}" method="post">
+                            <h4 class="card-title">{{$action}} {{Lang::get('site.Item')}}</h4>
+                            <form action="{{route('storeitem')}}" method="post">
                                 @csrf
                                 <div class="form-body">
                                     <div class="row">
-                                        <div class="col-md-11">
-                                            <div class="form-group">
-                                                <label class="col-lg-1">{{Lang::get('site.Name')}}</label>
-                                                <input type="text" name="name" class="form-control" placeholder="Name">
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-11">
                                             <div class="form-group">
-                                                <label class="col-lg-3">{{Lang::get('site.Description')}}</label>
                                                 <textarea class="form-control" name="description"
-                                                          placeholder="description" rows="3"></textarea>
+                                                          placeholder="{{Lang::get('site.Description')}}"
+                                                          rows="3"></textarea>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-11">
                                             <div class="form-group">
-                                                <label class="col-lg-3">{{Lang::get('site.buying price')}}</label>
-                                                <input type="text" class="form-control" name="buying_price"
-                                                       placeholder="Buying Price">
+                                                <input type="text" class="form-control" name="quantity"
+                                                       placeholder="{{Lang::get('site.quantity')}}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-11">
-                                            <div class="form-group">
-                                                <label class="col-lg-3">{{Lang::get('site.selling')}}</label>
-                                                <input type="text" class="form-control" name="selling_price"
-                                                       placeholder="Selling Price">
+                                            <div class="input-group">
+                                                <select class="custom-select" id="inputGroupSelect04">
+                                                    <option selected>Bill Number</option>
+                                                    @if($action == 'import')
+                                                        @foreach($supplier as $value)
+                                                            <option name="import_bill"
+                                                                    value="{{$value->id}}">{{$value->name}}</option>
+
+                                                        @endforeach
+                                                    @else
+                                                        @foreach($customer as $value)
+                                                            <option name="export_bill"
+                                                                    value="{{$value->id}}">{{$value->name}}</option>
+
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-success" type="button">Add New
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
                                     <div class="row">
                                         <div class="col-md-11">
-                                            <div class="form-group">
-                                                <label class="col-lg-3">{{Lang::get('site.notify')}}</label>
-                                                <input type="number" class="form-control" name="notify"
-                                                       placeholder="Notify Me When Less Than">
+                                            <div class="input-group">
+                                                <select class="custom-select" id="inputGroupSelect04">
+                                                    <option selected> Customer or Supplier</option>
+                                                    @if($action == 'import')
+                                                        @foreach($supplier as $value)
+                                                            <option name="supplier"
+                                                                    value="{{$value->id}}">{{$value->name}}</option>
+
+                                                        @endforeach
+                                                    @else
+                                                        @foreach($customer as $value)
+                                                            <option name="customer"
+                                                                    value="{{$value->id}}">{{$value->name}}</option>
+
+                                                        @endforeach
+                                                    @endif
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-success" type="button">Add New
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <br>
+                                    <input type="hidden" class="form-control" value="{{$id}}" name="categoryid">
+                                    <input type="hidden" class="form-control" value="{{$action}}" name="action">
                                 </div>
                                 <div class="form-actions">
                                     <div class="text-right">

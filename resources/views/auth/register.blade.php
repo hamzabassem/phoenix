@@ -50,11 +50,15 @@
                     @include('dashboard.layout.messages')
                     <form  action="{{route('registeruser')}}" method="post" class="mt-4">
                         @csrf
+
+                        @foreach($company as $value)
+                        <input class="form-control" type="hidden" name="store_id" value="{{$value->id}}">
+                        @endforeach
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
                                     <input class="form-control" type="text" name="name" placeholder="your name">
-                                    <input class="form-control" type="hidden" value="{{$days}}" name="days" placeholder="your name">
+
                                 </div>
                             </div>
                             <div class="col-lg-12">

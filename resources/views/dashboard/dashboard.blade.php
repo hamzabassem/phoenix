@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-7 align-self-center">
                     <h3 id="title"
-                        class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Hello')}} {{auth()->user()->name}}</h3>
+                        class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Hello')}} {{ucfirst(auth()->user()->name)}}</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -33,8 +33,8 @@
             </div>
         </div>
         <div class="container-fluid">
-            @include('dashboard.layout.messages')
-            <!--
+        @include('dashboard.layout.messages')
+        <!--
             <div class="row">
                 <div class="col-12">
                     <div class="card">
@@ -82,57 +82,94 @@
                 </div>
             </div>
             -->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="">
-                                <div class="row">
-                                    {{--<div class="col-lg-3 border-right pr-0">
-                                        <div class="card-body border-bottom">
-                                            <h4 class="card-title mt-2">Drag & Drop Event</h4>
-                                        </div>
-                                        <div class="card-body">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div id="calendar-events" class="">
-                                                        <div class="calendar-events mb-3" data-class="bg-info"><i
-                                                                class="fa fa-circle text-info mr-2"></i>Event One</div>
-                                                        <div class="calendar-events mb-3" data-class="bg-success"><i
-                                                                class="fa fa-circle text-success mr-2"></i> Event Two
-                                                        </div>
-                                                        <div class="calendar-events mb-3" data-class="bg-danger"><i
-                                                                class="fa fa-circle text-danger mr-2"></i>Event Three
-                                                        </div>
-                                                        <div class="calendar-events mb-3" data-class="bg-warning"><i
-                                                                class="fa fa-circle text-warning mr-2"></i>Event Four
-                                                        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="">
+                            <div class="row">
+                                {{--<div class="col-lg-3 border-right pr-0">
+                                    <div class="card-body border-bottom">
+                                        <h4 class="card-title mt-2">Drag & Drop Event</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div id="calendar-events" class="">
+                                                    <div class="calendar-events mb-3" data-class="bg-info"><i
+                                                            class="fa fa-circle text-info mr-2"></i>Event One</div>
+                                                    <div class="calendar-events mb-3" data-class="bg-success"><i
+                                                            class="fa fa-circle text-success mr-2"></i> Event Two
                                                     </div>
-                                                    <!-- checkbox -->
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input"
-                                                               id="drop-remove">
-                                                        <label class="custom-control-label" for="drop-remove">Remove
-                                                            after drop</label>
+                                                    <div class="calendar-events mb-3" data-class="bg-danger"><i
+                                                            class="fa fa-circle text-danger mr-2"></i>Event Three
                                                     </div>
+                                                    <div class="calendar-events mb-3" data-class="bg-warning"><i
+                                                            class="fa fa-circle text-warning mr-2"></i>Event Four
+                                                    </div>
+                                                </div>
+                                                <!-- checkbox -->
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input"
+                                                           id="drop-remove">
+                                                    <label class="custom-control-label" for="drop-remove">Remove
+                                                        after drop</label>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>--}}
-                                    <div class="col-lg-9">
-                                        <div class="card-body b-l calender-sidebar">
-                                            <div id="calendar"></div>
-                                        </div>
+                                    </div>
+                                </div>--}}
+                                <div class="col-lg-9">
+                                    <div class="card-body b-l calender-sidebar">
+                                        <div id="calendar"></div>
                                     </div>
                                 </div>
+                                <form method="post" action="{{route('addtask')}}">
+                                    @csrf
+                                    <div style="margin-top: 105px;" class="row">
+                                        <div class="col-md-11 ml-auto">
+                                            <div class="form-group">
+                                                <label for="name"> Add new task</label>
+                                                <input name="name" type="text" class="form-control"
+                                                       placeholder="name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-11 ml-auto">
+                                            <div class="form-group">
+                                                <label for="name"> Starts at</label>
+                                                <input name="start" type="date" class="form-control"
+                                                       placeholder="col-md-4 ml-auto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-11 ml-auto">
+                                            <div class="form-group">
+                                                <label for="name"> Ends at</label>
+                                                <input name="end" type="date" class="form-control"
+                                                       placeholder="col-md-4 ml-auto">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions">
+                                        <div class="text-right">
+                                            <button type="submit" class="btn btn-info">Submit</button>
+                                            <button type="reset" class="btn btn-dark">Reset</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             <div class="card-body">
                 <h4 class="card-title">Renew your subscription</h4>
             </div>
             <div class="card-group">
-                <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(30)])}}" class="card border-right" id="renew">
+                <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(30)])}}"
+                   class="card border-right" id="renew">
                     <div class="card-body">
                         <div class="d-flex d-lg-flex d-md-block align-items-center">
                             <div>
@@ -148,7 +185,8 @@
                     </div>
 
                 </a>
-                <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(365)])}}" class="card border-right" id="renew">
+                <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(365)])}}"
+                   class="card border-right" id="renew">
 
                     <div class="card-body">
                         <div class="d-flex d-lg-flex d-md-block align-items-center">
@@ -172,48 +210,49 @@
         #renew:hover {
             background-color: #cbd3da;
         }
-/*
 
-        .calculator {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 400px;
-        }
+        /*
 
-        .calculator-screen {
-            width: 38%;
-            height: 80px;
-            border: none;
-            background-color: #252525;
-            color: #fff;
-            text-align: right;
-            padding-right: 20px;
-            padding-left: 10px;
-            font-size: 4rem;
-        }
+                .calculator {
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 400px;
+                }
 
-        #button {
-            height: 60px;
-            font-size: 2rem !important;
-        }
+                .calculator-screen {
+                    width: 38%;
+                    height: 80px;
+                    border: none;
+                    background-color: #252525;
+                    color: #fff;
+                    text-align: right;
+                    padding-right: 20px;
+                    padding-left: 10px;
+                    font-size: 4rem;
+                }
 
-        .equal-sign {
-            height: 98%;
-            grid-area: 2 / 4 / 6 / 5;
-        }
+                #button {
+                    height: 60px;
+                    font-size: 2rem !important;
+                }
 
-        .calculator-keys {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-gap: 20px;
-            padding: 20px;
-            width: 40%;
-        }
-*/
+                .equal-sign {
+                    height: 98%;
+                    grid-area: 2 / 4 / 6 / 5;
+                }
+
+                .calculator-keys {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    grid-gap: 20px;
+                    padding: 20px;
+                    width: 40%;
+                }
+        */
 
     </style>
     {{--<script>
@@ -327,7 +366,20 @@
     <script src="{{asset('assets/libs/moment/min/moment.min.js')}}"></script>
     <script src="{{asset('assets/libs/fullcalendar/dist/fullcalendar.min.js')}}"></script>
     <script src="{{asset('dist/js/pages/calendar/cal-init.js')}}"></script>
-    <link href="{{asset('assets/libs/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/libs/fullcalendar/dist/fullcalendar.min.css')}}" rel="stylesheet"/>
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
+
+    <script>
+        var defaultEvents = [
+                @foreach($tasks as $value)
+            {
+                title: '{{$value->name}}',
+                start: new Date('{{$value->start}}').getTime(),
+                end: new Date('{{$value->end}}').getTime() + 86400000,
+                className: 'bg-info'
+            },
+                @endforeach
+            ];
+    </script>
 @endsection

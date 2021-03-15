@@ -17,13 +17,15 @@ class CreateCategoriesTable extends Migration
             $table->id()->autoIncrement();
             $table->string('name');
             $table->string('description');
+            $table->string('storage');
             $table->string('buying_price');
             $table->string('selling_price');
             $table->string('notify');
-            $table->unsignedBigInteger('user_id');
+            $table->enum('deleted',[1,0])->default(0);
+            $table->unsignedBigInteger('store_id');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('store_id')->references('id')->on('stores');
         });
     }
 

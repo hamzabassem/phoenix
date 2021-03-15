@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Item;
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,8 +19,8 @@ class DashboardController extends Controller
     public function index()
     {
         //$category = Category::where('user_id',Auth::user()->id)->get();
-
-        return view('dashboard.dashboard');
+        $tasks = Task::where('user_id',Auth::user()->id)->get();
+        return view('dashboard.dashboard',compact('tasks'));
 
     }
 

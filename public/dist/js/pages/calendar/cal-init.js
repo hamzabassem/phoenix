@@ -62,14 +62,15 @@
             var form = '';
             var today = new Date($.now());
 
-            var defaultEvents = [/*{
+            /*var defaultEvents = [
+                {
                     title: 'Meeting #3',
                     start: new Date($.now() + 506800000),
                     className: 'bg-info'
                 }, {
                     title: 'Submission #1',
-                    start: today,
-                    end: today,
+                    start: 1617915600000,
+                    end: 1617915600000,
                     className: 'bg-danger'
                 }, {
                     title: 'Meetup #6',
@@ -99,8 +100,8 @@
                     title: 'Seminar #5',
                     start: new Date($.now() + 348000000),
                     className: 'bg-success'
-                }*/
-            ];
+                }
+            ];*/
 
             var $this = this;
             $this.$calendarObj = $this.$calendar.fullCalendar({

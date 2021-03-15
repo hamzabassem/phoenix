@@ -11,14 +11,14 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Edit Category')}}</h4>
+                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Edit operation on this item')}}</h4>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashhome')}}"
                                                                class="text-muted">{{Lang::get('site.Home')}}</a></li>
                                 <li class="breadcrumb-item text-muted active"
-                                    aria-current="page">{{Lang::get('site.Add New')}}</li>
+                                    aria-current="page">{{Lang::get('site.Edit Operation')}}</li>
                             </ol>
                         </nav>
                     </div>
@@ -48,59 +48,72 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{Lang::get('site.Category Info')}}</h4>
-                            @foreach($category as $value)
-                                <form action="{{route('updatecategory',['id' => $value->id])}}" method="post">
+                            @foreach($item as $value)
+                                <h4 class="card-title">{{$value->operation}} {{Lang::get('site.Item')}} </h4>
+                                <form action="{{route('updateitem',['id' => $value->id])}}" method="post">
                                     @csrf
-
                                     <div class="form-body">
+
                                         <div class="row">
-                                            <div class="col-md-11">
-                                                <div class="form-group">
-                                                    <label class="col-lg-1">{{Lang::get('site.Name')}}</label>
-                                                    <input type="text" name="name" value="{{$value->name}}"
-                                                           class="form-control" placeholder="{{Lang::get('site.')}}">
+                                            <label
+                                                class="col-lg-3">{{Lang::get('site.Description')}}</label>
+                                            <div class="col-lg-11">
+                                                <div class="row">
+                                                    <div class="col-md-11">
+                                                        <div class="form-group">
+
+                                                            <textarea class="form-control" name="description"
+                                                                      placeholder="description"
+                                                                      rows="3">{{$value->description}}</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label
+                                                class="col-lg-3">{{Lang::get('site.quantity')}}</label>
+                                            <div class="col-lg-11">
+                                                <div class="row">
+                                                    <div class="col-md-11">
+                                                        <div class="form-group">
+
+                                                            <input type="text" class="form-control" name="quantity"
+                                                                   value="{{$value->quantity}}" placeholder="quantity">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label
+                                                class="col-lg-3">{{Lang::get('site.storage')}}</label>
+                                            <div class="col-lg-11">
+                                                <div class="row">
+                                                    <div class="col-md-11">
+                                                        <div class="form-group">
+
+                                                            <input type="text" class="form-control"
+                                                                   name="storage"
+                                                                   value="{{$value->storage}}"
+                                                                   placeholder="storage place">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-11">
                                                 <div class="form-group">
-                                                    <label class="col-lg-3">{{Lang::get('site.Description')}}</label>
-                                                    <textarea class="form-control" name="description"
-                                                              placeholder="{{Lang::get('site.')}}"
-                                                              rows="3">{{$value->description}}</textarea>
+                                                    <input type="hidden" class="form-control"
+                                                           value="{{$value->category_id}}"
+                                                           name="categoryid">
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-md-11">
                                                 <div class="form-group">
-                                                    <label class="col-lg-3">{{Lang::get('site.buying price')}}</label>
-                                                    <input type="text" class="form-control" name="buying_price"
-                                                           value="{{$value->buying_price}}"
-                                                           placeholder="{{Lang::get('site.')}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-11">
-                                                <div class="form-group">
-                                                    <label class="col-lg-3">{{Lang::get('site.Selling')}}</label>
-                                                    <input type="text" class="form-control" name="selling_price"
-                                                           value="{{$value->selling_price}}"
-                                                           placeholder="{{Lang::get('site.')}}">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-11">
-                                                <div class="form-group">
-                                                    <label
-                                                        class="col-lg-3">{{Lang::get('site.Notify me when less than')}}</label>
-                                                    <input type="number" class="form-control" name="notify"
-                                                           value="{{$value->notify}}"
-                                                           placeholder="{{Lang::get('site.')}}">
+                                                    <input type="hidden" class="form-control"
+                                                           value="{{$value->operation}}" name="action">
                                                 </div>
                                             </div>
                                         </div>
@@ -113,7 +126,6 @@
                                                     class="btn btn-dark">{{Lang::get('site.Reset')}}</button>
                                         </div>
                                     </div>
-
                                 </form>
                             @endforeach
                         </div>

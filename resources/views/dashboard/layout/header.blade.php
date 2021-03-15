@@ -1,25 +1,26 @@
 @php
     $count = 0;
-    $id = Auth::user()->id;
-    $categories = \App\Category::all()->where('user_id',$id);
+    $id = Auth::user()->store_id;
+    $categories = \App\Category::all()->where('store_id',$id);
     foreach ($categories as $value){
     $notify = $value->notify;
-    $item = \App\Item::where('category_id', $value->id);
+    $item = \App\Transaction::where('category_id', $value->id);
     $sum = $item->sum('quantity');
     if ($sum < $notify){
     $count++;
     }else $count = null;
     }
-    if(auth()->user()->days <= 5){
+    $store = \App\Store::findOrFail(auth()->user()->store_id);
+    $days = $store->days;
+    if($days <= 5){
         $count++;
     }
+
+
 @endphp
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
-<script>
-    var categories = [""];
-</script>
 <header class="topbar" data-navbarbg="skin6">
 
     <nav class="navbar top-navbar navbar-expand-md">
@@ -90,7 +91,7 @@
                                     @foreach ($categories as $value)
                                         @php
                                             $notify = $value->notify;
-                                            $item = \App\Item::where('category_id', $value->id);
+                                            $item = \App\Transaction::where('category_id', $value->id);
                                             $sum = $item->sum('quantity');
                                             if ($sum <= $notify){
 
@@ -110,14 +111,14 @@
                                         <!-- Message -->
                                         @php  } @endphp
                                     @endforeach
-                                    @if(auth()->user()->days <= 5)
+                                    @if($days <= 5)
                                         @php
                                         $count++
                                         @endphp
-                                        <a href="{{route('items',['id' => $value->id])}}"
+                                        <a href=""
                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                            <div class="btn btn-danger rounded-circle btn-circle"><i
-                                                    data-feather="airplay" class="text-white"></i></div>
+                                            <div class="btn btn-info rounded-circle btn-circle"><i
+                                                    data-feather="settings" class="text-white"></i></div>
 
                                             <div class="w-75 d-inline-block v-middle pl-2">
                                                 <h6 class="message-title mb-0 mt-1">{{Lang::get('site.Notification')}}</h6>
@@ -182,7 +183,7 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ==============================================================-->
-                <li class="nav-item d-none d-md-block">
+               {{-- <li class="nav-item d-none d-md-block">
                     <a class="nav-link" href="javascript:void(0)">
                         <form>
                             <div class="customize-input">
@@ -193,7 +194,7 @@
                             </div>
                         </form>
                     </a>
-                </li>
+                </li>--}}
 
                 <!-- ============================================================== -->
                 <!-- User profile and search -->
@@ -203,7 +204,7 @@
                        aria-haspopup="true" aria-expanded="false">
 
                         <span
-                            class="ml-2 d-none d-lg-inline-block"><span>{{Lang::get('site.Hello')}} {{Auth::user()->name}}</span> <span
+                            class="ml-2 d-none d-lg-inline-block"><span>{{Lang::get('site.Hello')}} {{ucfirst(auth()->user()->name)}}</span> <span
                                 class="text-dark"></span> <i data-feather="chevron-down"
                                                              class="svg-icon"></i></span>
                     </a>
@@ -261,37 +262,132 @@
                                         class="hide-menu"> {{$value->name}}
                                         </span></a>
                             </li>
-                            <script>
-                                categories.push("{{$value->name}}")
-                            </script>
                         @endforeach
 
 
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                            aria-expanded="false"><i data-feather="file-text"
+                                                                     class="feather-icon"></i><span
+                            class="hide-menu">{{Lang::get('site.Bills')}} </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                            <li class="sidebar-item"><a href="javascript:void(0)"
+                                                        class="sidebar-link has-arrow"><span
+                                        class="hide-menu"> Import
+                                        </span></a>
+                                <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                    <li class="sidebar-item"><a href="#"
+                                                                class="sidebar-link"><span
+                                                class="hide-menu"> Add New
+                                        </span></a>
+                                    </li>
+                                    <li class="sidebar-item"><a href="#"
+                                                                class="sidebar-link"><span
+                                                class="hide-menu"> Show All
+                                        </span></a>
+                                    </li>
+                                </ul>
+                            </li>
+                        <li class="sidebar-item"><a href="javascript:void(0)"
+                                                    class="sidebar-link has-arrow"><span
+                                    class="hide-menu"> Export
+                                        </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                <li class="sidebar-item"><a href="#"
+                                                            class="sidebar-link"><span
+                                            class="hide-menu"> Add New
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="#"
+                                                            class="sidebar-link"><span
+                                            class="hide-menu"> Show All
+                                        </span></a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <hr>
                 <li class="nav-small-cap"><span class="hide-menu">{{Lang::get('site.Manage categories')}}</span></li>
                 <br>
 
-                <li class="sidebar-item"><a class="sidebar-link" href="{{route('categoriesinfo')}}"
-                                            aria-expanded="false"><i data-feather="eye" class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.Categories Info')}}
+                <li class="sidebar-item"><a href="javascript:void(0)"
+                                            class="sidebar-link has-arrow"><span
+                            class="hide-menu"> {{Lang::get('site.Manage categories')}}
+                                        </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        <li class="sidebar-item"><a class="sidebar-link" href="{{route('categoriesinfo')}}"
+                                                    aria-expanded="false"><i data-feather="eye" class="feather-icon"></i><span
+                                    class="hide-menu">{{Lang::get('site.Categories Info')}}
                                 </span></a>
+                        </li>
+                        <li class="sidebar-item"><a class="sidebar-link sidebar-link" href="{{route('addcategory')}}"
+                                                    aria-expanded="false"><i data-feather="plus" class="feather-icon"></i><span
+                                    class="hide-menu">{{Lang::get('site.Add New')}}</span></a></li>
+                    </ul>
                 </li>
-                <li class="sidebar-item"><a class="sidebar-link sidebar-link" href="{{route('addcategory')}}"
-                                            aria-expanded="false"><i data-feather="plus" class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.Add New')}}</span></a></li>
+                <li class="sidebar-item"><a href="javascript:void(0)"
+                                            class="sidebar-link has-arrow"><span
+                            class="hide-menu"> Operations
+                                        </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        <li class="sidebar-item"><a class="sidebar-link" href="{{route('imports')}}"
+                                                    aria-expanded="false"><i data-feather="arrow-down" class="feather-icon"></i><span
+                                    class="hide-menu">{{Lang::get('site.imports')}}
+                                </span></a>
+                        </li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="{{route('exports')}}"
+                                                    aria-expanded="false"><i data-feather="arrow-up" class="feather-icon"></i><span
+                                    class="hide-menu">{{Lang::get('site.exports')}}
+                                </span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="sidebar-item"><a href="javascript:void(0)"
+                                            class="sidebar-link has-arrow"><span
+                            class="hide-menu"> Suppliers & Customers
+                                        </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                                    aria-expanded="false"><i class="feather-icon"></i><span
+                                    class="hide-menu">Suppliers
+                                </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                <li class="sidebar-item"><a href="#"
+                                                            class="sidebar-link"><span
+                                            class="hide-menu"> Add New
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="#"
+                                                            class="sidebar-link"><span
+                                            class="hide-menu"> Show All
+                                        </span></a>
+                                </li>
+                            </ul>
 
-                <li class="sidebar-item"><a class="sidebar-link" href="{{route('imports')}}"
-                                            aria-expanded="false"><i data-feather="arrow-down" class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.imports')}}
+                        </li>
+                        <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                                    aria-expanded="false"><i class="feather-icon"></i><span
+                                    class="hide-menu">Customers
                                 </span></a>
+                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                <li class="sidebar-item"><a href="#"
+                                                            class="sidebar-link"><span
+                                            class="hide-menu"> Add New
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item"><a href="#"
+                                                            class="sidebar-link"><span
+                                            class="hide-menu"> Show All
+                                        </span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </li>
-                <li class="sidebar-item"><a class="sidebar-link" href="{{route('exports')}}"
-                                            aria-expanded="false"><i data-feather="arrow-up" class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.exports')}}
-                                </span></a>
-                </li>
+
+
             </ul>
         </nav>
         <!-- End Sidebar navigation -->

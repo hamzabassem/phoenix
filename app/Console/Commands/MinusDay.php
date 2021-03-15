@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Store;
 use App\User;
 use Illuminate\Console\Command;
 
@@ -40,7 +41,7 @@ class MinusDay extends Command
     public function handle()
     {
 
-        $users = User::where('days','>',0)->get();
+        $users = Store::where('days','>',0)->get();
         foreach ($users as $user){
             $user->update([
                 'days' => $user->days - 1

@@ -17,13 +17,16 @@ class CreateUsersTable extends Migration
             $table->id()->autoIncrement();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone');
+            $table->string('phone')->unique();
             //$table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('lang',["ar","en"])->default("en");
-            $table->integer('days');
+            $table->unsignedBigInteger('store_id');
+            $table->enum('level',[1,2,3,4])->default(1);
             $table->rememberToken();
             $table->timestamps();
+
+            $table->foreign('store_id')->references('id')->on('stores');
 
         });
     }

@@ -19,18 +19,18 @@ class AuthController extends Controller
             'password' => 'required',
         ]);
 
-    $manager = Manager::all();
+    /*$manager = Manager::all();*/
 
     $login_info=['email' =>$request->email, 'password'=>$request->password];
 
     if(Auth::attempt($login_info)){
-        foreach ($manager as $value){
-        if (Auth::user()->email ==  $value->email){return redirect()->route('manager');
-        }
+        /*foreach ($manager as $value){*/
+        /*if (Auth::user()->email ==  $value->email){return redirect()->route('manager');
+        }*/
         return redirect()->route('dashhome');
-    }
+
     }else{
-        return redirect()->back();
+        return redirect()->back()->with('error','wrong username or password');
     }
 
     }

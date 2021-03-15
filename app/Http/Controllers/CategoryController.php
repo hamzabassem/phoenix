@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Item;
+use App\Store;
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,8 +18,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('user_id', Auth::user()->id)->paginate(10);
-        return view('dashboard.showAllCategories', compact('categories'));
+        $categories = Category::where('store_id', Auth::user()->store_id)->paginate(10);
+        return view('dashboard.categories.showAllCategories', compact('categories'));
     }
 
     /**
@@ -27,10 +29,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        if (auth()->user()->days == 0) {
+        $store = Store::findOrFail(auth()->user()->store_id);
+        if ($store->days == 0) {
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
-        return view('dashboard.addCategory');
+        return view('dashboard.categories.addCategory');
     }
 
     /**
@@ -51,7 +54,7 @@ class CategoryController extends Controller
         ]);
 
         $data = $request->all();
-        $data['user_id'] = Auth::user()->id;
+        $data['store_id'] = Auth::user()->store_id;
         Category::create($data);
         return redirect()->route('addcategory')->with('success', 'category has been added successfully');
     }
@@ -76,14 +79,15 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        if (auth()->user()->days == 0) {
+        $store = Store::findOrFail(auth()->user()->store_id);
+        if ($store->days == 0) {
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
         $category = Category::all()->where('id', $id);
         foreach ($category as $value) {
-            if ($value->user_id == Auth::user()->id) {
+            if ($value->store_id == Auth::user()->store_id) {
 
-                return view('dashboard.editCategory', compact('category'));
+                return view('dashboard.categories.editCategory', compact('category'));
             } else {
                 return redirect()->back()->with('error', 'wrong id number');
             }
@@ -128,12 +132,13 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        if (auth()->user()->days == 0) {
+        $store = Store::findOrFail(auth()->user()->store_id);
+        if ($store->days == 0) {
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
         $category = Category::findOrFail($id);
-        if ($category->user_id == Auth::user()->id) {
-            Item::where('category_id', $id)->delete();
+        if ($category->store_id == Auth::user()->store_id) {
+            Transaction::where('category_id', $id)->delete();
             $category->delete();
             return redirect()->back()->with('success', 'category has been deleted successfully');
         } else {

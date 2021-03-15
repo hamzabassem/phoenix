@@ -16,7 +16,7 @@ class Category extends Model
     }
 
     protected $fillable = [
-        'name', 'description', 'buying_price','selling_price', 'notify', 'user_id',
+        'name', 'description', 'buying_price','selling_price', 'notify', 'store_id','storage'
     ];
 
 
