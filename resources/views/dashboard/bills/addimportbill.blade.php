@@ -89,8 +89,8 @@
                                         @endforeach
                                     </select>
                                     <div class="input-group-append">
-                                        <button class="btn btn-success" type="button">Add New
-                                        </button>
+                                        <a href="{{route('addsupplier')}}" style="color: white" class="btn btn-success" type="button">Add New
+                                        </a>
                                     </div>
                                 </div>
                                 {{--<label>supplier</label>
@@ -111,8 +111,8 @@
                                         @endforeach
                                     </select>
                                     <div class="input-group-append">
-                                        <button class="btn btn-success" type="button">Add New
-                                        </button>
+                                        <a href="{{route('addcategory')}}" style="color: white" class="btn btn-success" type="button">Add New
+                                        </a>
                                     </div>
                                 </div>
                                 {{--<label>category</label>

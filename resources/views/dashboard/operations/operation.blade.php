@@ -75,25 +75,30 @@
                                     <div class="row">
                                         <div class="col-md-11">
                                             <div class="input-group">
-                                                <select class="custom-select" id="inputGroupSelect04">
+                                                <select class="custom-select" name="bill_number" id="inputGroupSelect04">
                                                     <option selected>Bill Number</option>
                                                     @if($action == 'import')
-                                                        @foreach($supplier as $value)
-                                                            <option name="import_bill"
-                                                                    value="{{$value->id}}">{{$value->name}}</option>
+                                                        @foreach($import as $value)
+                                                            <option
+                                                                    value="{{$value->bill_number}}">{{$value->bill_number}}</option>
 
                                                         @endforeach
                                                     @else
-                                                        @foreach($customer as $value)
-                                                            <option name="export_bill"
-                                                                    value="{{$value->id}}">{{$value->name}}</option>
+                                                        @foreach($export as $value)
+                                                            <option
+                                                                    value="{{$value->bill_number}}">{{$value->bill_number}}</option>
 
                                                         @endforeach
                                                     @endif
                                                 </select>
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-success" type="button">Add New
-                                                    </button>
+                                                    @if($action == 'import')
+                                                        <a style="color: white" href="{{route('addimport')}}" class="btn btn-success" type="button">Add New
+                                                        </a>
+                                                    @else
+                                                        <a style="color: white" href="{{route('addexport')}}" class="btn btn-success" type="button">Add New
+                                                        </a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -102,15 +107,17 @@
                                     <div class="row">
                                         <div class="col-md-11">
                                             <div class="input-group">
-                                                <select class="custom-select" id="inputGroupSelect04">
-                                                    <option selected> Customer or Supplier</option>
+                                                <select class="custom-select" name="customer_supplier" id="inputGroupSelect04">
+
                                                     @if($action == 'import')
+                                                        <option selected>Supplier</option>
                                                         @foreach($supplier as $value)
                                                             <option name="supplier"
                                                                     value="{{$value->id}}">{{$value->name}}</option>
 
                                                         @endforeach
                                                     @else
+                                                        <option selected> Customer</option>
                                                         @foreach($customer as $value)
                                                             <option name="customer"
                                                                     value="{{$value->id}}">{{$value->name}}</option>
@@ -119,14 +126,19 @@
                                                     @endif
                                                 </select>
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-success" type="button">Add New
-                                                    </button>
+                                                    @if($action == 'import')
+                                                    <a style="color: white" href="{{route('addsupplier')}}" class="btn btn-success" type="button">Add New
+                                                    </a>
+                                                        @else
+                                                        <a style="color: white" href="{{route('addcustomer')}}" class="btn btn-success" type="button">Add New
+                                                        </a>
+                                                        @endif
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <br>
-                                    <input type="hidden" class="form-control" value="{{$id}}" name="categoryid">
+                                    <input type="hidden" class="form-control" value="{{$id}}" name="category_id">
                                     <input type="hidden" class="form-control" value="{{$action}}" name="action">
                                 </div>
                                 <div class="form-actions">

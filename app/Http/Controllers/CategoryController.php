@@ -8,6 +8,7 @@ use App\Store;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use const http\Client\Curl\AUTH_ANY;
 
 class CategoryController extends Controller
 {
@@ -18,7 +19,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::where('store_id', Auth::user()->store_id)->paginate(10);
+        $conditons =['store_id' => Auth::user()->store_id,'deleted' => '0'];
+        $categories = Category::where($conditons)->paginate(10);
         return view('dashboard.categories.showAllCategories', compact('categories'));
     }
 
@@ -56,7 +58,7 @@ class CategoryController extends Controller
         $data = $request->all();
         $data['store_id'] = Auth::user()->store_id;
         Category::create($data);
-        return redirect()->route('addcategory')->with('success', 'category has been added successfully');
+        return redirect()->back()->with('success', 'category has been added successfully');
     }
 
     /**
@@ -89,7 +91,7 @@ class CategoryController extends Controller
 
                 return view('dashboard.categories.editCategory', compact('category'));
             } else {
-                return redirect()->back()->with('error', 'wrong id number');
+                return redirect()->back()->with('error', 'you can not do this action');
             }
         }
     }
@@ -114,11 +116,11 @@ class CategoryController extends Controller
         ]);
 
         $category = Category::findOrFail($id);
-        if ($category->user_id == Auth::user()->id) {
+        if ($category->store_id == Auth::user()->store_id) {
             $category->update($request->all());
             return redirect()->route('categoriesinfo')->with('success', 'category has been edited successfully');
         } else {
-            return redirect()->back()->with('error', 'wrong id number');
+            return redirect()->back()->with('error', 'you can not do this action');
         }
     }
 
@@ -137,12 +139,11 @@ class CategoryController extends Controller
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
         $category = Category::findOrFail($id);
-        if ($category->store_id == Auth::user()->store_id) {
-            Transaction::where('category_id', $id)->delete();
-            $category->delete();
+        if ($category->store_id == Auth::user()->store_id && (Auth::user()->level == 1 || Auth::user()->level == 2)) {
+            $category->update(['deleted' => '1']);
             return redirect()->back()->with('success', 'category has been deleted successfully');
         } else {
-            return redirect()->back()->with('error', 'wrong id number');
+            return redirect()->back()->with('error', 'you can not do this action');
         }
     }
 

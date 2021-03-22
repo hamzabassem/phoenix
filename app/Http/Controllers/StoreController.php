@@ -36,7 +36,11 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        $company = $request->company;
+        $request->validate([
+            'name' => 'required|unique:stores',
+        ]);
+
+        $company = $request->name;
         Store::create([
             'name' => $company,
             'days' => Crypt::decryptString($request->days),

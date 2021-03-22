@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             //$table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('lang',["ar","en"])->default("en");
-            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('store_id')->nullable();
             $table->enum('level',[1,2,3,4])->default(1);
             $table->rememberToken();
             $table->timestamps();

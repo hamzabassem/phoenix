@@ -17,7 +17,7 @@ class CreateCustomersTable extends Migration
             $table->id()->autoIncrement();
             $table->string('name');
             $table->string('phone');
-            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('store_id')->nullable();
             $table->timestamps();
 
             $table->foreign('store_id')->references('id')->on('stores');

@@ -53,12 +53,12 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="hidden" value="{{$days}}" name="days" placeholder="your name">
+                                    <input class="form-control" type="hidden" value="{{$days}}" name="days">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="company" placeholder="your company">
+                                    <input class="form-control" type="text" name="name" placeholder="your company">
                                 </div>
                             </div>
                             <div class="col-lg-12 text-center">

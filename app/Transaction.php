@@ -11,7 +11,7 @@ class Transaction extends Model
     }
 
     protected $fillable = [
-        'operation', 'description', 'quantity','deleted', 'userName', 'category_id','processing','customer_id','supplier_id','store_id'
+        'operation', 'description', 'quantity','deleted', 'user_id', 'category_id','processing','customer_id','supplier_id','store_id','export_bill','import_bill'
     ];
 
     protected $casts = [

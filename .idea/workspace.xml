@@ -2,53 +2,48 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d89837a2-ca9e-405b-bcb1-42228a7f7c7f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/EmportBill.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/EmportBillController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/companyRegister.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/addexportbill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/addimportbill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/editexportbill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/editimportbill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/showexportbill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/showimportbill.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/addcustomer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/addsupplier.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/editcustomer.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/editsupplier.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/showcustomers.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/showsuppliers.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/editItem.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/user/adduser.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/user/editmyusers.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Commands/MinusDay.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/MinusDay.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ExportBill.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ExportBill.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmportBillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmportBillController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExportBillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExportBillController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StoreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SupplierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SupplierController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Transaction.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Transaction.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_11_170142_create_stores_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_11_170142_create_stores_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_25_142142_create_categories_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_25_142142_create_categories_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/big/3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/big/3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/big/auth-bg2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/assets/images/big/img3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/dist/js/pages/calendar/cal-init.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/dist/js/pages/calendar/cal-init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_25_142143_create_customers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_25_142143_create_customers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_25_142144_create_suppliers_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_25_142144_create_suppliers_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_25_142145_create_export_bills_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_25_142145_create_export_bills_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_25_142146_create_emport_bills_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_25_142146_create_emport_bills_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_25_142152_create_transactions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_25_142152_create_transactions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_05_155902_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_05_155902_create_tasks_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/images/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/companyRegister.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/companyRegister.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/addCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/addCategory.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/bills/addexportbill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/addexportbill.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/bills/addimportbill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/addimportbill.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/bills/showexportbill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/showexportbill.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/bills/showimportbill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/showimportbill.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/categories/showAllCategories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/showAllCategories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/addsupplier.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/addsupplier.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/editcustomer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/editcustomer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/editsupplier.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/editsupplier.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/showcustomers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/showcustomers.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/showsuppliers.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/customer&amp;supplier/showsuppliers.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/editCategory.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/editCategory.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/editItem.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/editUser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/user/editUser.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/exports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/exports.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/imports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/imports.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/items.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/operation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/pdf.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/showAllCategories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/showAllCategories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operations/editItem.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/editItem.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operations/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/items.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operations/operation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/operation.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/user/adduser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/user/adduser.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/user/editUser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/user/editUser.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -274,7 +269,12 @@
       <workItem from="1615479136049" duration="10089000" />
       <workItem from="1615652875923" duration="11725000" />
       <workItem from="1615730008881" duration="12964000" />
-      <workItem from="1615815101814" duration="7106000" />
+      <workItem from="1615815101814" duration="8632000" />
+      <workItem from="1615907987061" duration="14499000" />
+      <workItem from="1615991012108" duration="11646000" />
+      <workItem from="1616076211683" duration="11010000" />
+      <workItem from="1616248640484" duration="13885000" />
+      <workItem from="1616425273388" duration="1951000" />
     </task>
     <servers />
   </component>
@@ -286,11 +286,11 @@
       <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state x="1840" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1611926467658" />
-    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615657587366">
+    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616092605590">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="1816" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612288278863" />
-    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1615657587366" />
+    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1616092605590" />
     <state x="1866" y="204" key="FileChooserDialogImpl" timestamp="1612026124203">
       <screen x="1366" y="0" width="1440" height="900" />
     </state>

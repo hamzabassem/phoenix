@@ -164,45 +164,47 @@
                     </div>
                 </div>
             </div>
+            @if(auth()->user()->level == 1)
             <div class="card-body">
                 <h4 class="card-title">Renew your subscription</h4>
             </div>
-            <div class="card-group">
-                <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(30)])}}"
-                   class="card border-right" id="renew">
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <div class="d-inline-flex align-items-center">
-                                    <h2 class="text-dark mb-1 font-weight-medium">30 Days</h2>
+                <div class="card-group">
+                    <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(30)])}}"
+                       class="card border-right" id="renew">
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <div class="d-inline-flex align-items-center">
+                                        <h2 class="text-dark mb-1 font-weight-medium">30 Days</h2>
+                                    </div>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">For 20$</h6>
                                 </div>
-                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">For 20$</h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="dollar-sign"></i></span>
-                            </div>
-                        </div>
-                    </div>
-
-                </a>
-                <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(365)])}}"
-                   class="card border-right" id="renew">
-
-                    <div class="card-body">
-                        <div class="d-flex d-lg-flex d-md-block align-items-center">
-                            <div>
-                                <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">365 Days</h2>
-                                <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">For 99$
-                                </h6>
-                            </div>
-                            <div class="ml-auto mt-md-3 mt-lg-0">
-                                <span class="opacity-7 text-muted"><i data-feather="dollar-sign"></i></span>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="dollar-sign"></i></span>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                </a>
-            </div>
+                    </a>
+                    <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(365)])}}"
+                       class="card border-right" id="renew">
+
+                        <div class="card-body">
+                            <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                <div>
+                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">365 Days</h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">For 99$
+                                    </h6>
+                                </div>
+                                <div class="ml-auto mt-md-3 mt-lg-0">
+                                    <span class="opacity-7 text-muted"><i data-feather="dollar-sign"></i></span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </a>
+                </div>
+            @endif
 
         </div>
     </div>
@@ -379,7 +381,7 @@
                 end: new Date('{{$value->end}}').getTime() + 86400000,
                 className: 'bg-info'
             },
-                @endforeach
-            ];
+            @endforeach
+        ];
     </script>
 @endsection

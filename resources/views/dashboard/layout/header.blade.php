@@ -1,7 +1,8 @@
 @php
     $count = 0;
     $id = Auth::user()->store_id;
-    $categories = \App\Category::all()->where('store_id',$id);
+    $conditons = ['store_id' => $id,'deleted' => '0'];
+    $categories = \App\Category::where($conditons)->get();
     foreach ($categories as $value){
     $notify = $value->notify;
     $item = \App\Transaction::where('category_id', $value->id);
@@ -30,27 +31,26 @@
                     class="ti-menu ti-close"></i></a>
             <!-- ============================================================== -->
             <!-- Logo -->
-        <!-- ==============================================================
+        <!-- ==============================================================-->
             <div class="navbar-brand">
 
-                <a href="">
+                <a href="{{route('dashhome')}}">
                     <b class="logo-icon">
 
-                        <img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
+                        <img style="width: 30%; margin-left: -10px" src="{{asset('assets/images/pheonix-2.png')}}" alt="homepage" class="dark-logo" />
 
-                        <img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
+                        {{--<img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />--}}
                     </b>
 
-                    >
                     <span class="logo-text">
 
-                                <img src="{{asset('assets/images/logo-text.png')}}" alt="homepage" class="dark-logo" />
+                                <img src="{{asset('assets/images/text.png')}}" alt="homepage" class="dark-logo" />
 
-                                <img src="{{asset('assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" />
+                                {{--<img src="{{asset('assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" />--}}
                             </span>
                 </a>
             </div>
-        -->
+
             <!-- ============================================================== -->
             <!-- End Logo -->
             <!-- ============================================================== -->
@@ -81,6 +81,7 @@
 
 
                     </a>
+
                     <div id="noti" class="dropdown-menu dropdown-menu-left mailbox animated bounceInDown">
                         <ul class="list-style-none">
                             <li>
@@ -96,24 +97,25 @@
                                             if ($sum <= $notify){
 
                                         @endphp
+                                        @if(auth()->user()->level == 1 || auth()->user()->level == 2 || auth()->user()->level == 4)
+                                            <a href="{{route('items',['id' => $value->id])}}"
+                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <div class="btn btn-danger rounded-circle btn-circle"><i
+                                                        data-feather="airplay" class="text-white"></i></div>
 
-                                        <a href="{{route('items',['id' => $value->id])}}"
-                                           class="message-item d-flex align-items-center border-bottom px-3 py-2">
-                                            <div class="btn btn-danger rounded-circle btn-circle"><i
-                                                    data-feather="airplay" class="text-white"></i></div>
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">{{Lang::get('site.Notification')}}</h6>
+                                                    <span class="font-12 text-nowrap d-block text-muted">{{Lang::get('site.You have')}} ( {{$value->name}} ) {{Lang::get('site.category less than')}} ( {{$value->notify}} )</span>
 
-                                            <div class="w-75 d-inline-block v-middle pl-2">
-                                                <h6 class="message-title mb-0 mt-1">{{Lang::get('site.Notification')}}</h6>
-                                                <span class="font-12 text-nowrap d-block text-muted">{{Lang::get('site.You have')}} ( {{$value->name}} ) {{Lang::get('site.category less than')}} ( {{$value->notify}} )</span>
-
-                                            </div>
-                                        </a>
-                                        <!-- Message -->
+                                                </div>
+                                            </a>
+                                        @endif
+                                    <!-- Message -->
                                         @php  } @endphp
                                     @endforeach
                                     @if($days <= 5)
                                         @php
-                                        $count++
+                                            $count++
                                         @endphp
                                         <a href=""
                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
@@ -122,7 +124,8 @@
 
                                             <div class="w-75 d-inline-block v-middle pl-2">
                                                 <h6 class="message-title mb-0 mt-1">{{Lang::get('site.Notification')}}</h6>
-                                                <span class="font-12 text-nowrap d-block text-muted">{{Lang::get('site.daysnoti')}}</span>
+                                                <span
+                                                    class="font-12 text-nowrap d-block text-muted">{{Lang::get('site.daysnoti')}}</span>
 
                                             </div>
                                         </a>
@@ -143,6 +146,19 @@
                 <!-- ============================================================== -->
                 <!-- create new -->
                 <!-- ============================================================== -->
+                @if(auth()->user()->level == 1)
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i data-feather="plus" class="svg-icon"></i>
+                        </a>
+                        <div id="noti2" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item"
+                               href="{{route('adduser')}}">{{Lang::get('site.Add User')}}</a>
+                            <div class="dropdown-divider"></div>
+                        </div>
+                    </li>
+                @endif
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -183,20 +199,20 @@
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ==============================================================-->
-               {{-- <li class="nav-item d-none d-md-block">
-                    <a class="nav-link" href="javascript:void(0)">
-                        <form>
-                            <div class="customize-input">
-                                <input autocomplete="off" id="employee_search"
-                                       class="form-control custom-shadow custom-radius border-0 bg-white"
-                                       type="search" placeholder="{{Lang::get('site.search')}}" aria-label="Search">
-                                <i class="form-control-icon" data-feather="search"></i>
-                            </div>
-                        </form>
-                    </a>
-                </li>--}}
+            {{-- <li class="nav-item d-none d-md-block">
+                 <a class="nav-link" href="javascript:void(0)">
+                     <form>
+                         <div class="customize-input">
+                             <input autocomplete="off" id="employee_search"
+                                    class="form-control custom-shadow custom-radius border-0 bg-white"
+                                    type="search" placeholder="{{Lang::get('site.search')}}" aria-label="Search">
+                             <i class="form-control-icon" data-feather="search"></i>
+                         </div>
+                     </form>
+                 </a>
+             </li>--}}
 
-                <!-- ============================================================== -->
+            <!-- ============================================================== -->
                 <!-- User profile and search -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
@@ -239,6 +255,8 @@
         </div>
     </nav>
 </header>
+
+
 <aside id="side" class="left-sidebar" data-sidebarbg="skin6">
     <!-- Sidebar scroll-->
     <div class="scroll-sidebar" data-sidebarbg="skin6">
@@ -251,63 +269,71 @@
                 <li class="list-divider"></li>
                 <li class="nav-small-cap"><span class="hide-menu">{{Lang::get('site.My Categories')}}</span></li>
                 <br>
-                <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                            aria-expanded="false"><i data-feather="file-text"
-                                                                     class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.Categories')}} </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        @foreach($categories as $value)
-                            <li class="sidebar-item"><a href="{{route('items',['id' => $value->id])}}"
-                                                        class="sidebar-link"><span
-                                        class="hide-menu"> {{$value->name}}
-                                        </span></a>
-                            </li>
-                        @endforeach
-
-
-                    </ul>
-                </li>
-                <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                            aria-expanded="false"><i data-feather="file-text"
-                                                                     class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.Bills')}} </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            <li class="sidebar-item"><a href="javascript:void(0)"
-                                                        class="sidebar-link has-arrow"><span
-                                        class="hide-menu"> Import
-                                        </span></a>
-                                <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                                    <li class="sidebar-item"><a href="#"
-                                                                class="sidebar-link"><span
-                                                class="hide-menu"> Add New
-                                        </span></a>
-                                    </li>
-                                    <li class="sidebar-item"><a href="#"
-                                                                class="sidebar-link"><span
-                                                class="hide-menu"> Show All
-                                        </span></a>
-                                    </li>
-                                </ul>
-                            </li>
-                        <li class="sidebar-item"><a href="javascript:void(0)"
-                                                    class="sidebar-link has-arrow"><span
-                                    class="hide-menu"> Export
-                                        </span></a>
-                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                                <li class="sidebar-item"><a href="#"
+                @if(auth()->user()->level == 1 || auth()->user()->level == 2)
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                                aria-expanded="false"><i data-feather="file-text"
+                                                                         class="feather-icon"></i><span
+                                class="hide-menu">{{Lang::get('site.Categories')}} </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                            @foreach($categories as $value)
+                                <li class="sidebar-item"><a href="{{route('items',['id' => $value->id])}}"
                                                             class="sidebar-link"><span
-                                            class="hide-menu"> Add New
+                                            class="hide-menu"> {{$value->name}}
                                         </span></a>
                                 </li>
-                                <li class="sidebar-item"><a href="#"
-                                                            class="sidebar-link"><span
-                                            class="hide-menu"> Show All
+                            @endforeach
+
+
+                        </ul>
+                    </li>
+                @endif
+                @if(auth()->user()->level != 2)
+                    <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                                aria-expanded="false"><i data-feather="file-text"
+                                                                         class="feather-icon"></i><span
+                                class="hide-menu">{{Lang::get('site.Bills')}} </span></a>
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                            @if(auth()->user()->level == 1 || auth()->user()->level == 4)
+                                <li class="sidebar-item"><a href="javascript:void(0)"
+                                                            class="sidebar-link has-arrow"><span
+                                            class="hide-menu"> Import
                                         </span></a>
+                                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                        <li class="sidebar-item"><a href="{{route('addimport')}}"
+                                                                    class="sidebar-link"><span
+                                                    class="hide-menu"> Add New
+                                        </span></a>
+                                        </li>
+                                        <li class="sidebar-item"><a href="{{route('importinfo')}}"
+                                                                    class="sidebar-link"><span
+                                                    class="hide-menu"> Show All
+                                        </span></a>
+                                        </li>
+                                    </ul>
                                 </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                            @endif
+                            @if(auth()->user()->level == 1 || auth()->user()->level == 3)
+                                <li class="sidebar-item"><a href="javascript:void(0)"
+                                                            class="sidebar-link has-arrow"><span
+                                            class="hide-menu"> Export
+                                        </span></a>
+                                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                        <li class="sidebar-item"><a href="{{route('addexport')}}"
+                                                                    class="sidebar-link"><span
+                                                    class="hide-menu"> Add New
+                                        </span></a>
+                                        </li>
+                                        <li class="sidebar-item"><a href="{{route('exportinfo')}}"
+                                                                    class="sidebar-link"><span
+                                                    class="hide-menu"> Show All
+                                        </span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
                 <hr>
                 <li class="nav-small-cap"><span class="hide-menu">{{Lang::get('site.Manage categories')}}</span></li>
                 <br>
@@ -318,74 +344,86 @@
                                         </span></a>
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                         <li class="sidebar-item"><a class="sidebar-link" href="{{route('categoriesinfo')}}"
-                                                    aria-expanded="false"><i data-feather="eye" class="feather-icon"></i><span
+                                                    aria-expanded="false"><i data-feather="eye"
+                                                                             class="feather-icon"></i><span
                                     class="hide-menu">{{Lang::get('site.Categories Info')}}
                                 </span></a>
                         </li>
                         <li class="sidebar-item"><a class="sidebar-link sidebar-link" href="{{route('addcategory')}}"
-                                                    aria-expanded="false"><i data-feather="plus" class="feather-icon"></i><span
+                                                    aria-expanded="false"><i data-feather="plus"
+                                                                             class="feather-icon"></i><span
                                     class="hide-menu">{{Lang::get('site.Add New')}}</span></a></li>
                     </ul>
                 </li>
-                <li class="sidebar-item"><a href="javascript:void(0)"
-                                            class="sidebar-link has-arrow"><span
-                            class="hide-menu"> Operations
+                @if(auth()->user()->level == 1 || auth()->user()->level == 2)
+                    <li class="sidebar-item"><a href="javascript:void(0)"
+                                                class="sidebar-link has-arrow"><span
+                                class="hide-menu"> Operations
                                         </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a class="sidebar-link" href="{{route('imports')}}"
-                                                    aria-expanded="false"><i data-feather="arrow-down" class="feather-icon"></i><span
-                                    class="hide-menu">{{Lang::get('site.imports')}}
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{route('imports')}}"
+                                                        aria-expanded="false"><i data-feather="arrow-down"
+                                                                                 class="feather-icon"></i><span
+                                        class="hide-menu">{{Lang::get('site.imports')}}
                                 </span></a>
-                        </li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="{{route('exports')}}"
-                                                    aria-expanded="false"><i data-feather="arrow-up" class="feather-icon"></i><span
-                                    class="hide-menu">{{Lang::get('site.exports')}}
+                            </li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{route('exports')}}"
+                                                        aria-expanded="false"><i data-feather="arrow-up"
+                                                                                 class="feather-icon"></i><span
+                                        class="hide-menu">{{Lang::get('site.exports')}}
                                 </span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="sidebar-item"><a href="javascript:void(0)"
-                                            class="sidebar-link has-arrow"><span
-                            class="hide-menu"> Suppliers & Customers
+                            </li>
+                        </ul>
+                    </li>
+                @endif
+                @if(auth()->user()->level != 2)
+                    <li class="sidebar-item"><a href="javascript:void(0)"
+                                                class="sidebar-link has-arrow"><span
+                                class="hide-menu"> Suppliers & Customers
                                         </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                                    aria-expanded="false"><i class="feather-icon"></i><span
-                                    class="hide-menu">Suppliers
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                            @if(auth()->user()->level == 1 || auth()->user()->level == 4)
+                                <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                                            aria-expanded="false"><i class="feather-icon"></i><span
+                                            class="hide-menu">Suppliers
                                 </span></a>
-                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                                <li class="sidebar-item"><a href="#"
-                                                            class="sidebar-link"><span
-                                            class="hide-menu"> Add New
+                                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                        <li class="sidebar-item"><a href="{{route('addsupplier')}}"
+                                                                    class="sidebar-link"><span
+                                                    class="hide-menu"> Add New
                                         </span></a>
-                                </li>
-                                <li class="sidebar-item"><a href="#"
-                                                            class="sidebar-link"><span
-                                            class="hide-menu"> Show All
+                                        </li>
+                                        <li class="sidebar-item"><a href="{{route('suppliersinfo')}}"
+                                                                    class="sidebar-link"><span
+                                                    class="hide-menu"> Show All
                                         </span></a>
-                                </li>
-                            </ul>
+                                        </li>
+                                    </ul>
 
-                        </li>
-                        <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                                    aria-expanded="false"><i class="feather-icon"></i><span
-                                    class="hide-menu">Customers
+                                </li>
+                            @endif
+                            @if(auth()->user()->level == 1 || auth()->user()->level == 3)
+                                <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                                            aria-expanded="false"><i class="feather-icon"></i><span
+                                            class="hide-menu">Customers
                                 </span></a>
-                            <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                                <li class="sidebar-item"><a href="#"
-                                                            class="sidebar-link"><span
-                                            class="hide-menu"> Add New
+                                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                                        <li class="sidebar-item"><a href="{{route('addcustomer')}}"
+                                                                    class="sidebar-link"><span
+                                                    class="hide-menu"> Add New
                                         </span></a>
-                                </li>
-                                <li class="sidebar-item"><a href="#"
-                                                            class="sidebar-link"><span
-                                            class="hide-menu"> Show All
+                                        </li>
+                                        <li class="sidebar-item"><a href="{{route('customersinfo')}}"
+                                                                    class="sidebar-link"><span
+                                                    class="hide-menu"> Show All
                                         </span></a>
+                                        </li>
+                                    </ul>
                                 </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                            @endif
+                        </ul>
+                    </li>
+                @endif
 
 
             </ul>

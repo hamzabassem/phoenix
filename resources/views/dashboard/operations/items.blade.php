@@ -51,7 +51,7 @@
 
                             <span class="card-title">{{Lang::get('site.Total Items')}} <span
                                     class="badge badge-pill badge-primary">( {{$quantity}} )</span></span>
-                            <span class=" card-title">{{Lang::get('site.Category')}} <span 
+                            <span class=" card-title">{{Lang::get('site.Category')}} <span
                                     class="badge badge-pill badge-primary"> {{$category->name}} </span></span>
 
 
@@ -68,10 +68,11 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">{{Lang::get('site.id')}}</th>
+                                    <th scope="col">Bill Number</th>
                                     <th scope="col">{{Lang::get('site.operation')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
-                                    <th scope="col">{{Lang::get('site.storage')}}</th>
+                                    <th scope="col">Added By</th>
                                     <th scope="col">{{Lang::get('site.created at')}}</th>
                                     <th scope="col">{{Lang::get('site.Edit')}}</th>
                                 </tr>
@@ -84,13 +85,16 @@
                                     @php $count++ @endphp
                                     <tr>
                                         <th scope="row">{{$count}}</th>
-                                        <td>@if($value->quantity > 0)<h5>{{Lang::get('site.Import')}} <i
-                                                    class=" fas fa-level-down-alt"></i></h5> @else
-                                                <h5>{{Lang::get('site.Export')}} <i class="fas fa-level-up-alt"></i>
+                                        @if($value->quantity > 0)
+                                            <td>{{$value->import_bill}}</td>
+                                        <td><h5>{{Lang::get('site.Import')}} <i
+                                                    class=" fas fa-level-down-alt"></i></h5></td> @else
+                                            <td>{{$value->export_bill}}</td>
+                                            <td> <h5>{{Lang::get('site.Export')}} <i class="fas fa-level-up-alt"></i>
                                                 </h5> @endif</td>
                                         <td>{{$value->description}}</td>
                                         <td>{{$value->quantity}}</td>
-                                        <td>{{$value->storage}}</td>
+                                        <td>{{\App\User::findOrFail($value->user_id)->name}}</td>
                                         <td>{{$value->created_at}}</td>
                                         <td>
 
@@ -110,6 +114,82 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            {{$items->links()}}
+                            <br>
+
+                        </div>
+                        <span style="margin-left: 25px" class="card-title">To Process</span>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">{{Lang::get('site.id')}}</th>
+                                    <th scope="col">Bill Number</th>
+                                    <th scope="col">{{Lang::get('site.operation')}}</th>
+                                    <th scope="col">{{Lang::get('site.Description')}}</th>
+                                    <th scope="col">{{Lang::get('site.quantity')}}</th>
+                                    <th scope="col">{{Lang::get('site.created at')}}</th>
+                                    <th scope="col">{{Lang::get('site.Edit')}}</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @php
+                                    $count = 0;
+                                @endphp
+                                @foreach($import_bill as $value)
+                                    @php $count++ @endphp
+                                    <tr>
+                                        <th scope="row">{{$count}}</th>
+                                        <td>{{$value->bill_number}}</td>
+                                        <td><h5>{{Lang::get('site.Import')}} <i
+                                                    class=" fas fa-level-down-alt"></i></h5></td>
+                                        <td>{{$value->description}}</td>
+                                        <td>{{$value->quantity}}</td>
+                                        <td>{{$value->created_at}}</td>
+                                        <td>
+
+                                            <a href="{{route('editimport',['id' => $value->id])}}">
+                                                <button id="button" type="button" class="btn btn-success"><i
+                                                        class="  fas fa-check"></i>
+                                                    conform</button>
+                                            </a>
+                                            <a href="{{route('deleteimport',['id' => $value->id])}}">
+                                                <button id="button" type="button" class="btn btn-danger"><i
+                                                        class="fas fa-times"></i>
+                                                    reject</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                @foreach($export_bill as $value)
+                                    @php $count++ @endphp
+                                    <tr>
+                                        <th scope="row">{{$count}}</th>
+                                        <td>{{$value->bill_number}}</td>
+                                        <td><h5>{{Lang::get('site.Export')}} <i class="fas fa-level-up-alt"></i>
+                                            </h5></td>
+                                        <td>{{$value->description}}</td>
+                                        <td>{{$value->quantity}}</td>
+                                        <td>{{$value->created_at}}</td>
+                                        <td>
+
+                                            <a href="{{route('editexport',['id' => $value->id])}}">
+                                                <button id="button" type="button" class="btn btn-success"><i
+                                                        class="  fas fa-check"></i>
+                                                    conform</button>
+                                            </a>
+                                            <a href="{{route('deleteexport',['id' => $value->id])}}">
+                                                <button id="button" type="button" class="btn btn-danger"><i
+                                                        class="fas fa-times"></i>
+                                                    reject</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                            {{$export_bill->links()}}
+                            {{$import_bill->links()}}
                             <br>
 
                         </div>
@@ -130,7 +210,6 @@
             </div>
             <br>
 
-            {{$items->links()}}
         </div>
 
     </div>

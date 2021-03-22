@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Store;
 use App\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $supplier = Supplier::where('store_id',auth()->user()->store_id)->get();
+        $supplier = Supplier::where('store_id',auth()->user()->store_id)->paginate(10);
         return view('dashboard.customer&supplier.showsuppliers',compact('supplier'));
     }
 
@@ -26,7 +27,13 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('dashboard.customer&supplier.addsupplier');
+        if (Auth::user()->level == 1 || Auth::user()->level == 4) {
+            $store = Store::findOrFail(auth()->user()->store_id);
+            if ($store->days == 0) {
+                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            }
+            return view('dashboard.customer&supplier.addsupplier');
+        }return redirect()->back()->with('error','you can not do this action');
     }
 
     /**
@@ -39,7 +46,7 @@ class SupplierController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone' => 'required|unique:customers',
+            'phone' => 'required',
 
 
         ]);
@@ -70,11 +77,17 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        $condition = ['id' => $id, 'store_id' => Auth::user()->stoe_id];
-        $supplier = Supplier::where($condition)->get();
-        return view('dashboard.customer&supplier.editsupplier',compact('supplier'));
+        if (Auth::user()->level == 1 || Auth::user()->level == 4) {
+            $store = Store::findOrFail(auth()->user()->store_id);
+            if ($store->days == 0) {
+                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            }
+            $supplier = Supplier::findOrFail($id);
+            if ($supplier->store_id == Auth::user()->store_id) {
+                return view('dashboard.customer&supplier.editsupplier', compact(['supplier', 'id']));
+            }return redirect()->back()->with('error','you can not do this action');
+        }
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -87,7 +100,7 @@ class SupplierController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'phone' => 'required|min:10|max:10|unique:customers',
+            'phone' => 'required',
 
 
         ]);

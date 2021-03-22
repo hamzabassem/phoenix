@@ -54,7 +54,7 @@ class UserController extends Controller
                 'email' => $request->email,
                 'password' => bcrypt($request->password),
                 'phone' => $request->phone,
-                'store_id' => $request->store_id,
+                'store_id' => Crypt::decryptString($request->store_id),
 
 
             ]);
@@ -107,7 +107,6 @@ class UserController extends Controller
         $user = User::findOrFail(Auth::user()->id);
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
-        $data['days'] = Crypt::decryptString($request->days);
         $user->update($data);
         return redirect()->route('dashhome')->with('success','your info has been edited successfully');
     }
@@ -141,4 +140,44 @@ class UserController extends Controller
 
         return redirect()->route('dashhome')->with('success','your info has been edited successfully');
     }
+
+
+    public function showAllUsers(){
+        if (Auth::user()->level == '1'){
+            return view('dashboard.user.adduser');
+        }
+    }
+
+
+
+    public function createUser(){
+        if (Auth::user()->level == '1'){
+            return view('dashboard.user.adduser');
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function storeUser(Request $request){
+        $request->validate([
+            'email' => 'required|email',
+            'name' => 'required|string',
+            'phone' => 'required',
+            'password' => 'required',
+            'level' => 'required'
+        ]);
+
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $data['store_id'] = Auth::user()->store_id;
+        $data['level'] = $request->level;
+        User::create($data);
+        return redirect()->back()->with('success','user created successfully');
+    }
+
 }

@@ -16,24 +16,25 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('operation');
-            $table->string('userName');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('description');
             $table->integer('quantity');
             $table->enum('deleted',[1,0])->default(0);
-            $table->unsignedBigInteger('store_id');
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('customer_id')->default(0);
-            $table->unsignedBigInteger('supplier_id')->default(0);
-            $table->unsignedBigInteger('export_bill');
-            $table->unsignedBigInteger('import_bill');
+            $table->unsignedBigInteger('store_id')->nullable();
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('customer_id')->nullable();
+            $table->unsignedBigInteger('supplier_id')->nullable();
+            $table->string('export_bill');
+            $table->string('import_bill');
             $table->timestamps();
 
             $table->foreign('store_id')->references('id')->on('stores');
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('supplier_id')->references('id')->on('suppliers');
-            $table->foreign('export_bill')->references('id')->on('export_bills');
-            $table->foreign('import_bill')->references('id')->on('emport_bills');
+            //$table->foreign('export_bill')->references('id')->on('export_bills');
+            //$table->foreign('import_bill')->references('id')->on('emport_bills');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

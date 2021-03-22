@@ -15,7 +15,7 @@ class CreateStoresTable extends Migration
     {
         Schema::create('stores', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->integer('days');
             $table->string('signature')->nullable();
             $table->timestamps();

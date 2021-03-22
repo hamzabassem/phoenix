@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
+use App\Customer;
 use App\ExportBill;
+use App\Store;
+use App\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ExportBillController extends Controller
 {
@@ -14,7 +19,8 @@ class ExportBillController extends Controller
      */
     public function index()
     {
-        //
+        $export = ExportBill::where('store_id',Auth::user()->store_id)->paginate(10);
+        return view('dashboard.bills.showexportbill',compact('export'));
     }
 
     /**
@@ -24,7 +30,16 @@ class ExportBillController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user()->level == 1||Auth::user()->level == 3) {
+            $store = Store::findOrFail(auth()->user()->store_id);
+            if ($store->days == 0) {
+                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            }
+            $conditions = ['store_id' => Auth::user()->store_id, 'deleted' => '0'];
+            $categories = Category::where($conditions)->get();
+            $customer = Customer::where('store_id', Auth::user()->store_id)->get();
+            return view('dashboard.bills.addexportbill', compact(['customer', 'categories']));
+        }return redirect()->back()->with('error','you can not do this action');
     }
 
     /**
@@ -35,7 +50,23 @@ class ExportBillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rand = rand();
+        $data = $request->all();
+        foreach ($request->get('description', []) as $key => $val) {
+            //$category = Category::findOrFail($data['category_id'][$key]);
+            ExportBill::create([
+                'description' => $data['description'][$key],
+                'quantity' => $data['quantity'][$key],
+                'customer_id' => $data['customer_id'][$key],
+                'category_id' => $data['category_id'][$key],
+                'bill_number' => $rand,
+                'processing' => '0',
+                'store_id' => Auth::user()->store_id,
+                'user_id' => Auth::user()->id,
+
+            ]);
+        }
+        return redirect()->back()->with('success','supplier added successfully');
     }
 
     /**
@@ -52,12 +83,33 @@ class ExportBillController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ExportBill  $exportBill
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(ExportBill $exportBill)
+    public function edit($id)
     {
-        //
+        if (Auth::user()->level == 2) {
+            $store = Store::findOrFail(auth()->user()->store_id);
+            if ($store->days == 0) {
+                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            }
+            $export = ExportBill::findOrFail($id);
+            Transaction::create([
+                'operation' => 'export',
+                'description' => $export->description,
+                'quantity' => -$export->quantity,
+                'user_id' => $export->user_id,
+                'store_id' => $export->store_id,
+                'category_id' => $export->category_id,
+                'customer_id' => $export->customer_id,
+                'export_bill' => $export->bill_number,
+                'import_bill' => 0
+
+
+            ]);
+            $export->update(['processing' => 1]);
+            return redirect()->back()->with('success', 'conformed');
+        }return redirect()->back()->with('error','you can not do this action');
     }
 
     /**
@@ -74,12 +126,20 @@ class ExportBillController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
+     *@param  int $id
      * @param  \App\ExportBill  $exportBill
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ExportBill $exportBill)
+    public function destroy($id)
     {
-        //
+        if (Auth::user()->level == 2) {
+            $store = Store::findOrFail(auth()->user()->store_id);
+            if ($store->days == 0) {
+                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            }
+            $export = ExportBill::findOrFail($id);
+            $export->update(['processing' => '2']);
+            return redirect()->back()->with('success', 'rejected');
+        }return redirect()->back()->with('error','you can not do this action');
     }
 }

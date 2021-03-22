@@ -86,23 +86,6 @@
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <label
-                                                class="col-lg-3">{{Lang::get('site.storage')}}</label>
-                                            <div class="col-lg-11">
-                                                <div class="row">
-                                                    <div class="col-md-11">
-                                                        <div class="form-group">
-
-                                                            <input type="text" class="form-control"
-                                                                   name="storage"
-                                                                   value="{{$value->storage}}"
-                                                                   placeholder="storage place">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-md-11">
                                                 <div class="form-group">
                                                     <input type="hidden" class="form-control"

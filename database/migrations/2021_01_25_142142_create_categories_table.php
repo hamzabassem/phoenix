@@ -22,7 +22,7 @@ class CreateCategoriesTable extends Migration
             $table->string('selling_price');
             $table->string('notify');
             $table->enum('deleted',[1,0])->default(0);
-            $table->unsignedBigInteger('store_id');
+            $table->unsignedBigInteger('store_id')->nullable();
             $table->timestamps();
 
             $table->foreign('store_id')->references('id')->on('stores');

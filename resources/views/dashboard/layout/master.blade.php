@@ -16,14 +16,15 @@
         }
         #user{
             margin-left: 100px;
-            margin-right: 243px;
+            margin-right: 535px;
         }
         .page-wrapper{
             width: 1087px;
             text-align: right;
         }
         #top{
-            margin-right: 210px;
+            margin-right: 500px;
+            text-align: right;
         }
         #noti{
             margin-left: -182px;
@@ -32,6 +33,10 @@
         #noti2{
             margin-left: -128px;
             text-align: right;
+        }
+        .navbar-header{
+            margin-right: -275px;
+            direction: ltr;
         }
     </style>
 @endif
@@ -44,7 +49,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <title>The Blue Pheonix</title>
     <!-- Custom CSS -->
     <link href="{{asset('assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">

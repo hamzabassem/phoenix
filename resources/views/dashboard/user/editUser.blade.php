@@ -116,8 +116,7 @@
                                         <div class="col-md-11">
                                             <div class="form-group">
                                                 <label class="col-lg-3">{{Lang::get('site.days')}}</label>
-                                                <input type="text" class="form-control" value="{{($value->days)}}" placeholder="days" readonly>
-                                                <input type="hidden" class="form-control" value="{{\Illuminate\Support\Facades\Crypt::encryptString($value->days)}}" name="days" placeholder="days">
+                                                <input type="text" class="form-control" value="{{(\App\Store::findOrFail(auth()->user()->store_id)->days)}}" placeholder="days" readonly>
                                             </div>
                                         </div>
                                     </div>

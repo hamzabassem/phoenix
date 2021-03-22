@@ -56,6 +56,7 @@
                                     <th scope="col">{{Lang::get('site.id')}}</th>
                                     <th scope="col">{{Lang::get('site.Name')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
+                                    <th scope="col">{{Lang::get('site.storage')}}</th>
                                     <th scope="col">{{Lang::get('site.buying price')}}</th>
                                     <th scope="col">{{Lang::get('site.selling')}}</th>
                                     <th scope="col">{{Lang::get('site.notify')}}</th>
@@ -75,6 +76,7 @@
                                         <th scope="row">{{$count}}</th>
                                         <td>{{$value->name}}</td>
                                         <td>{{$value->description}}</td>
+                                        <td>{{$value->storage}}</td>
                                         <td>{{$value->buying_price}}</td>
                                         <td>{{$value->selling_price}}</td>
                                         <td>{{$value->notify}}</td>

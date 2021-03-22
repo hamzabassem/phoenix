@@ -37,6 +37,8 @@ Route::group(
         Route::post('/updateuser', 'UserController@update')->name('updateuser');
         Route::get('/updatedays/{days}', 'UserController@updatedays')->name('updatedays');
         Route::post('/addtask', 'TaskController@store')->name('addtask');
+        Route::get('/adduser','UserController@createUser')->name('adduser');
+        Route::Post('/storeuser','UserController@storeUser')->name('storeuser');
 
 
         // manager routes
@@ -82,12 +84,20 @@ Route::group(
         Route::post('/updatesupplier/{id}', 'SupplierController@update')->name('updatesupplier');
 
 
-        //import routes
+        //import bill routes
         Route::get('/importinfo', 'EmportBillController@index')->name('importinfo');
         Route::get('/addimport', 'EmportBillController@create')->name('addimport');
         Route::post('storeimport', 'EmportBillController@store')->name('storeimport');
         Route::get('/editimport/{id}', 'EmportBillController@edit')->name('editimport');
-        Route::post('/updateimport/{id}', 'EmportBillController@update')->name('updateimport');
+        Route::get('/deleteimport/{id}', 'EmportBillController@destroy')->name('deleteimport');
+
+
+        //export bill routes
+        Route::get('/exportinfo', 'ExportBillController@index')->name('exportinfo');
+        Route::get('/addexport', 'ExportBillController@create')->name('addexport');
+        Route::post('storeexport', 'ExportBillController@store')->name('storeexport');
+        Route::get('/editexport/{id}', 'ExportBillController@edit')->name('editexport');
+        Route::get('/deleteexport/{id}', 'ExportBillController@destroy')->name('deleteexport');
 
 
 

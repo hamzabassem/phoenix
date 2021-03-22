@@ -15,16 +15,14 @@ class CreateEmportBillsTable extends Migration
     {
         Schema::create('emport_bills', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            //$table->string('name');
             $table->string('description');
             $table->integer('category_id');
-            $table->string('category_name');
             $table->string('bill_number');
-            $table->enum('processing',[1,0])->default(1);
+            $table->enum('processing',[2,1,0])->default(1);
             $table->integer('quantity');
-            $table->unsignedBigInteger('store_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('supplier_id');
+            $table->unsignedBigInteger('store_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->unsignedBigInteger('supplier_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

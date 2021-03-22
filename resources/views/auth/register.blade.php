@@ -52,7 +52,7 @@
                         @csrf
 
                         @foreach($company as $value)
-                        <input class="form-control" type="hidden" name="store_id" value="{{$value->id}}">
+                        <input class="form-control" type="hidden" name="store_id" value="{{\Illuminate\Support\Facades\Crypt::encryptString($value->id)}}">
                         @endforeach
                         <div class="row">
                             <div class="col-lg-12">
