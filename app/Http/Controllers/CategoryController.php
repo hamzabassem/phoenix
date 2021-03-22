@@ -31,11 +31,13 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $store = Store::findOrFail(auth()->user()->store_id);
-        if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
-        }
-        return view('dashboard.categories.addCategory');
+        if (Auth::user()->level == 1 || Auth::user()->level == 2 || Auth::user()->level == 4) {
+            $store = Store::findOrFail(auth()->user()->store_id);
+            if ($store->days == 0) {
+                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            }
+            return view('dashboard.categories.addCategory');
+        }return redirect()->back()->with('error', 'you can not do this action');
     }
 
     /**

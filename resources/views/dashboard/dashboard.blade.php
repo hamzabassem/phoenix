@@ -11,7 +11,15 @@
             <div class="row">
                 <div class="col-7 align-self-center">
                     <h3 id="title"
-                        class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Hello')}} {{ucfirst(auth()->user()->name)}}</h3>
+                        class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Hello')}} @if(auth()->user()->level == 1)
+                            Manager
+                        @elseif(auth()->user()->level == 2)
+                            Store Manager
+                        @elseif(auth()->user()->level == 3)
+                            Selling Manager
+                        @else
+                            Buying Manager
+                        @endif {{ucfirst(auth()->user()->name)}} </h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -165,9 +173,9 @@
                 </div>
             </div>
             @if(auth()->user()->level == 1)
-            <div class="card-body">
-                <h4 class="card-title">Renew your subscription</h4>
-            </div>
+                <div class="card-body">
+                    <h4 class="card-title">Renew your subscription</h4>
+                </div>
                 <div class="card-group">
                     <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(30)])}}"
                        class="card border-right" id="renew">

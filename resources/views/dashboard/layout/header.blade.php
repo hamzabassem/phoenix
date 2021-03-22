@@ -31,20 +31,21 @@
                     class="ti-menu ti-close"></i></a>
             <!-- ============================================================== -->
             <!-- Logo -->
-        <!-- ==============================================================-->
+            <!-- ==============================================================-->
             <div class="navbar-brand">
 
                 <a href="{{route('dashhome')}}">
                     <b class="logo-icon">
 
-                        <img style="width: 30%; margin-left: -10px" src="{{asset('assets/images/pheonix-2.png')}}" alt="homepage" class="dark-logo" />
+                        <img style="width: 30%; margin-left: -10px" src="{{asset('assets/images/pheonix-2.png')}}"
+                             alt="homepage" class="dark-logo"/>
 
                         {{--<img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />--}}
                     </b>
 
                     <span class="logo-text">
 
-                                <img src="{{asset('assets/images/text.png')}}" alt="homepage" class="dark-logo" />
+                                <img src="{{asset('assets/images/text.png')}}" alt="homepage" class="dark-logo"/>
 
                                 {{--<img src="{{asset('assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" />--}}
                             </span>
@@ -337,24 +338,26 @@
                 <hr>
                 <li class="nav-small-cap"><span class="hide-menu">{{Lang::get('site.Manage categories')}}</span></li>
                 <br>
-
-                <li class="sidebar-item"><a href="javascript:void(0)"
-                                            class="sidebar-link has-arrow"><span
-                            class="hide-menu"> {{Lang::get('site.Manage categories')}}
+                @if(auth()->user()->level == 1 || auth()->user()->level == 2 || auth()->user()->level == 4)
+                    <li class="sidebar-item"><a href="javascript:void(0)"
+                                                class="sidebar-link has-arrow"><span
+                                class="hide-menu"> {{Lang::get('site.Manage categories')}}
                                         </span></a>
-                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                        <li class="sidebar-item"><a class="sidebar-link" href="{{route('categoriesinfo')}}"
-                                                    aria-expanded="false"><i data-feather="eye"
-                                                                             class="feather-icon"></i><span
-                                    class="hide-menu">{{Lang::get('site.Categories Info')}}
+                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{route('categoriesinfo')}}"
+                                                        aria-expanded="false"><i data-feather="eye"
+                                                                                 class="feather-icon"></i><span
+                                        class="hide-menu">{{Lang::get('site.Categories Info')}}
                                 </span></a>
-                        </li>
-                        <li class="sidebar-item"><a class="sidebar-link sidebar-link" href="{{route('addcategory')}}"
-                                                    aria-expanded="false"><i data-feather="plus"
-                                                                             class="feather-icon"></i><span
-                                    class="hide-menu">{{Lang::get('site.Add New')}}</span></a></li>
-                    </ul>
-                </li>
+                            </li>
+                            <li class="sidebar-item"><a class="sidebar-link sidebar-link"
+                                                        href="{{route('addcategory')}}"
+                                                        aria-expanded="false"><i data-feather="plus"
+                                                                                 class="feather-icon"></i><span
+                                        class="hide-menu">{{Lang::get('site.Add New')}}</span></a></li>
+                        </ul>
+                    </li>
+                @endif
                 @if(auth()->user()->level == 1 || auth()->user()->level == 2)
                     <li class="sidebar-item"><a href="javascript:void(0)"
                                                 class="sidebar-link has-arrow"><span

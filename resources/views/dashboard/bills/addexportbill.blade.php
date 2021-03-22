@@ -110,10 +110,10 @@
 
                                         @endforeach
                                     </select>
-                                    <div class="input-group-append">
+                                   {{-- <div class="input-group-append">
                                         <a href="{{route('addcategory')}}" style="color: white" class="btn btn-success" type="button">Add New
                                         </a>
-                                    </div>
+                                    </div>--}}
                                 </div>
                                 {{--<label>category</label>
                                 <input type="text" name="category[]" value="{{ old('phone_number[]') }}"  class="form-control" >--}}
