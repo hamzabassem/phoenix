@@ -270,7 +270,7 @@
                 <li class="list-divider"></li>
                 <li class="nav-small-cap"><span class="hide-menu">{{Lang::get('site.My Categories')}}</span></li>
                 <br>
-                @if(auth()->user()->level == 1 || auth()->user()->level == 2)
+                @if(auth()->user()->level == 1 || auth()->user()->level == 2 || auth()->user()->level == 3)
                     <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
                                                 aria-expanded="false"><i data-feather="file-text"
                                                                          class="feather-icon"></i><span

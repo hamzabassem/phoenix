@@ -94,22 +94,30 @@ class ExportBillController extends Controller
                 return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
             }
             $export = ExportBill::findOrFail($id);
-            Transaction::create([
-                'operation' => 'export',
-                'description' => $export->description,
-                'quantity' => -$export->quantity,
-                'user_id' => $export->user_id,
-                'store_id' => $export->store_id,
-                'category_id' => $export->category_id,
-                'customer_id' => $export->customer_id,
-                'export_bill' => $export->bill_number,
-                'import_bill' => 0
+            $condition = ['category_id' => $export->category_id ,'deleted' => '0'];
+            $item = Transaction::where($condition)->get();
+            $sum = $item->sum('quantity');
+            if (($sum <= 0 || $sum + (-$export->quantity) < 0)) {
+                return redirect()->back()->with('error', 'you dont have enough items to make this action ');
+            } else {
+                Transaction::create([
+                    'operation' => 'export',
+                    'description' => $export->description,
+                    'quantity' => -$export->quantity,
+                    'user_id' => $export->user_id,
+                    'store_id' => $export->store_id,
+                    'category_id' => $export->category_id,
+                    'customer_id' => $export->customer_id,
+                    'export_bill' => $export->bill_number,
+                    'import_bill' => 0
 
 
-            ]);
-            $export->update(['processing' => 1]);
-            return redirect()->back()->with('success', 'conformed');
-        }return redirect()->back()->with('error','you can not do this action');
+                ]);
+                $export->update(['processing' => 1]);
+                return redirect()->back()->with('success', 'conformed');
+            }
+
+        }return redirect()->back()->with('error', 'you can not do this action');
     }
 
     /**

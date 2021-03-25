@@ -119,7 +119,8 @@ class TransactionController extends Controller
             ]);
 
         }
-        $item = Transaction::where('category_id', $request->category_id);
+        $condition = ['category_id' => $request->category_id ,'deleted' => '0'];
+        $item = Transaction::where($condition)->get();
         $sum = $item->sum('quantity');
         if ($request->action == 'export' && ($sum <= 0 || $sum + $quantity < 0)) {
             return redirect()->back()->with('error', 'you dont have enough items to make this action ');
@@ -168,7 +169,7 @@ class TransactionController extends Controller
         }
         $item = Transaction::where('id', $id)->get();
         foreach ($item as $value) {
-            if ($value->store_id == Auth::user()->store_id) {
+            if ($value->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
                 return view('dashboard.operations.editItem', compact(['item']));
             } else {
                 return redirect()->back()->with('error', 'you can not do this action');
@@ -212,12 +213,12 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        $store = Store::findOrFail(auth()->user()->store_id && Auth::user()->level == 2);
+        $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
         $item = Transaction::findOrFail($id);
-        if ($item->user_id == Auth::user()->id) {
+        if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
             $item->update(['deleted' => '1']);
             return redirect()->back()->with('success', 'the action has been deleted successfully');
         } else {
