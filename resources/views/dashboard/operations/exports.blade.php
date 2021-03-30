@@ -66,10 +66,10 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">{{Lang::get('site.id')}}</th>
+                                    <th scope="col">{{Lang::get('site.bill number')}}</th>
                                     <th scope="col">{{Lang::get('site.operation')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
-                                    <th scope="col">{{Lang::get('site.storage')}}</th>
                                     <th scope="col">{{Lang::get('site.Category')}}</th>
                                     <th scope="col">{{Lang::get('site.created at')}}</th>
                                     <th scope="col">{{Lang::get('site.Edit')}}</th>
@@ -83,18 +83,14 @@
                                     @php $count++ @endphp
                                     <tr>
                                         <th scope="row">{{$count}}</th>
+                                        <td>{{$value->export_bill}}</td>
                                         <td>@if($value->quantity > 0)<h5>{{Lang::get('site.Import')}} <i
                                                     class=" fas fa-level-down-alt"></i></h5> @else
                                                 <h5>{{Lang::get('site.Export')}} <i class="fas fa-level-up-alt"></i>
                                                 </h5> @endif</td>
                                         <td>{{$value->description}}</td>
                                         <td>{{$value->quantity}}</td>
-                                        <td>{{$value->storage}}</td>
-                                        @foreach($category as $cvalue)
-                                            @if($value->category_id == $cvalue->id)
-                                                <td>{{$cvalue->name}}</td>
-                                            @endif
-                                        @endforeach
+                                        <td>{{\App\Category::findOrFail($value->category_id)->name}}</td>
                                         <td>{{$value->created_at}}</td>
                                         <td>
 

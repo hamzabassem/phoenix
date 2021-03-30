@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Customer;
+use App\EmportBill;
 use App\ExportBill;
 use App\Store;
 use App\Transaction;
@@ -19,8 +20,8 @@ class ExportBillController extends Controller
      */
     public function index()
     {
-        $export = ExportBill::where('store_id',Auth::user()->store_id)->paginate(10);
-        return view('dashboard.bills.showexportbill',compact('export'));
+        $export = ExportBill::where('store_id', Auth::user()->store_id)->paginate(10);
+        return view('dashboard.bills.showexportbill', compact('export'));
     }
 
     /**
@@ -30,7 +31,7 @@ class ExportBillController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->level == 1||Auth::user()->level == 3) {
+        if (Auth::user()->level == 1 || Auth::user()->level == 3) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
                 return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
@@ -39,18 +40,26 @@ class ExportBillController extends Controller
             $categories = Category::where($conditions)->get();
             $customer = Customer::where('store_id', Auth::user()->store_id)->get();
             return view('dashboard.bills.addexportbill', compact(['customer', 'categories']));
-        }return redirect()->back()->with('error','you can not do this action');
+        }
+        return redirect()->back()->with('error', 'you can not do this action');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $rand = rand();
+        $rand = 0;
+        $e = ExportBill::latest()->first();
+        if ($e != null) {
+            $number = substr($e->bill_number, -7);
+            $rand = '1'.date('Ymd').(++$number);
+        }else{
+            $rand = '1'.date('Ymd').'1000001';
+        }
         $data = $request->all();
         foreach ($request->get('description', []) as $key => $val) {
             //$category = Category::findOrFail($data['category_id'][$key]);
@@ -66,13 +75,13 @@ class ExportBillController extends Controller
 
             ]);
         }
-        return redirect()->back()->with('success','supplier added successfully');
+        return redirect()->back()->with('success', 'supplier added successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\ExportBill  $exportBill
+     * @param \App\ExportBill $exportBill
      * @return \Illuminate\Http\Response
      */
     public function show(ExportBill $exportBill)
@@ -83,7 +92,7 @@ class ExportBillController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -94,7 +103,7 @@ class ExportBillController extends Controller
                 return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
             }
             $export = ExportBill::findOrFail($id);
-            $condition = ['category_id' => $export->category_id ,'deleted' => '0'];
+            $condition = ['category_id' => $export->category_id, 'deleted' => '0'];
             $item = Transaction::where($condition)->get();
             $sum = $item->sum('quantity');
             if (($sum <= 0 || $sum + (-$export->quantity) < 0)) {
@@ -117,14 +126,15 @@ class ExportBillController extends Controller
                 return redirect()->back()->with('success', 'conformed');
             }
 
-        }return redirect()->back()->with('error', 'you can not do this action');
+        }
+        return redirect()->back()->with('error', 'you can not do this action');
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ExportBill  $exportBill
+     * @param \Illuminate\Http\Request $request
+     * @param \App\ExportBill $exportBill
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, ExportBill $exportBill)
@@ -134,8 +144,8 @@ class ExportBillController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *@param  int $id
-     * @param  \App\ExportBill  $exportBill
+     * @param int $id
+     * @param \App\ExportBill $exportBill
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -148,6 +158,7 @@ class ExportBillController extends Controller
             $export = ExportBill::findOrFail($id);
             $export->update(['processing' => '2']);
             return redirect()->back()->with('success', 'rejected');
-        }return redirect()->back()->with('error','you can not do this action');
+        }
+        return redirect()->back()->with('error', 'you can not do this action');
     }
 }

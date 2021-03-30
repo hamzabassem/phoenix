@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Item;
 use App\Store;
-use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use const http\Client\Curl\AUTH_ANY;
 
 class CategoryController extends Controller
 {

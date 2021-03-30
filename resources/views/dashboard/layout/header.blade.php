@@ -5,7 +5,8 @@
     $categories = \App\Category::where($conditons)->get();
     foreach ($categories as $value){
     $notify = $value->notify;
-    $item = \App\Transaction::where('category_id', $value->id);
+    $condition = ['category_id' => $value->id, 'deleted' => '0'];
+    $item = \App\Transaction::where($condition)->get();
     $sum = $item->sum('quantity');
     if ($sum < $notify){
     $count++;
@@ -93,7 +94,8 @@
                                     @foreach ($categories as $value)
                                         @php
                                             $notify = $value->notify;
-                                            $item = \App\Transaction::where('category_id', $value->id);
+                                            $condition = ['category_id' => $value->id, 'deleted' => '0'];
+                                            $item = \App\Transaction::where($condition)->get();
                                             $sum = $item->sum('quantity');
                                             if ($sum <= $notify){
 

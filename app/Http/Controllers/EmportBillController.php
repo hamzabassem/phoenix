@@ -52,7 +52,14 @@ class EmportBillController extends Controller
      */
     public function store(Request $request)
     {
-        $rand = rand();
+        $rand = 0;
+        $e = EmportBill::latest()->first();
+        if ($e != null) {
+            $number = substr($e->bill_number, -7);
+            $rand = '2'.date('Ymd').(++$number);
+        }else{
+            $rand = '2'.date('Ymd').'1000001';
+        }
         $data = $request->all();
         foreach ($request->get('description', []) as $key => $val) {
             //$category = Category::findOrFail($data['category_id'][$key]);
