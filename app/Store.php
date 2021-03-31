@@ -11,7 +11,14 @@ class Store extends Model
 
     }
 
+
     protected $fillable = [
-        'name','days',
+        'name','days','signature'
     ];
+
+
+    public function getSignatureAttribute($signature)
+    {
+        return is_null($signature) ? null : asset($signature);
+    }
 }

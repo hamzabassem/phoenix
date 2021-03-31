@@ -41,14 +41,15 @@
     <div class="auth-wrapper d-flex no-block justify-content-center align-items-center position-relative"
          style="background:url({{asset('assets/images/big/auth-bg.jpg')}}) no-repeat center center;">
         <div class="auth-box row text-center">
-            <div class="col-lg-7 col-md-5 modal-bg-img" style="background-image: url({{asset('assets/images/big/3.jpg')}});">
+            <div class="col-lg-7 col-md-5 modal-bg-img"
+                 style="background-image: url({{asset('assets/images/big/3.jpg')}});">
             </div>
             <div class="col-lg-5 col-md-7 bg-white">
                 <div class="p-3">
                     <img src="{{asset('assets/images/big/icon.png')}}" alt="wrapkit">
                     <h2 class="mt-3 text-center">Sign Up for Free</h2>
                     @include('dashboard.layout.messages')
-                    <form  action="{{route('registercompany')}}" method="post" class="mt-4">
+                    <form action="{{route('registercompany')}}" method="post" enctype="multipart/form-data" class="mt-4">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
@@ -61,7 +62,13 @@
                                     <input class="form-control" type="text" name="name" placeholder="your company">
                                 </div>
                             </div>
-                            <div class="col-lg-12 text-center">
+                            <div class="col-lg-12">
+                                <div class="custom-file">
+                                    <input name="signature" type="file" class="custom-file-input" id="inputGroupFile03">
+                                    <label style="text-align: left; color: rgba(76,86,103,0.53)" class="custom-file-label" for="inputGroupFile03">your signature</label>
+                                </div>
+                            </div>
+                            <div style="    margin-top: 15px;" class="col-lg-12 text-center">
                                 <button type="submit" class="btn btn-block btn-dark">Sign Up The Copmany</button>
                             </div>
                             <div class="col-lg-12 text-center mt-5">
@@ -84,6 +91,13 @@
 <!-- Bootstrap tether Core JavaScript -->
 <script src="{{asset('assets/libs/popper.js/dist/umd/popper.min.js')}}"></script>
 <script src="{{asset('assets/libs/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('dist/js/feather.min.js')}}"></script>
+<script src="{{asset('assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js')}}"></script>
+
+<!--Custom JavaScript -->
+<script src="{{asset('dist/js/custom.min.js')}}"></script>
+
+
 <!-- ============================================================== -->
 <!-- This page plugin js -->
 <!-- ============================================================== -->

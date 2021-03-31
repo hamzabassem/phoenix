@@ -38,12 +38,18 @@ class StoreController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:stores',
+            'signature' => 'required'
         ]);
+        $image = $request->signature;
+        $image_new_name = time().$image->getClientOriginalName();
+        $image->move("img/signature/", $image_new_name);
+
 
         $company = $request->name;
         Store::create([
             'name' => $company,
             'days' => Crypt::decryptString($request->days),
+            'signature' => 'img/signature/'.$image_new_name,
         ]);
         return redirect()->route('signupstore',['store' => $company]);
 

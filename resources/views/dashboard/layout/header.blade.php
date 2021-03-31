@@ -3,20 +3,24 @@
     $id = Auth::user()->store_id;
     $conditons = ['store_id' => $id,'deleted' => '0'];
     $categories = \App\Category::where($conditons)->get();
-    foreach ($categories as $value){
-    $notify = $value->notify;
-    $condition = ['category_id' => $value->id, 'deleted' => '0'];
-    $item = \App\Transaction::where($condition)->get();
-    $sum = $item->sum('quantity');
-    if ($sum < $notify){
-    $count++;
-    }else $count = null;
+    if (auth()->user()->level != 3){
+        foreach ($categories as $value){
+            $notify = $value->notify;
+            $condition = ['category_id' => $value->id, 'deleted' => '0'];
+            $item = \App\Transaction::where($condition)->get();
+            $sum = $item->sum('quantity');
+            if ($sum < $notify){
+                $count++;
+            }
+        else $count = null;
+        }
     }
     $store = \App\Store::findOrFail(auth()->user()->store_id);
     $days = $store->days;
     if($days <= 5){
         $count++;
     }
+
 
 
 @endphp
@@ -272,24 +276,22 @@
                 <li class="list-divider"></li>
                 <li class="nav-small-cap"><span class="hide-menu">{{Lang::get('site.My Categories')}}</span></li>
                 <br>
-                @if(auth()->user()->level == 1 || auth()->user()->level == 2 || auth()->user()->level == 3)
-                    <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                                aria-expanded="false"><i data-feather="file-text"
-                                                                         class="feather-icon"></i><span
-                                class="hide-menu">{{Lang::get('site.Categories')}} </span></a>
-                        <ul aria-expanded="false" class="collapse  first-level base-level-line">
-                            @foreach($categories as $value)
-                                <li class="sidebar-item"><a href="{{route('items',['id' => $value->id])}}"
-                                                            class="sidebar-link"><span
-                                            class="hide-menu"> {{$value->name}}
+                <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
+                                            aria-expanded="false"><i data-feather="file-text"
+                                                                     class="feather-icon"></i><span
+                            class="hide-menu">{{Lang::get('site.Categories')}} </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level base-level-line">
+                        @foreach($categories as $value)
+                            <li class="sidebar-item"><a href="{{route('items',['id' => $value->id])}}"
+                                                        class="sidebar-link"><span
+                                        class="hide-menu"> {{$value->name}}
                                         </span></a>
-                                </li>
-                            @endforeach
+                            </li>
+                        @endforeach
 
 
-                        </ul>
-                    </li>
-                @endif
+                    </ul>
+                </li>
                 @if(auth()->user()->level != 2)
                     <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
                                                 aria-expanded="false"><i data-feather="file-text"
