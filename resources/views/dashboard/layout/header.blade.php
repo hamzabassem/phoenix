@@ -141,7 +141,7 @@
                             </li>
                             @if($count == 0)
                                 <li>
-                                    <h5 class="nav-link pt-3 text-center text-dark">You Have No Notifications</h5>
+                                    <h5 class="nav-link pt-3 text-center text-dark">{{Lang::get('site.You Have No Notifications')}}</h5>
 
                                 </li>
                             @endif
@@ -301,17 +301,17 @@
                             @if(auth()->user()->level == 1 || auth()->user()->level == 4)
                                 <li class="sidebar-item"><a href="javascript:void(0)"
                                                             class="sidebar-link has-arrow"><span
-                                            class="hide-menu"> Import
+                                            class="hide-menu">{{Lang::get('site.Import')}}
                                         </span></a>
                                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                         <li class="sidebar-item"><a href="{{route('addimport')}}"
                                                                     class="sidebar-link"><span
-                                                    class="hide-menu"> Add New
+                                                    class="hide-menu">{{Lang::get('site.Add New')}}
                                         </span></a>
                                         </li>
                                         <li class="sidebar-item"><a href="{{route('importinfo')}}"
                                                                     class="sidebar-link"><span
-                                                    class="hide-menu"> Show All
+                                                    class="hide-menu">{{Lang::get('site.Show All')}}
                                         </span></a>
                                         </li>
                                     </ul>
@@ -320,17 +320,17 @@
                             @if(auth()->user()->level == 1 || auth()->user()->level == 3)
                                 <li class="sidebar-item"><a href="javascript:void(0)"
                                                             class="sidebar-link has-arrow"><span
-                                            class="hide-menu"> Export
+                                            class="hide-menu">{{Lang::get('site.Export')}}
                                         </span></a>
                                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                         <li class="sidebar-item"><a href="{{route('addexport')}}"
                                                                     class="sidebar-link"><span
-                                                    class="hide-menu"> Add New
+                                                    class="hide-menu">{{Lang::get('site.Add New')}}
                                         </span></a>
                                         </li>
                                         <li class="sidebar-item"><a href="{{route('exportinfo')}}"
                                                                     class="sidebar-link"><span
-                                                    class="hide-menu"> Show All
+                                                    class="hide-menu">{{Lang::get('site.Show All')}}
                                         </span></a>
                                         </li>
                                     </ul>
@@ -365,7 +365,7 @@
                 @if(auth()->user()->level == 1 || auth()->user()->level == 2)
                     <li class="sidebar-item"><a href="javascript:void(0)"
                                                 class="sidebar-link has-arrow"><span
-                                class="hide-menu"> Operations
+                                class="hide-menu">{{Lang::get('site.Operations')}}
                                         </span></a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
                             <li class="sidebar-item"><a class="sidebar-link" href="{{route('imports')}}"
@@ -386,23 +386,23 @@
                 @if(auth()->user()->level != 2)
                     <li class="sidebar-item"><a href="javascript:void(0)"
                                                 class="sidebar-link has-arrow"><span
-                                class="hide-menu"> Suppliers & Customers
+                                class="hide-menu">{{Lang::get('site.Suppliers & Customers')}}
                                         </span></a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
                             @if(auth()->user()->level == 1 || auth()->user()->level == 4)
                                 <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
                                                             aria-expanded="false"><i class="feather-icon"></i><span
-                                            class="hide-menu">Suppliers
+                                            class="hide-menu">{{Lang::get('site.Suppliers')}}
                                 </span></a>
                                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                         <li class="sidebar-item"><a href="{{route('addsupplier')}}"
                                                                     class="sidebar-link"><span
-                                                    class="hide-menu"> Add New
+                                                    class="hide-menu">{{Lang::get('site.Add New')}}
                                         </span></a>
                                         </li>
                                         <li class="sidebar-item"><a href="{{route('suppliersinfo')}}"
                                                                     class="sidebar-link"><span
-                                                    class="hide-menu"> Show All
+                                                    class="hide-menu">{{Lang::get('site.Show All')}}
                                         </span></a>
                                         </li>
                                     </ul>
@@ -412,17 +412,17 @@
                             @if(auth()->user()->level == 1 || auth()->user()->level == 3)
                                 <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
                                                             aria-expanded="false"><i class="feather-icon"></i><span
-                                            class="hide-menu">Customers
+                                            class="hide-menu">{{Lang::get('site.Customers')}}
                                 </span></a>
                                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                         <li class="sidebar-item"><a href="{{route('addcustomer')}}"
                                                                     class="sidebar-link"><span
-                                                    class="hide-menu"> Add New
+                                                    class="hide-menu">{{Lang::get('site.Add New')}}
                                         </span></a>
                                         </li>
                                         <li class="sidebar-item"><a href="{{route('customersinfo')}}"
                                                                     class="sidebar-link"><span
-                                                    class="hide-menu"> Show All
+                                                    class="hide-menu">{{Lang::get('site.Show All')}}
                                         </span></a>
                                         </li>
                                     </ul>

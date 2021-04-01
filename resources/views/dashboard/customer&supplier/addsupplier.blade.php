@@ -57,7 +57,7 @@
                                         <div class="col-md-11">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="phone"
-                                                       placeholder="{{Lang::get('site.phone number')}}">
+                                                       placeholder="{{Lang::get('site.Phone number')}}">
                                             </div>
                                         </div>
                                     </div>

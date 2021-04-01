@@ -10,14 +10,14 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Supplier Info')}}</h4>
+                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.supplier Info')}}</h4>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashhome')}}"
                                                                class="text-muted">{{Lang::get('site.Home')}}</a></li>
                                 <li class="breadcrumb-item text-muted active"
-                                    aria-current="page">{{Lang::get('site.Supplier Info')}}</li>
+                                    aria-current="page">{{Lang::get('site.supplier Info')}}</li>
                             </ol>
                         </nav>
                     </div>
@@ -47,7 +47,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{Lang::get('site.Supplier Information')}}</h4>
+                            <h4 class="card-title">{{Lang::get('site.supplier Info')}}</h4>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
@@ -55,7 +55,7 @@
                                 <tr>
                                     <th scope="col">{{Lang::get('site.id')}}</th>
                                     <th scope="col">{{Lang::get('site.Name')}}</th>
-                                    <th scope="col">{{Lang::get('site.phone')}}</th>
+                                    <th scope="col">{{Lang::get('site.Phone number')}}</th>
                                     <th scope="col">{{Lang::get('site.created at')}}</th>
                                     <th scope="col">{{Lang::get('site.Edit')}}</th>
                                 </tr>

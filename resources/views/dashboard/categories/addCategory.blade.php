@@ -87,7 +87,7 @@
                                         <div class="col-md-11">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" name="storage"
-                                                       placeholder="storage">
+                                                       placeholder="{{Lang::get('site.storage')}}">
                                             </div>
                                         </div>
                                     </div>

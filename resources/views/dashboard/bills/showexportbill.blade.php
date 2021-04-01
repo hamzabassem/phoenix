@@ -10,14 +10,14 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Export Bills</h4>
+                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Export Bills')}}</h4>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashhome')}}"
                                                                class="text-muted">{{Lang::get('site.Home')}}</a></li>
                                 <li class="breadcrumb-item text-muted active"
-                                    aria-current="page">Bill info
+                                    aria-current="page">{{Lang::get('site.Bill info')}}
                                 </li>
                             </ol>
                         </nav>
@@ -48,20 +48,20 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Bill Information</h4>
+                            <h4 class="card-title">{{Lang::get('site.Bill Information')}}</h4>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">{{Lang::get('site.id')}}</th>
-                                    <th scope="col">Bill Number</th>
+                                    <th scope="col">{{Lang::get('site.Bill Number')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
-                                    <th scope="col">Category Name</th>
-                                    <th scope="col">Category Number</th>
+                                    <th scope="col">{{Lang::get('site.Category Name')}}</th>
+                                    <th scope="col">{{Lang::get('site.Category Number')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
-                                    <th scope="col">Delivered</th>
-                                    <th scope="col">Added By</th>
+                                    <th scope="col">{{Lang::get('site.Delivered')}}</th>
+                                    <th scope="col">{{Lang::get('site.Added By')}}</th>
                                     <th scope="col">{{Lang::get('site.created at')}}</th>
                                     {{--<th scope="col">{{Lang::get('site.Edit')}}</th>--}}
                                 </tr>

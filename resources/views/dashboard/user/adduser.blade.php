@@ -103,10 +103,10 @@
                                         <div class="col-md-11">
                                             <div class="input-group">
                                                 <select name="level" class="custom-select" id="inputGroupSelect04">
-                                                    <option selected>User Level</option>
-                                                    <option value="2">store manager</option>
-                                                    <option value="3">selling manager</option>
-                                                    <option value="4">buying manager</option>
+                                                    <option selected>{{Lang::get('site.User Level')}}</option>
+                                                    <option value="2">{{Lang::get('site.Store Manager')}}</option>
+                                                    <option value="3">{{Lang::get('site.Selling Manager')}}</option>
+                                                    <option value="4">{{Lang::get('site.Buying Manager')}}</option>
                                                 </select>
                                             </div>
                                         </div>

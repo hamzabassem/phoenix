@@ -47,7 +47,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{Lang::get('site.customer Information')}}</h4>
+                            <h4 class="card-title">{{Lang::get('site.customer Info')}}</h4>
                         </div>
                         <div class="table-responsive">
                             <table class="table">
@@ -55,7 +55,7 @@
                                 <tr>
                                     <th scope="col">{{Lang::get('site.id')}}</th>
                                     <th scope="col">{{Lang::get('site.Name')}}</th>
-                                    <th scope="col">{{Lang::get('site.phone')}}</th>
+                                    <th scope="col">{{Lang::get('site.Phone number')}}</th>
                                     <th scope="col">{{Lang::get('site.created at')}}</th>
                                     <th scope="col">{{Lang::get('site.Edit')}}</th>
                                 </tr>

@@ -25,7 +25,7 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Add New Category')}}</h4>
+                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Add New Import bill')}}</h4>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -56,7 +56,7 @@
                 @csrf
                 <div class="field_wrapper">
                     <a href="javascript:void(0);"
-                       class="add_button  btn btn-success mb-4"> add new
+                       class="add_button  btn btn-success mb-4">{{Lang::get('site.Add New')}}
                     </a>
 
 
@@ -64,24 +64,24 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label>description</label>
+                                <label>{{Lang::get('site.Description')}}</label>
                                 <input type="text" name="description[]" value="{{ old('description[]') }}"
                                        class="form-control">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label>quantity</label>
+                                <label>{{Lang::get('site.quantity')}}</label>
                                 <input type="text" name="quantity[]" value="{{ old('quantity[]') }}"
                                        class="form-control">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>supplier</label>
+                                <label>{{Lang::get('site.Suppliers')}}</label>
                                 <div class="input-group">
                                     <select name="supplier_id[]" class="custom-select" id="inputGroupSelect04">
-                                        <option selected>Supplier</option>
+                                        <option selected>{{Lang::get('site.Suppliers')}}</option>
                                         @foreach($supplier as $value)
                                             <option
                                                 value="{{$value->id}}">{{$value->name}}</option>
@@ -89,7 +89,7 @@
                                         @endforeach
                                     </select>
                                     <div class="input-group-append">
-                                        <a href="{{route('addsupplier')}}" style="color: white" class="btn btn-success" type="button">Add New
+                                        <a href="{{route('addsupplier')}}" style="color: white" class="btn btn-success" type="button">{{Lang::get('site.Add New')}}
                                         </a>
                                     </div>
                                 </div>
@@ -100,10 +100,10 @@
 
                         <div class="col-md-3">
                             <div class="form-group">
-                                <label>category</label>
+                                <label>{{Lang::get('site.Category')}}</label>
                                 <div class="input-group">
                                     <select name="category_id[]" class="custom-select" id="inputGroupSelect04">
-                                        <option selected>category</option>
+                                        <option selected>{{Lang::get('site.Category')}}</option>
                                         @foreach($categories as $value)
                                             <option
                                                 value="{{$value->id}}">{{$value->name}}</option>
@@ -111,7 +111,7 @@
                                         @endforeach
                                     </select>
                                     <div class="input-group-append">
-                                        <a href="{{route('addcategory')}}" style="color: white" class="btn btn-success" type="button">Add New
+                                        <a href="{{route('addcategory')}}" style="color: white" class="btn btn-success" type="button">{{Lang::get('site.Add New')}}
                                         </a>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@
                             </div>
                         </div>
 
-                        <a href='' class='removes_buttons btn btn-danger btn-sm '>delete</a>
+                        <a href='' class='removes_buttons btn btn-danger btn-sm '>{{Lang::get('site.Delete')}}</a>
 
                     </div>
 
@@ -144,25 +144,25 @@
                 var wrapper = $('.field_wrapper'); //Input field wrapper
 
                 var fieldHTML = "<hr><div class='row'>" +
-                    "<div class='col-md-2'><div class='form-group'><label>description</label><input  type='text' name='description[]'  class='form-control '></div></div>" +
-                    "<div class='col-md-2'><div class='form-group'><label>quantity</label><input type='text' name='quantity[]'  class='form-control' ></div></div>" +
-                    "<div class='col-md-3'><div class='form-group'><label>supplier</label><select name='supplier_id[]' class=\"custom-select\" id=\"inputGroupSelect04\">\n" +
-                    "                                    <option selected>Supplier</option>\n" +
+                    "<div class='col-md-2'><div class='form-group'><label>{{Lang::get('site.Description')}}</label><input  type='text' name='description[]'  class='form-control '></div></div>" +
+                    "<div class='col-md-2'><div class='form-group'><label>{{Lang::get('site.quantity')}}</label><input type='text' name='quantity[]'  class='form-control' ></div></div>" +
+                    "<div class='col-md-3'><div class='form-group'><label>{{Lang::get('site.Suppliers')}}</label><select name='supplier_id[]' class=\"custom-select\" id=\"inputGroupSelect04\">\n" +
+                    "                                    <option selected>{{Lang::get('site.Suppliers')}}</option>\n" +
                     "                                    @foreach($supplier as $value)\n" +
                     "                                        <option \n" +
                     "                                                value=\"{{$value->id}}\">{{$value->name}}</option>\n" +
                     "\n" +
                     "                                    @endforeach\n" +
                     "                                </select></div></div>" +
-                    "<div class='col-md-3'><div class='form-group'><label>category</label><select name='category_id[]' class=\"custom-select\" id=\"inputGroupSelect04\">\n" +
-                    "                                    <option selected>category</option>\n" +
+                    "<div class='col-md-3'><div class='form-group'><label>{{Lang::get('site.Category')}}</label><select name='category_id[]' class=\"custom-select\" id=\"inputGroupSelect04\">\n" +
+                    "                                    <option selected>{{Lang::get('site.Category')}}</option>\n" +
                     "                                        @foreach($categories as $value)\n" +
                     "                                            <option \n" +
                     "                                                    value=\"{{$value->id}}\">{{$value->name}}</option>\n" +
                     "\n" +
                     "                                        @endforeach\n" +
                     "                                </select></div></div>" +
-                    "<a  href='javascript:void(0);' class='remove_button  btn btn-danger btn-sm' >delete</a></div></div>";
+                    "<a  href='javascript:void(0);' class='remove_button  btn btn-danger btn-sm' >{{Lang::get('site.Delete')}}</a></div></div>";
 
                 var x = 1; //Initial field counter is 1
 

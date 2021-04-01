@@ -66,7 +66,7 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">{{Lang::get('site.id')}}</th>
-                                    <th scope="col">{{Lang::get('site.bill number')}}</th>
+                                    <th scope="col">{{Lang::get('site.Bill Number')}}</th>
                                     <th scope="col">{{Lang::get('site.operation')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>

@@ -11,15 +11,16 @@
             <div class="row">
                 <div class="col-7 align-self-center">
                     <h3 id="title"
-                        class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Hello')}} @if(auth()->user()->level == 1)
-                            Manager
+                        class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Hello')}} {{ucfirst(auth()->user()->name)}}
+                        @if(auth()->user()->level == 1)
+                           ( {{Lang::get('site.Manager')}} )
                         @elseif(auth()->user()->level == 2)
-                            Store Manager
+                           ( {{Lang::get('site.Store Manager')}} )
                         @elseif(auth()->user()->level == 3)
-                            Selling Manager
+                           ( {{Lang::get('site.Selling Manager')}} )
                         @else
-                            Buying Manager
-                        @endif {{ucfirst(auth()->user()->name)}} </h3>
+                           ( {{Lang::get('site.Buying Manager')}} )
+                        @endif</h3>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
@@ -136,16 +137,16 @@
                                     <div style="margin-top: 105px;" class="row">
                                         <div class="col-md-11 ml-auto">
                                             <div class="form-group">
-                                                <label for="name"> Add new task</label>
+                                                <label for="name">{{Lang::get('site.Add new task')}}</label>
                                                 <input name="name" type="text" class="form-control"
-                                                       placeholder="name">
+                                                       placeholder="{{Lang::get('site.Name')}}">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-11 ml-auto">
                                             <div class="form-group">
-                                                <label for="name"> Starts at</label>
+                                                <label for="name">{{Lang::get('site.Starts at')}}</label>
                                                 <input name="start" type="date" class="form-control"
                                                        placeholder="col-md-4 ml-auto">
                                             </div>
@@ -154,7 +155,7 @@
                                     <div class="row">
                                         <div class="col-md-11 ml-auto">
                                             <div class="form-group">
-                                                <label for="name"> Ends at</label>
+                                                <label for="name">{{Lang::get('site.Ends at')}}</label>
                                                 <input name="end" type="date" class="form-control"
                                                        placeholder="col-md-4 ml-auto">
                                             </div>
@@ -162,8 +163,8 @@
                                     </div>
                                     <div class="form-actions">
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-info">Submit</button>
-                                            <button type="reset" class="btn btn-dark">Reset</button>
+                                            <button type="submit" class="btn btn-info">{{Lang::get('site.Submit')}}</button>
+                                            <button type="reset" class="btn btn-dark">{{Lang::get('site.Reset')}}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -174,7 +175,7 @@
             </div>
             @if(auth()->user()->level == 1)
                 <div class="card-body">
-                    <h4 class="card-title">Renew your subscription</h4>
+                    <h4 class="card-title">{{Lang::get('site.Renew your subscription')}}</h4>
                 </div>
                 <div class="card-group">
                     <a href="{{route('updatedays',['days' => \Illuminate\Support\Facades\Crypt::encryptString(30)])}}"
@@ -183,9 +184,9 @@
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">30 Days</h2>
+                                        <h2 class="text-dark mb-1 font-weight-medium"> 30 {{Lang::get('site.Days')}}</h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">For 20$</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">{{Lang::get('site.For')}} 20$</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i data-feather="dollar-sign"></i></span>
@@ -200,8 +201,8 @@
                         <div class="card-body">
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
-                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">365 Days</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">For 99$
+                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">365 {{Lang::get('site.Days')}} </h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">{{Lang::get('site.For')}} 99$
                                     </h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">

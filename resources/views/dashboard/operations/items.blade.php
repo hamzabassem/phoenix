@@ -68,11 +68,11 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">{{Lang::get('site.id')}}</th>
-                                    <th scope="col">Bill Number</th>
+                                    <th scope="col">{{Lang::get('site.Bill Number')}}</th>
                                     <th scope="col">{{Lang::get('site.operation')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
-                                    <th scope="col">Added By</th>
+                                    <th scope="col">{{Lang::get('site.Added By')}}</th>
                                     <th scope="col">{{Lang::get('site.created at')}}</th>
                                     <th scope="col">{{Lang::get('site.Edit')}}</th>
                                 </tr>
@@ -118,13 +118,13 @@
                             <br>
 
                         </div>
-                        <span style="margin-left: 25px" class="card-title">To Process</span>
+                        <span style="margin-left: 25px" class="card-title">{{Lang::get('site.To Process')}}</span>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">{{Lang::get('site.id')}}</th>
-                                    <th scope="col">Bill Number</th>
+                                    <th scope="col">{{Lang::get('site.Bill Number')}}</th>
                                     <th scope="col">{{Lang::get('site.operation')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
@@ -151,13 +151,13 @@
                                             <a href="{{route('editimport',['id' => $value->id])}}">
                                                 <button id="button" type="button" class="btn btn-success"><i
                                                         class="  fas fa-check"></i>
-                                                    conform</button>
+                                                    {{Lang::get('site.conform')}}</button>
                                             </a>
-                                            <a href="{{route('deleteimport',['id' => $value->id])}}">
+                                            {{--<a href="{{route('deleteimport',['id' => $value->id])}}">
                                                 <button id="button" type="button" class="btn btn-danger"><i
                                                         class="fas fa-times"></i>
-                                                    reject</button>
-                                            </a>
+                                                    {{Lang::get('site.reject')}}</button>
+                                            </a>--}}
                                         </td>
                                     </tr>
                                 @endforeach
@@ -176,13 +176,13 @@
                                             <a href="{{route('editexport',['id' => $value->id])}}">
                                                 <button id="button" type="button" class="btn btn-success"><i
                                                         class="  fas fa-check"></i>
-                                                    conform</button>
+                                                    {{Lang::get('site.conform')}}</button>
                                             </a>
-                                            <a href="{{route('deleteexport',['id' => $value->id])}}">
+                                            {{--<a href="{{route('deleteexport',['id' => $value->id])}}">
                                                 <button id="button" type="button" class="btn btn-danger"><i
                                                         class="fas fa-times"></i>
-                                                    reject</button>
-                                            </a>
+                                                    {{Lang::get('site.reject')}}</button>
+                                            </a>--}}
                                         </td>
                                     </tr>
                                 @endforeach
