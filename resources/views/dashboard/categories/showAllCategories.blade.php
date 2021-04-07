@@ -81,15 +81,18 @@
                                         <td>{{$value->selling_price}}</td>
                                         <td>{{$value->notify}}</td>
                                         <td>{{$value->created_at}}</td>
-                                        <td><a href="{{route('editcategory', ['id' => $value->id])}}">
+                                        <td style="width: 120px;">
+                                            <a class="ed" href="{{route('editcategory', ['id' => $value->id])}}">
                                                 <button type="button" class="btn btn-success"><i
                                                         class=" fas fa-pencil-alt"></i>
-                                                    {{Lang::get('site.Edit')}}</button>
+                                                    <span class="tooltiptext">{{Lang::get('site.Edit')}}</span>
+                                                </button>
                                             </a>
-                                            <a href="{{route('deletecategory', ['id' => $value->id])}}">
+                                            <a class="de" href="{{route('deletecategory', ['id' => $value->id])}}">
                                                 <button type="button" class="btn btn-danger"><i
                                                         class="fas fa-trash-alt"></i>
-                                                    {{Lang::get('site.Delete')}}</button>
+                                                    <span class="tooltiptext">{{Lang::get('site.Delete')}}</span>
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>

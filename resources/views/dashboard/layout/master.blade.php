@@ -38,8 +38,82 @@
             margin-right: -275px;
             direction: ltr;
         }
+        .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: gray;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+
+            /* Position the tooltip */
+            position: absolute;
+            z-index: 1;
+            margin-top: -50px;
+            margin-right: -68px;
+        }
+
+        .ed:hover .tooltiptext {
+            visibility: visible;
+            background-color: #1d643b;
+
+        }
+        .de:hover .tooltiptext {
+            visibility: visible;
+            background-color: #620000;
+
+        }
+        .tooltiptext::after {
+            content: " ";
+            position: absolute;
+            top: 100%; /* At the bottom of the tooltip */
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: gray transparent transparent transparent;
+        }
     </style>
 @endif
+<style>
+    .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: gray;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+        margin-top: -50px;
+        margin-left: -68px;
+    }
+
+    .ed:hover .tooltiptext {
+        visibility: visible;
+        background-color: #1d643b;
+
+    }
+    .de:hover .tooltiptext {
+        visibility: visible;
+        background-color: #620000;
+
+    }
+    .tooltiptext::after {
+        content: " ";
+        position: absolute;
+        top: 100%; /* At the bottom of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: gray transparent transparent transparent;
+    }
+</style>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

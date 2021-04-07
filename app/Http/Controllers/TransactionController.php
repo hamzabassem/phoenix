@@ -238,7 +238,8 @@ class TransactionController extends Controller
         $items = Transaction::where('category_id', $id)->paginate(10);
         $quantity = $items->sum('quantity');
         $category = Category::findOrFail($id);
-        $data = ['items' => $items, 'quantity' => $quantity, 'category' => $category];
+        $signature = Store::findOrFail(Auth::user()->store_id);
+        $data = ['items' => $items, 'quantity' => $quantity, 'category' => $category, 'signature' => $signature];
 
         // share data to view
         $pdf = PDF::loadView('dashboard.operations.pdf', $data);

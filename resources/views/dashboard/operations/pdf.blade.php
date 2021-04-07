@@ -10,8 +10,18 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        body{
+        body {
             font-family: DejaVu Sans, sans-serif;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+            margin-top: 60px;
+            margin-left: 60px;
+        }
+        #h5{
+            margin-left: 47px;
         }
     </style>
 </head>
@@ -23,10 +33,11 @@
         <thead class="thead-light">
         <tr>
             <th scope="col">{{Lang::get('site.id')}}</th>
+            <th scope="col">{{Lang::get('site.Bill Number')}}</th>
             <th scope="col">{{Lang::get('site.operation')}}</th>
             <th scope="col">{{Lang::get('site.Description')}}</th>
             <th scope="col">{{Lang::get('site.quantity')}}</th>
-            <th scope="col">{{Lang::get('site.storage')}}</th>
+            <th scope="col">{{Lang::get('site.Added By')}}</th>
             <th scope="col">{{Lang::get('site.created at')}}</th>
         </tr>
         </thead>
@@ -38,14 +49,17 @@
             @php $count++ @endphp
             <tr>
                 <th scope="row">{{$count}}</th>
-                <td>@if($value->quantity > 0)<h5>{{Lang::get('site.Import')}} <i
-                            class=" fas fa-level-down-alt"></i></h5> @else
-                        <h5>{{Lang::get('site.Export')}} <i class="fas fa-level-up-alt"></i>
+                @if($value->quantity > 0)
+                    <td>{{$value->import_bill}}</td>
+                    <td><h5>{{Lang::get('site.Import')}} <i
+                                class=" fas fa-level-down-alt"></i></h5></td> @else
+                    <td>{{$value->export_bill}}</td>
+                    <td><h5>{{Lang::get('site.Export')}} <i class="fas fa-level-up-alt"></i>
                         </h5> @endif</td>
-                <td>{{$value->description}}</td>
-                <td>{{$value->quantity}}</td>
-                <td>{{$value->storage}}</td>
-                <td>{{$value->created_at}}</td>
+                    <td>{{$value->description}}</td>
+                    <td>{{$value->quantity}}</td>
+                    <td>{{\App\User::findOrFail($value->user_id)->name}}</td>
+                    <td>{{$value->created_at}}</td>
 
             </tr>
         @endforeach
@@ -54,7 +68,14 @@
     <br>
 
 </div>
-
+<div class="row">
+    <div class="col-md-11">
+        <div class="row">
+            <h5 id="h5">company signature</h5>
+            <img src="{{$signature->signature}}">
+        </div>
+    </div>
+</div>
 </body>
 </html>
 

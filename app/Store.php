@@ -17,8 +17,8 @@ class Store extends Model
     ];
 
 
-    public function getSignatureAttribute($signature)
+    /*public function getSignatureAttribute($signature)
     {
         return is_null($signature) ? null : asset($signature);
-    }
+    }*/
 }

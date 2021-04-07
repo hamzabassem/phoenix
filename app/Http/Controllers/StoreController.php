@@ -45,12 +45,13 @@ class StoreController extends Controller
         $image->move("img/signature/", $image_new_name);
 
 
-        $company = $request->name;
+        $company = (date("YmdHis").$request->name);
         Store::create([
             'name' => $company,
             'days' => Crypt::decryptString($request->days),
             'signature' => 'img/signature/'.$image_new_name,
         ]);
+        $company = Crypt::encryptString($company);
         return redirect()->route('signupstore',['store' => $company]);
 
     }

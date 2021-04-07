@@ -29,7 +29,8 @@ class UserController extends Controller
      */
     public function create($store)
     {
-        $company = Store::where('name',$store)->get();
+        $dstore = Crypt::decryptString($store);
+        $company = Store::where('name',$dstore)->get();
         return view('auth.register',compact('company'));
     }
 

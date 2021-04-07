@@ -92,18 +92,20 @@
                                         <td>{{$value->quantity}}</td>
                                         <td>{{\App\Category::findOrFail($value->category_id)->name}}</td>
                                         <td>{{$value->created_at}}</td>
-                                        <td>
+                                        <td style="width: 120px;">
 
-                                            <a href="{{route('edititem',['id' => $value->id])}}">
+                                            <a class="ed" href="{{route('edititem',['id' => $value->id])}}">
                                                 <button id="button" type="button" class="btn btn-success"><i
                                                         class=" fas fa-pencil-alt"></i>
-                                                    {{Lang::get('site.Edit')}}</button>
+                                                    <span class="tooltiptext">{{Lang::get('site.Edit')}}</span>
+                                                </button>
                                             </a>
 
-                                            <a href="{{route('deleteitem',['id' => $value->id])}}">
+                                            <a class="de" href="{{route('deleteitem',['id' => $value->id])}}">
                                                 <button id="button" type="button" class="btn btn-danger"><i
                                                         class="fas fa-trash-alt"></i>
-                                                    {{Lang::get('site.Delete')}}</button>
+                                                    <span class="tooltiptext">{{Lang::get('site.Delete')}}</span>
+                                                </button>
                                             </a>
                                         </td>
                                     </tr>
