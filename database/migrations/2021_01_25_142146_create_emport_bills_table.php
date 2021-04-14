@@ -15,7 +15,7 @@ class CreateEmportBillsTable extends Migration
     {
         Schema::create('emport_bills', function (Blueprint $table) {
             $table->id()->autoIncrement();
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->integer('category_id');
             $table->string('bill_number');
             $table->enum('processing',[2,1,0])->default(1);

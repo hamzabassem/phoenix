@@ -300,17 +300,20 @@
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
                             @if(auth()->user()->level == 1 || auth()->user()->level == 4)
                                 <li class="sidebar-item"><a href="javascript:void(0)"
-                                                            class="sidebar-link has-arrow"><span
+                                                            class="sidebar-link has-arrow"><i data-feather="arrow-down"
+                                                                                              class="feather-icon"></i><span
                                             class="hide-menu">{{Lang::get('site.Import')}}
                                         </span></a>
                                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                         <li class="sidebar-item"><a href="{{route('addimport')}}"
-                                                                    class="sidebar-link"><span
+                                                                    class="sidebar-link"><i data-feather="plus"
+                                                                                            class="feather-icon"></i><span
                                                     class="hide-menu">{{Lang::get('site.Add New')}}
                                         </span></a>
                                         </li>
                                         <li class="sidebar-item"><a href="{{route('importinfo')}}"
-                                                                    class="sidebar-link"><span
+                                                                    class="sidebar-link"><i data-feather="eye"
+                                                                                            class="feather-icon"></i><span
                                                     class="hide-menu">{{Lang::get('site.Show All')}}
                                         </span></a>
                                         </li>
@@ -319,17 +322,20 @@
                             @endif
                             @if(auth()->user()->level == 1 || auth()->user()->level == 3)
                                 <li class="sidebar-item"><a href="javascript:void(0)"
-                                                            class="sidebar-link has-arrow"><span
+                                                            class="sidebar-link has-arrow"><i data-feather="arrow-up"
+                                                                                              class="feather-icon"></i><span
                                             class="hide-menu">{{Lang::get('site.Export')}}
                                         </span></a>
                                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                         <li class="sidebar-item"><a href="{{route('addexport')}}"
-                                                                    class="sidebar-link"><span
+                                                                    class="sidebar-link"><i data-feather="plus"
+                                                                                            class="feather-icon"></i><span
                                                     class="hide-menu">{{Lang::get('site.Add New')}}
                                         </span></a>
                                         </li>
                                         <li class="sidebar-item"><a href="{{route('exportinfo')}}"
-                                                                    class="sidebar-link"><span
+                                                                    class="sidebar-link"><i data-feather="eye"
+                                                                                            class="feather-icon"></i><span
                                                     class="hide-menu">{{Lang::get('site.Show All')}}
                                         </span></a>
                                         </li>
@@ -344,7 +350,8 @@
                 <br>
                 @if(auth()->user()->level == 1 || auth()->user()->level == 2 || auth()->user()->level == 4)
                     <li class="sidebar-item"><a href="javascript:void(0)"
-                                                class="sidebar-link has-arrow"><span
+                                                class="sidebar-link has-arrow"><i data-feather="settings"
+                                                                                  class="feather-icon"></i><span
                                 class="hide-menu"> {{Lang::get('site.Manage categories')}}
                                         </span></a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
@@ -364,7 +371,8 @@
                 @endif
                 @if(auth()->user()->level == 1 || auth()->user()->level == 2)
                     <li class="sidebar-item"><a href="javascript:void(0)"
-                                                class="sidebar-link has-arrow"><span
+                                                class="sidebar-link has-arrow"><i data-feather="repeat"
+                                                                                  class="feather-icon"></i> <span
                                 class="hide-menu">{{Lang::get('site.Operations')}}
                                         </span></a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
@@ -385,23 +393,27 @@
                 @endif
                 @if(auth()->user()->level != 2)
                     <li class="sidebar-item"><a href="javascript:void(0)"
-                                                class="sidebar-link has-arrow"><span
+                                                class="sidebar-link has-arrow"><i data-feather="users"
+                                                                                  class="feather-icon"></i><span
                                 class="hide-menu">{{Lang::get('site.Suppliers & Customers')}}
                                         </span></a>
                         <ul aria-expanded="false" class="collapse  first-level base-level-line">
                             @if(auth()->user()->level == 1 || auth()->user()->level == 4)
                                 <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                                            aria-expanded="false"><i class="feather-icon"></i><span
+                                                            aria-expanded="false"><i data-feather="user"
+                                                                                     class="feather-icon"></i><span
                                             class="hide-menu">{{Lang::get('site.Suppliers')}}
                                 </span></a>
                                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                         <li class="sidebar-item"><a href="{{route('addsupplier')}}"
-                                                                    class="sidebar-link"><span
+                                                                    class="sidebar-link"><i data-feather="plus"
+                                                                                            class="feather-icon"></i><span
                                                     class="hide-menu">{{Lang::get('site.Add New')}}
                                         </span></a>
                                         </li>
                                         <li class="sidebar-item"><a href="{{route('suppliersinfo')}}"
-                                                                    class="sidebar-link"><span
+                                                                    class="sidebar-link"><i data-feather="eye"
+                                                                                            class="feather-icon"></i><span
                                                     class="hide-menu">{{Lang::get('site.Show All')}}
                                         </span></a>
                                         </li>
@@ -411,17 +423,20 @@
                             @endif
                             @if(auth()->user()->level == 1 || auth()->user()->level == 3)
                                 <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
-                                                            aria-expanded="false"><i class="feather-icon"></i><span
+                                                            aria-expanded="false"><i data-feather="user"
+                                                                                     class="feather-icon"></i><span
                                             class="hide-menu">{{Lang::get('site.Customers')}}
                                 </span></a>
                                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                                         <li class="sidebar-item"><a href="{{route('addcustomer')}}"
-                                                                    class="sidebar-link"><span
+                                                                    class="sidebar-link"><i data-feather="plus"
+                                                                                            class="feather-icon"></i><span
                                                     class="hide-menu">{{Lang::get('site.Add New')}}
                                         </span></a>
                                         </li>
                                         <li class="sidebar-item"><a href="{{route('customersinfo')}}"
-                                                                    class="sidebar-link"><span
+                                                                    class="sidebar-link"><i data-feather="eye"
+                                                                                            class="feather-icon"></i><span
                                                     class="hide-menu">{{Lang::get('site.Show All')}}
                                         </span></a>
                                         </li>
@@ -431,7 +446,12 @@
                         </ul>
                     </li>
                 @endif
-
+                <li class="sidebar-item"><a class="sidebar-link" href="{{route('trash')}}"
+                                            aria-expanded="false"><i data-feather="trash"
+                                                                     class="feather-icon"></i><span
+                            class="hide-menu">{{Lang::get('site.Trash')}}
+                                </span></a>
+                </li>
 
             </ul>
         </nav>

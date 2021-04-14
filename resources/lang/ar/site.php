@@ -91,5 +91,6 @@ return [
     'Add User' =>'اضافة مستخدم',
     'User Info' =>'معلومات المستخدم',
     'User Level' =>'مستوى المستخدم',
-    'You Have No Notifications' => 'ليس لديك اي اشعارات'
+    'You Have No Notifications' => 'ليس لديك اي اشعارات',
+    'Trash' => 'سلة المحذوفات'
 ];

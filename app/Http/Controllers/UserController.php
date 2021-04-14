@@ -109,6 +109,14 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
         $user->update($data);
+        if(Auth::user()->level == 1) {
+            
+            $image = $request->signature;
+            $image_new_name = time().$image->getClientOriginalName();
+            $image->move("img/signature/", $image_new_name);
+            $store = Store::findOrFail(Auth::user()->store_id);
+            $store->update(['signature' => 'img/signature/'.$image_new_name]);
+        }
         return redirect()->route('dashhome')->with('success','your info has been edited successfully');
     }
 

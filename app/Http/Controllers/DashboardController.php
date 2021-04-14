@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Item;
+use App\Store;
 use App\Task;
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,7 +33,12 @@ class DashboardController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user()->level == 1) {
+            $condition = ['deleted' => '1', 'store_id' => Auth::user()->store_id];
+            $items = Transaction::where($condition)->get();
+            $categories = Category::where($condition)->get();
+            return view('dashboard.operations.trash', compact(['items', 'categories']));
+        }return redirect()->back()->with('error','only for manager');
     }
 
     /**
@@ -86,6 +93,81 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restoreT($id)
+    {
+        $store = Store::findOrFail(auth()->user()->store_id);
+        if ($store->days == 0) {
+            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+        }
+        $item = Transaction::findOrFail($id);
+        if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
+            $item->update(['deleted' => '0']);
+            return redirect()->back()->with('success', 'the action has been deleted successfully');
+        } else {
+            return redirect()->back()->with('error', 'you can not do this action');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function restoreC($id)
+    {
+        $store = Store::findOrFail(auth()->user()->store_id);
+        if ($store->days == 0) {
+            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+        }
+        $category = Category::findOrFail($id);
+        if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
+            $category->update(['deleted' => '0']);
+            return redirect()->back()->with('success', 'the action has been deleted successfully');
+        } else {
+            return redirect()->back()->with('error', 'you can not do this action');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyT($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyC($id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function emptyall($id)
     {
         //
     }

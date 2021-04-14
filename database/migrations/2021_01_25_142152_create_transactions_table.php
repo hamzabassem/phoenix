@@ -17,7 +17,7 @@ class CreateTransactionsTable extends Migration
             $table->id()->autoIncrement();
             $table->string('operation');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->integer('quantity');
             $table->enum('deleted',[1,0])->default(0);
             $table->unsignedBigInteger('store_id')->nullable();

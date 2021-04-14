@@ -39,6 +39,12 @@ Route::group(
         Route::post('/addtask', 'TaskController@store')->name('addtask');
         Route::get('/adduser','UserController@createUser')->name('adduser');
         Route::Post('/storeuser','UserController@storeUser')->name('storeuser');
+        Route::get('/trash','DashboardController@create')->name('trash');
+        Route::get('/restoretransaction/{id}','DashboardController@create')->name('restorei');
+        Route::get('/restorecategory/{id}','DashboardController@create')->name('restorec');
+        Route::get('/finaldeletetransaction/{id}','DashboardController@create')->name('deletei');
+        Route::get('/finaldeletecategory/{id}','DashboardController@create')->name('deletec');
+        Route::get('/emptytrash','DashboardController@create')->name('empty');
 
 
         // manager routes
@@ -98,6 +104,7 @@ Route::group(
         Route::post('storeexport', 'ExportBillController@store')->name('storeexport');
         Route::get('/editexport/{id}', 'ExportBillController@edit')->name('editexport');
         Route::get('/deleteexport/{id}', 'ExportBillController@destroy')->name('deleteexport');
+
 
 
 

@@ -91,7 +91,8 @@ return [
     'Add User' =>'Add User',
     'User Info' =>'User Info',
     'User Level' =>'User Level',
-    'You Have No Notifications' => 'You Have No Notifications'
+    'You Have No Notifications' => 'You Have No Notifications',
+    'Trash' => 'Trash'
 
 
 

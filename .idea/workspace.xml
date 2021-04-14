@@ -2,17 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d89837a2-ca9e-405b-bcb1-42228a7f7c7f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/trash.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StoreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StoreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Store.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Store.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/categories/showAllCategories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/categories/showAllCategories.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operations/exports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/exports.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operations/imports.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/imports.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operations/items.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/items.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operations/pdf.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/pdf.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_25_142145_create_export_bills_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_25_142145_create_export_bills_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_25_142146_create_emport_bills_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_25_142146_create_emport_bills_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_01_25_142152_create_transactions_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_01_25_142152_create_transactions_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/ar/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/site.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/site.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/user/editUser.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/user/editUser.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +250,9 @@
       <workItem from="1617201557254" duration="8249000" />
       <workItem from="1617284786833" duration="7081000" />
       <workItem from="1617727224782" duration="7767000" />
-      <workItem from="1617803505279" duration="7892000" />
+      <workItem from="1617803505279" duration="9269000" />
+      <workItem from="1617893635062" duration="2666000" />
+      <workItem from="1618400297235" duration="10848000" />
     </task>
     <servers />
   </component>
@@ -261,21 +264,21 @@
       <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state x="1840" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1611926467658" />
-    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617122609551">
+    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1618430412954">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="1816" y="204" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612288278863" />
-    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1617122609551" />
+    <state x="427" y="174" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1618430412954" />
     <state x="1866" y="204" key="FileChooserDialogImpl" timestamp="1612026124203">
       <screen x="1366" y="0" width="1440" height="900" />
     </state>
     <state x="1866" y="204" key="FileChooserDialogImpl/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612026124203" />
-    <state x="526" y="318" key="NewPhpFileDialog" timestamp="1615663189907">
+    <state x="526" y="318" key="NewPhpFileDialog" timestamp="1618425867395">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="526" y="318" key="NewPhpFileDialog/0.0.1366.768/1366.0.1440.900@0.0.1366.768" timestamp="1611690630270" />
     <state x="1920" y="373" key="NewPhpFileDialog/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612288671625" />
-    <state x="526" y="318" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1615663189907" />
+    <state x="526" y="318" key="NewPhpFileDialog/0.0.1366.768@0.0.1366.768" timestamp="1618425867395" />
     <state x="184" y="26" key="SettingsEditor" timestamp="1613668516324">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
