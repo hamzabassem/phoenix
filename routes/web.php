@@ -40,11 +40,11 @@ Route::group(
         Route::get('/adduser','UserController@createUser')->name('adduser');
         Route::Post('/storeuser','UserController@storeUser')->name('storeuser');
         Route::get('/trash','DashboardController@create')->name('trash');
-        Route::get('/restoretransaction/{id}','DashboardController@create')->name('restorei');
-        Route::get('/restorecategory/{id}','DashboardController@create')->name('restorec');
-        Route::get('/finaldeletetransaction/{id}','DashboardController@create')->name('deletei');
-        Route::get('/finaldeletecategory/{id}','DashboardController@create')->name('deletec');
-        Route::get('/emptytrash','DashboardController@create')->name('empty');
+        Route::get('/restoretransaction/{id}','DashboardController@restoreT')->name('restorei');
+        Route::get('/restorecategory/{id}','DashboardController@restoreC')->name('restorec');
+        Route::get('/finaldeletetransaction/{id}','DashboardController@destroyT')->name('deletei');
+        Route::get('/finaldeletecategory/{id}','DashboardController@destroyC')->name('deletec');
+        Route::get('/emptytrash','DashboardController@emptyall')->name('empty');
 
 
         // manager routes

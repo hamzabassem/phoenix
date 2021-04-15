@@ -88,15 +88,15 @@
                                             <td>{{$value->created_at}}</td>
                                             <td style="width: 120px;">
 
-                                                <a class="ed" href="{{route('edititem',['id' => $value->id])}}">
+                                                <a class="ed" href="{{route('restorei',['id' => $value->id])}}">
                                                     <button id="button" type="button" class="btn btn-success"><i
-                                                            class=" fas fa-pencil-alt"></i>
-                                                        <span class="tooltiptext">{{Lang::get('site.Edit')}}</span>
+                                                            class="fas fa-undo"></i>
+                                                        <span class="tooltiptext">{{Lang::get('site.restore')}}</span>
                                                     </button>
 
                                                 </a>
 
-                                                <a class="de" href="{{route('deleteitem',['id' => $value->id])}}">
+                                                <a class="de" href="{{route('deletei',['id' => $value->id])}}">
                                                     <button id="button" type="button" class="btn btn-danger"><i
                                                             class="fas fa-trash-alt"></i>
                                                         <span class="tooltiptext">{{Lang::get('site.Delete')}}</span>
@@ -143,13 +143,13 @@
                                         <td>{{$value->notify}}</td>
                                         <td>{{$value->created_at}}</td>
                                         <td style="width: 120px;">
-                                            <a class="ed" href="{{route('editcategory', ['id' => $value->id])}}">
+                                            <a class="ed" href="{{route('restorec', ['id' => $value->id])}}">
                                                 <button type="button" class="btn btn-success"><i
-                                                        class=" fas fa-pencil-alt"></i>
-                                                    <span class="tooltiptext">{{Lang::get('site.Edit')}}</span>
+                                                        class="fas fa-undo"></i>
+                                                    <span class="tooltiptext">{{Lang::get('site.restore')}}</span>
                                                 </button>
                                             </a>
-                                            <a class="de" href="{{route('deletecategory', ['id' => $value->id])}}">
+                                            <a class="de" href="{{route('deletec', ['id' => $value->id])}}">
                                                 <button type="button" class="btn btn-danger"><i
                                                         class="fas fa-trash-alt"></i>
                                                     <span class="tooltiptext">{{Lang::get('site.Delete')}}</span>
@@ -166,9 +166,9 @@
             </div>
             <div style="margin-right: 30px" class="form-actions">
                 <div class="text-right">
-                    <a href="">
+                    <a href="{{route('empty')}}">
                         <button id="button" type="button" class="btn btn-primary"><i class=" fas fa-level-down-alt"></i>
-                            {{Lang::get('site.Import')}}</button>
+                            {{Lang::get('site.empty')}}</button>
                     </a>
                 </div>
             </div>
