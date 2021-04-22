@@ -92,7 +92,11 @@ return [
     'User Info' =>'User Info',
     'User Level' =>'User Level',
     'You Have No Notifications' => 'You Have No Notifications',
-    'Trash' => 'Trash'
+    'Trash' => 'Trash',
+    'restore' => 'Restore',
+    'Deleted Items' => 'Deleted Transactions',
+    'Deleted Categories' => 'Deleted Categories',
+    'empty' => 'Empty'
 
 
 

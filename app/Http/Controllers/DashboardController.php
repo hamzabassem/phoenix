@@ -113,7 +113,7 @@ class DashboardController extends Controller
         $item = Transaction::findOrFail($id);
         if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
             $item->update(['deleted' => '0']);
-            return redirect()->back()->with('success', 'the action has been deleted successfully');
+            return redirect()->back()->with('success', 'the action has been restored successfully');
         } else {
             return redirect()->back()->with('error', 'you can not do this action');
         }
@@ -134,7 +134,7 @@ class DashboardController extends Controller
         $category = Category::findOrFail($id);
         if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
             $category->update(['deleted' => '0']);
-            return redirect()->back()->with('success', 'the action has been deleted successfully');
+            return redirect()->back()->with('success', 'the category has been restored successfully');
         } else {
             return redirect()->back()->with('error', 'you can not do this action');
         }
@@ -176,7 +176,7 @@ class DashboardController extends Controller
         $category = Category::findOrFail($id);
         if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 1) {
             $category->delete();
-            return redirect()->back()->with('success', 'the action has been deleted successfully');
+            return redirect()->back()->with('success', 'the category has been deleted successfully');
         } else {
             return redirect()->back()->with('error', 'you can not do this action');
         }

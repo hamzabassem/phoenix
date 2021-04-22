@@ -92,5 +92,9 @@ return [
     'User Info' =>'معلومات المستخدم',
     'User Level' =>'مستوى المستخدم',
     'You Have No Notifications' => 'ليس لديك اي اشعارات',
-    'Trash' => 'سلة المحذوفات'
+    'Trash' => 'سلة المحذوفات',
+    'restore' => 'استرجاع',
+    'Deleted Items' => 'العمليات المحذوفه',
+    'Deleted Categories' => 'الاصناف المحذوفه',
+    'empty' => 'حذف الكل'
 ];

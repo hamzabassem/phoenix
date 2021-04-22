@@ -12,7 +12,7 @@
             if ($sum < $notify){
                 $count++;
             }
-        else $count = null;
+        else $count = 0;
         }
     }
     $store = \App\Store::findOrFail(auth()->user()->store_id);

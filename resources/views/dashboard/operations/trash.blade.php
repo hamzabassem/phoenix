@@ -48,10 +48,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-
                             <span class="card-title">{{Lang::get('site.Deleted Items')}}</span>
-
-
                         </div>
                         <div class="table-responsive">
                             <table class="table">
@@ -61,6 +58,7 @@
                                     <th scope="col">{{Lang::get('site.Bill Number')}}</th>
                                     <th scope="col">{{Lang::get('site.operation')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
+                                    <th scope="col">{{Lang::get('site.Category')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
                                     <th scope="col">{{Lang::get('site.Added By')}}</th>
                                     <th scope="col">{{Lang::get('site.created at')}}</th>
@@ -83,6 +81,7 @@
                                             <td> <h5>{{Lang::get('site.Export')}} <i class="fas fa-level-up-alt"></i>
                                                 </h5> @endif</td>
                                             <td>{{$value->description}}</td>
+                                            <td>{{\App\Category::findOrFail( $value->category_id)->name}}</td>
                                             <td>{{$value->quantity}}</td>
                                             <td>{{\App\User::findOrFail($value->user_id)->name}}</td>
                                             <td>{{$value->created_at}}</td>
@@ -109,7 +108,9 @@
                             </table>
 
                         </div>
-                        <span style="margin-left: 25px" class="card-title">{{Lang::get('site.Deleted Categories')}}</span>
+                        <div class="card-body">
+                        <span class="card-title">{{Lang::get('site.Deleted Categories')}}</span>
+                        </div>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="thead-light">
@@ -167,7 +168,7 @@
             <div style="margin-right: 30px" class="form-actions">
                 <div class="text-right">
                     <a href="{{route('empty')}}">
-                        <button id="button" type="button" class="btn btn-primary"><i class=" fas fa-level-down-alt"></i>
+                        <button id="button" type="button" class="btn btn-primary"><i class="fas fa-trash"></i>
                             {{Lang::get('site.empty')}}</button>
                     </a>
                 </div>
