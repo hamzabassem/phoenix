@@ -12,28 +12,24 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>About Us</h2>
+                    <h2>{{Lang::get('site.About Us')}}</h2>
                 </div>
 
                 <div class="row content">
                     <div class="col-lg-6">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua.
+                            {{Lang::get('site.A new system that allows you to manage all your transactions in your inventory with ease.')}}
                         </p>
                         <ul>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
+                            <li><i class="ri-check-double-line"></i>{{Lang::get('site.Buying Manager')}}</li>
+                            <li><i class="ri-check-double-line"></i>{{Lang::get('site.Selling Manager')}}</li>
+                            <li><i class="ri-check-double-line"></i>{{Lang::get('site.Store Manager')}}</li>
                         </ul>
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0">
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
+                            {{Lang::get('site.It is Easy online system to manage all your transactions by giving access to the store, buying and selling managers and you can access your account from anywhere.')}}
                         </p>
-                        <a href="#" class="btn-learn-more">Learn More</a>
                     </div>
                 </div>
 
@@ -49,37 +45,34 @@
                     <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
 
                         <div class="content">
-                            <h3>Eum ipsam laborum deleniti <strong>velit pariatur architecto aut nihil</strong></h3>
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                            </p>
+                            <h3><strong>{{Lang::get('site.WHY US?')}}</strong></h3>
                         </div>
 
                         <div class="accordion-list">
                             <ul>
                                 <li>
-                                    <a data-toggle="collapse" class="collapse" href="#accordion-list-1"><span>01</span> Non consectetur a erat nam at lectus urna duis? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-toggle="collapse" class="collapse" href="#accordion-list-1"><span>01</span>{{Lang::get('site.secure')}}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-1" class="collapse show" data-parent=".accordion-list">
                                         <p>
-                                            Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
+                                            {{Lang::get('site.It is secure system with a lot of features with a big database backup to ensure not losing your data.')}}
                                         </p>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <a data-toggle="collapse" href="#accordion-list-2" class="collapsed"><span>02</span> Feugiat scelerisque varius morbi enim nunc? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-toggle="collapse" href="#accordion-list-2" class="collapsed"><span>02</span>{{Lang::get('site.Easy and Simple')}}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-2" class="collapse" data-parent=".accordion-list">
                                         <p>
-                                            Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
+                                            {{Lang::get('site.It is easy with a very simple user interface makes you understands the system from your first try.')}}
                                         </p>
                                     </div>
                                 </li>
 
                                 <li>
-                                    <a data-toggle="collapse" href="#accordion-list-3" class="collapsed"><span>03</span> Dolor sit amet consectetur adipiscing elit? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                                    <a data-toggle="collapse" href="#accordion-list-3" class="collapsed"><span>03</span>{{Lang::get('site.Good Price')}}<i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-3" class="collapse" data-parent=".accordion-list">
                                         <p>
-                                            Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
+                                            {{Lang::get('site.Good Pricing offers that suits every company with a 10 days free trial.')}}
                                         </p>
                                     </div>
                                 </li>
@@ -96,7 +89,7 @@
         </section><!-- End Why Us Section -->
 
         <!-- ======= Skills Section ======= -->
-        <section id="skills" class="skills">
+        {{--<section id="skills" class="skills">
             <div class="container" data-aos="fade-up">
 
                 <div class="row">
@@ -146,47 +139,46 @@
                 </div>
 
             </div>
-        </section><!-- End Skills Section -->
+        </section>--}}<!-- End Skills Section -->
 
         <!-- ======= Services Section ======= -->
         <section id="services" class="services section-bg">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Services</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                </div>
+                    <h2>{{Lang::get('site.Services')}}</h2>
+                    </div>
 
                 <div class="row">
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
-                            <h4><a href="">Lorem Ipsum</a></h4>
-                            <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                            <div class="icon"><i class='bx bx-arrow-to-bottom'></i></div>
+                            <h4><a href="">{{Lang::get('site.Buying Manager')}}</a></h4>
+                            <p>{{Lang::get('site.to manage the buying bills')}}</p>
                         </div>
                     </div>
 
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-file"></i></div>
-                            <h4><a href="">Sed ut perspici</a></h4>
-                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                            <div class="icon"><i class='bx bx-arrow-to-top' ></i></div>
+                            <h4><a href="">{{Lang::get('site.Selling Manager')}}</a></h4>
+                            <p>{{Lang::get('site.to manage the selling bills')}}</p>
                         </div>
                     </div>
 
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="300">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-tachometer"></i></div>
-                            <h4><a href="">Magni Dolores</a></h4>
-                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                            <div class="icon"><i class="bx bx-layer"></i></div>
+                            <h4><a href="">{{Lang::get('site.Store Manager')}}</a></h4>
+                            <p>{{Lang::get('site.to manage all the transactions in the inventory and conform the bills')}}</p>
                         </div>
                     </div>
 
                     <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-layer"></i></div>
-                            <h4><a href="">Nemo Enim</a></h4>
-                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
+                            <div class="icon"><i class='bx bxs-user'></i></div>
+                            <h4><a href="">{{Lang::get('site.Head Manager')}}</a></h4>
+                            <p>{{Lang::get('site.to access all the information')}}</p>
                         </div>
                     </div>
 
@@ -200,7 +192,7 @@
 
 
         <!-- ======= Team Section ======= -->
-        <section id="team" class="team section-bg">
+        {{--<section id="team" class="team section-bg">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
@@ -269,61 +261,60 @@
                 </div>
 
             </div>
-        </section><!-- End Team Section -->
+        </section>--}}<!-- End Team Section -->
 
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Pricing</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-                </div>
+                    <h2>{{Lang::get('site.Pricing')}}</h2>
+                    </div>
 
                 <div class="row">
 
                     <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="box">
-                            <h3>Free Plan</h3>
-                            <h4><sup>$</sup>0<span>per month</span></h4>
+                            <h3>{{Lang::get('site.Free Plan')}}</h3>
+                            <h4><sup>$</sup>0<span>{{Lang::get('site.10 Days')}}</span></h4>
                             <ul>
-                                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                               {{-- <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
                                 <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
                                 <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
                                 <li class="na"><i class="bx bx-x"></i> <span>Pharetra massa massa ultricies</span></li>
-                                <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>
+                                <li class="na"><i class="bx bx-x"></i> <span>Massa ultricies mi quis hendrerit</span></li>--}}
                             </ul>
-                            <a href="{{route('signup',['days' => \Illuminate\Support\Facades\Crypt::encryptString(10)])}}" class="buy-btn">Get Started</a>
+                            <a href="{{route('signup',['days' => \Illuminate\Support\Facades\Crypt::encryptString(10)])}}" class="buy-btn">{{Lang::get('site.Get Started')}}</a>
                         </div>
                     </div>
 
                     <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
                         <div class="box featured">
-                            <h3>Monthly Plan</h3>
-                            <h4><sup>$</sup>20<span>per month</span></h4>
+                            <h3>{{Lang::get('site.Monthly Plan')}}</h3>
+                            <h4><sup>$</sup>99<span>{{Lang::get('site.Per Month')}}</span></h4>
                             <ul>
-                                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                                {{--<li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
                                 <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
                                 <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
                                 <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+                                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>--}}
                             </ul>
-                            <a href="{{route('signup',['days' => \Illuminate\Support\Facades\Crypt::encryptString(30)])}}" class="buy-btn">Get Started</a>
+                            <a href="{{route('signup',['days' => \Illuminate\Support\Facades\Crypt::encryptString(30)])}}" class="buy-btn">{{Lang::get('site.Get Started')}}</a>
                         </div>
                     </div>
 
                     <div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
                         <div class="box">
-                            <h3>Yearly Plan</h3>
-                            <h4><sup>$</sup>99<span>per year</span></h4>
+                            <h3>{{Lang::get('site.Yearly Plan')}}</h3>
+                            <h4><sup>$</sup>599<span>{{Lang::get('site.Per Year')}}</span></h4>
                             <ul>
-                                <li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
+                                {{--<li><i class="bx bx-check"></i> Quam adipiscing vitae proin</li>
                                 <li><i class="bx bx-check"></i> Nec feugiat nisl pretium</li>
                                 <li><i class="bx bx-check"></i> Nulla at volutpat diam uteera</li>
                                 <li><i class="bx bx-check"></i> Pharetra massa massa ultricies</li>
-                                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>
+                                <li><i class="bx bx-check"></i> Massa ultricies mi quis hendrerit</li>--}}
                             </ul>
-                            <a href="{{route('signup',['days' => \Illuminate\Support\Facades\Crypt::encryptString(365)])}}" class="buy-btn">Get Started</a>
+                            <a href="{{route('signup',['days' => \Illuminate\Support\Facades\Crypt::encryptString(365)])}}" class="buy-btn">{{Lang::get('site.Get Started')}}</a>
                         </div>
                     </div>
 
@@ -338,8 +329,8 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>Contact</h2>
-                    <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+                    <h2>{{Lang::get('site.Contact')}}</h2>
+                    <p>{{Lang::get('site.contact us for any questions')}}</p>
                 </div>
 
                 <div class="row">
@@ -348,19 +339,20 @@
                         <div class="info">
                             <div class="address">
                                 <i class="icofont-google-map"></i>
-                                <h4>Location:</h4>
-                                <p>A108 Adam Street, New York, NY 535022</p>
+                                <h4>{{Lang::get('site.Location:')}}</h4>
+                                <p>{{Lang::get('site.Palestine Street, Gaza Strip')}}</p>
                             </div>
 
                             <div class="email">
                                 <i class="icofont-envelope"></i>
-                                <h4>Email:</h4>
+                                <h4>{{Lang::get('site.Email:')}}</h4>
                                 <p>info@example.com</p>
+
                             </div>
 
                             <div class="phone">
                                 <i class="icofont-phone"></i>
-                                <h4>Call:</h4>
+                                <h4>{{Lang::get('site.Call:')}}</h4>
                                 <p>+1 5589 55488 55s</p>
                             </div>
 
@@ -372,32 +364,32 @@
                         <form action="#" method="post" role="form" class="php-email-form">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="name">Your Name</label>
+                                    <label for="name">{{Lang::get('site.Your Name')}}</label>
                                     <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                     <div class="validate"></div>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="name">Your Email</label>
+                                    <label for="name">{{Lang::get('site.Your Email')}}</label>
                                     <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
                                     <div class="validate"></div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="name">Subject</label>
+                                <label for="name">{{Lang::get('site.Subject')}}</label>
                                 <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
                                 <div class="validate"></div>
                             </div>
                             <div class="form-group">
-                                <label for="name">Message</label>
+                                <label for="name">{{Lang::get('site.Message')}}</label>
                                 <textarea class="form-control" name="message" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
                                 <div class="validate"></div>
                             </div>
                             <div class="mb-3">
-                                <div class="loading">Loading</div>
+                                <div class="loading">{{Lang::get('site.Loading')}}</div>
                                 <div class="error-message"></div>
                                 <div class="sent-message">Your message has been sent. Thank you!</div>
                             </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
+                            <div class="text-center"><button type="submit">{{Lang::get('site.Send Message')}}</button></div>
                         </form>
                     </div>
 

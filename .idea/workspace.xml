@@ -3,11 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="d89837a2-ca9e-405b-bcb1-42228a7f7c7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/ar/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/site.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/en/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/site.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/operations/trash.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/operations/trash.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/companyRegister.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/companyRegister.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontsite/layout/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontsite/layout/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontsite/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontsite/layout/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontsite/phoenix.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontsite/phoenix.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontsite/pricing.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontsite/pricing.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +250,7 @@
       <workItem from="1617893635062" duration="2666000" />
       <workItem from="1618400297235" duration="10848000" />
       <workItem from="1618515370453" duration="2211000" />
-      <workItem from="1619100800070" duration="1354000" />
+      <workItem from="1619100800070" duration="15747000" />
     </task>
     <servers />
   </component>
@@ -279,11 +281,11 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="184" y="26" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1613668516324" />
-    <state x="357" y="175" key="run.anything.popup" timestamp="1613501460013">
+    <state x="357" y="175" key="run.anything.popup" timestamp="1619123768556">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="1742" y="205" key="run.anything.popup/0.0.1366.768/1366.0.1440.900@1366.0.1440.900" timestamp="1612031671497" />
-    <state x="357" y="175" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1613501460013" />
+    <state x="357" y="175" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1619123768556" />
     <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1614009642825">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

@@ -96,5 +96,69 @@ return [
     'restore' => 'استرجاع',
     'Deleted Items' => 'العمليات المحذوفه',
     'Deleted Categories' => 'الاصناف المحذوفه',
-    'empty' => 'حذف الكل'
+    'empty' => 'حذف الكل',
+
+
+    'About Us' => 'عنا',
+    'A new system that allows you to manage all your transactions in your inventory with ease.' => 'نظام جديد يسمح لك بادارة كل العمليات في المستودع الخاص بك',
+    'It is Easy online system to manage all your transactions by giving access to the store, buying and selling managers and you can access your account from anywhere.' => 'إنه نظام سهل عبر الإنترنت لإدارة جميع معاملاتك من خلال إتاحة الوصول إلى مديري المتجر والبيع والبيع ويمكنك الوصول إلى حسابك من أي مكان',
+    'WHY US?' => 'عنا',
+    'secure' => 'امن',
+    'It is secure system with a lot of features with a big database backup to ensure not losing your data.' => 'إنه نظام آمن يحتوي على الكثير من الميزات مع نسخة احتياطية كبيرة لقاعدة البيانات لضمان عدم فقد بياناتك
+
+    ',
+    'Easy and Simple' => 'سهل وبسيط',
+    'It is easy with a very simple user interface makes you understands the system from your first try.' => 'إنه سهل بواجهة مستخدم بسيطة للغاية تجعلك تفهم النظام من المحاولة الأولى
+
+    ',
+    'Good Price' => 'سعر جيد',
+    'Good Pricing offers that suits every company with a 10 days free trial.' => 'عروض أسعار جيدة تناسب كل شركة مع فترة تجريبية مجانية مدتها 10 أيام
+
+    ',
+    'Services' => 'خدماتنا',
+    'to manage the buying bills' => 'لادارة فواتير الشراء',
+    'to manage the selling bills' => 'لادارة فةاتير البيع',
+    'to manage all the transactions in the inventory and conform the bills' => 'لإدارة جميع المعاملات في المخزون ومطابقة الفواتير
+    ',
+    'Head Manager' => 'المدير',
+    'to access all the information' => 'للوصول إلى جميع المعلومات
+
+    ',
+    'Pricing' => 'الاسعار',
+    'Free Plan' => 'الخطه المجانيه',
+    '10 Days' => '10 ايام',
+    'Get Started' => 'ابداء الان',
+    'Per Month' => 'شهريا',
+    'Monthly Plan' => 'الخطه الشهريه',
+    'Yearly Plan' => 'الخطه السنويه',
+    'Per Year' => 'سنويا',
+    'Contact' => 'تواصل معنا',
+    'contact us for any questions' => 'تواصل معنا لاي استفسارات',
+    'Location:' => 'الموقع:',
+    'Palestine Street, Gaza Strip' => 'شارع فلسطين ، قطاع غزة',
+    'Email:' => 'بريد إلكتروني:
+    ',
+    'Call:' => 'اتصل:',
+    'Your Name' => 'اسمك',
+    'Your Email' => 'بريدك الالكتروني',
+    'Subject' => 'موضوع',
+    'Message' => 'رسالة',
+    'Loading' => '',
+    'Send Message' => 'ارسال',
+    'Palestine Street' => 'شارع فلسطين',
+    'Gaza Strip, Aremal' => 'قطاع غزة, الرمال',
+    'Palestine' => 'فلسطين',
+    'Phone:' => 'الهاتف:',
+    'Useful Links' => 'روابط مفيده',
+    'About us' => 'عنا',
+    'Our Social Networks' => 'شبكاتنا الاجتماعية
+    ',
+    'Copyright' => 'حقوق الطبع والنشر',
+    'Blue Phoenix' => 'طائر العنقاء الازرق ',
+    'All Rights Reserved' => 'جميع الحقوق محفوظة.',
+    'LOGIN' => 'تسجيل دخول',
+    'The Blue Phoenix For Inventory Management' => 'طائر العنقاء الازرق لادارة المستودعات',
+    'System to manage all your actions in your inventory' => 'نظام لادارة كل العمليات داخل مستودعك',
+    'choose your plane first' => 'اختر خطتك اولا',
+    
 ];
