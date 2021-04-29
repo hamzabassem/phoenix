@@ -88,7 +88,8 @@ return [
     'Add New customer' =>'اضافة زبون جديد',
     'Add New supplier' =>'اضافة مورد حديد',
     'supplier Info' =>'معلومات المورد',
-    'Add User' =>'اضافة مستخدم',
+    'Add User' =>'اضافة موظف',
+    'users' => 'الموظفين',
     'User Info' =>'معلومات المستخدم',
     'User Level' =>'مستوى المستخدم',
     'You Have No Notifications' => 'ليس لديك اي اشعارات',
@@ -160,5 +161,9 @@ return [
     'The Blue Phoenix For Inventory Management' => 'طائر العنقاء الازرق لادارة المستودعات',
     'System to manage all your actions in your inventory' => 'نظام لادارة كل العمليات داخل مستودعك',
     'choose your plane first' => 'اختر خطتك اولا',
-    
+    'Edit employee Info' => 'تعديل بيانات الموظفين',
+    'employee Info' => 'بيانات الموظف',
+    'level' => 'المستوى',
+    'state' => 'الحاله'
+
 ];

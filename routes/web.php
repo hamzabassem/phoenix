@@ -45,6 +45,10 @@ Route::group(
         Route::get('/finaldeletetransaction/{id}','DashboardController@destroyT')->name('deletei');
         Route::get('/finaldeletecategory/{id}','DashboardController@destroyC')->name('deletec');
         Route::get('/emptytrash','DashboardController@emptyall')->name('empty');
+        Route::get('/employees','UserController@index')->name('employees');
+        Route::get('/editemployee/{id}','UserController@show')->name('editemployee');
+        Route::post('/updateemployee/{id}','UserController@updateEmployee')->name('updateemployee');
+        Route::get('/deleteemployee/{id}','UserController@destroy')->name('deleteemployee');
 
 
         // manager routes

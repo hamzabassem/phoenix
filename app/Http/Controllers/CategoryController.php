@@ -138,7 +138,7 @@ class CategoryController extends Controller
             return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
         }
         $category = Category::findOrFail($id);
-        if ($category->store_id == Auth::user()->store_id && (Auth::user()->level == 1 || Auth::user()->level == 2)) {
+        if ($category->store_id == Auth::user()->store_id && (Auth::user()->level == 2)) {
             $category->update(['deleted' => '1']);
             return redirect()->back()->with('success', 'category has been deleted successfully');
         } else {

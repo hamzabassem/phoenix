@@ -88,7 +88,8 @@ return [
     'Add New customer' => 'Add New customer',
     'Add New supplier' => 'Add New supplier',
     'supplier Info' => 'supplier Info',
-    'Add User' => 'Add User',
+    'Add User' => 'Add Employee',
+    'users' => 'Employees',
     'User Info' => 'User Info',
     'User Level' => 'User Level',
     'You Have No Notifications' => 'You Have No Notifications',
@@ -148,7 +149,12 @@ return [
     'LOGIN' => 'LOGIN',
     'The Blue Phoenix For Inventory Management' => 'The Blue Phoenix For Inventory Management',
     'System to manage all your actions in your inventory' => 'System to manage all your actions in your inventory',
-    'choose your plane first' => 'choose your plane first'
+    'choose your plane first' => 'choose your plane first',
+    'Edit employee Info' => 'Edit Employee Info',
+    'employee Info' => 'Employees Info',
+    'level' => 'level',
+    'state' => 'state'
+
 
 
 ];

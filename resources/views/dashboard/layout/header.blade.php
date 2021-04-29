@@ -22,6 +22,15 @@
     }
 
 
+function billsnum($condition){
+        if (auth()->user()->level == 1 || auth()->user()->level == 2){
+        $I = \App\EmportBill::where($condition)->get();
+        $i = $I->count('id');
+        $E = \App\ExportBill::where($condition)->get();
+        $e = $E->count('id');
+            echo ($i + $e);
+        }
+}
 
 @endphp
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -273,18 +282,26 @@
                 <li class="sidebar-item"><a class="sidebar-link sidebar-link" href="{{route('dashhome')}}"
                                             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                             class="hide-menu">{{Lang::get('site.Dashboard')}}</span></a></li>
+                @if(auth()->user()->level == 1)
+                <li class="sidebar-item"><a class="sidebar-link sidebar-link" href="{{route('employees')}}"
+                                            aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span
+                            class="hide-menu">{{Lang::get('site.users')}}</span></a></li>
+                @endif
                 <li class="list-divider"></li>
                 <li class="nav-small-cap"><span class="hide-menu">{{Lang::get('site.My Categories')}}</span></li>
                 <br>
                 <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
                                             aria-expanded="false"><i data-feather="file-text"
                                                                      class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.Categories')}} </span></a>
+                            class="hide-menu">{{Lang::get('site.Categories')}} <span class="badge badge-pill badge-primary">@php $cond = ['processing' => '0']; billsnum($cond); @endphp</span> </span></a>
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                         @foreach($categories as $value)
                             <li class="sidebar-item"><a href="{{route('items',['id' => $value->id])}}"
                                                         class="sidebar-link"><span
-                                        class="hide-menu"> {{$value->name}}
+                                        class="hide-menu"> {{$value->name}} <span class="badge badge-pill badge-primary">@php
+                                            $condition = ['category_id' => $value->id, 'processing' => '0'];
+                                            billsnum($condition)
+                                            @endphp</span>
                                         </span></a>
                             </li>
                         @endforeach
@@ -446,12 +463,14 @@
                         </ul>
                     </li>
                 @endif
+                @if(auth()->user()->level == 1 || auth()->user()->level == 2)
                 <li class="sidebar-item"><a class="sidebar-link" href="{{route('trash')}}"
                                             aria-expanded="false"><i data-feather="trash"
                                                                      class="feather-icon"></i><span
                             class="hide-menu">{{Lang::get('site.Trash')}}
                                 </span></a>
                 </li>
+                    @endif
 
             </ul>
         </nav>

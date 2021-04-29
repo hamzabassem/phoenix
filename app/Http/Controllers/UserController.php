@@ -17,6 +17,11 @@ class UserController extends Controller
      */
     public function index()
     {
+        if (Auth::user()->level == 1){
+            $employees = User::where('store_id' , Auth::user()->store_id)->where('level', "!=", 1)->get();
+            return view('dashboard.user.employees' , compact('employees'));
+        }
+        return redirect()->back()->with('error','out of your permission');
 
     }
 
@@ -73,7 +78,25 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        if (Auth::user()->level == 1 && User::findOrFail($id)->store_id == Auth::user()->store_id){
+            $employee = User::where('id',$id)->get();
+            return view('dashboard.user.editEmployee' , compact('employee'));
+        }return redirect()->back()-with('error','out of your permission');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *  @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updateEmployee($id, Request $request)
+    {
+        $data = $request->all();
+        $employee = User::findOrFail($id);
+        $employee>$this->update($data);
+        return redirect()->route('employees')->with('success','Employee information has been updated');
     }
 
     /**
@@ -110,7 +133,7 @@ class UserController extends Controller
         $data['password'] = bcrypt($request->password);
         $user->update($data);
         if(Auth::user()->level == 1) {
-            
+
             $image = $request->signature;
             $image_new_name = time().$image->getClientOriginalName();
             $image->move("img/signature/", $image_new_name);
@@ -128,7 +151,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (Auth::user()->level == 1 && User::findOrFail($id)->store_id == Auth::user()->store_id){
+            $employee = User::findOrFail($id);
+            $employee->delete();
+            return redirect()->back()->with('success','employee deleted successfully');
+        }
     }
 
     /**
