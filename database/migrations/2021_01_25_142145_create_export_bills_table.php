@@ -25,7 +25,7 @@ class CreateExportBillsTable extends Migration
             $table->unsignedBigInteger('customer_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('user_id')->references('id')->on('users');
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->foreign('store_id')->references('id')->on('stores');
         });

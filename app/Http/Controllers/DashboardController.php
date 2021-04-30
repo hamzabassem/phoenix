@@ -199,11 +199,11 @@ class DashboardController extends Controller
             $category = Category::where($conditions)->get();
             $items = Transaction::where($conditions)->get();
             if (Auth::user()->level == 1) {
-                foreach ($category as $c) {
-                    $c->delete();
-                }
                 foreach ($items as $i) {
                     $i->delete();
+                }
+                foreach ($category as $c) {
+                    $c->delete();
                 }
                 return redirect()->back()->with('success', 'the action has been deleted successfully');
             } else {

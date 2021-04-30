@@ -27,7 +27,7 @@
             text-align: right;
         }
         #noti{
-            margin-left: -182px;
+            margin-left: -115px;
             text-align: right;
         }
         #noti2{
