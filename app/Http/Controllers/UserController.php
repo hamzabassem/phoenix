@@ -132,8 +132,7 @@ class UserController extends Controller
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
         $user->update($data);
-        if(Auth::user()->level == 1) {
-
+        if(Auth::user()->level == 1 && isset($request->signature)) {
             $image = $request->signature;
             $image_new_name = time().$image->getClientOriginalName();
             $image->move("img/signature/", $image_new_name);

@@ -153,7 +153,10 @@ return [
     'Edit employee Info' => 'Edit Employee Info',
     'employee Info' => 'Employees Info',
     'level' => 'level',
-    'state' => 'state'
+    'state' => 'state',
+    'Online' => 'Online',
+    'Active' => 'Active',
+    'your signature' => 'your signature'
 
 
 

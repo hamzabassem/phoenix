@@ -164,6 +164,9 @@ return [
     'Edit employee Info' => 'تعديل بيانات الموظفين',
     'employee Info' => 'بيانات الموظف',
     'level' => 'المستوى',
-    'state' => 'الحاله'
+    'state' => 'الحاله',
+    'Online' => 'متصل',
+    'Active' => 'نشط',
+    'your signature' => 'التوقيع'
 
 ];

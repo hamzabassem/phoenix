@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Manager;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,6 +30,8 @@ class AuthController extends Controller
             /*foreach ($manager as $value){*/
             /*if (Auth::user()->email ==  $value->email){return redirect()->route('manager');
             }*/
+            $user = User::where('id', Auth::user()->id);
+            $user->update(['state' => 1]);
             return redirect()->route('dashhome');
 
         } else {
@@ -40,6 +43,8 @@ class AuthController extends Controller
 
     public function logout()
     {
+        $user = User::where('id', Auth::user()->id);
+        $user->update(['state' => '0']);
         Auth::logout();
         return redirect()->route('login');
 

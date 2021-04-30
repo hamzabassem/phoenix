@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->enum('lang',["ar","en"])->default("en");
             $table->unsignedBigInteger('store_id')->nullable();
             $table->enum('level',[1,2,3,4])->default(1);
+            $table->enum('state',[1,0])->default(0);
             $table->rememberToken();
             $table->timestamps();
 

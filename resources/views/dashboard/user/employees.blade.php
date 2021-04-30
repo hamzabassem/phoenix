@@ -83,7 +83,21 @@
                                             @else
                                             <td>{{Lang::get('site.Buying Manager')}}</td>
                                         @endif
-                                        <td>{{$value->state}}</td>
+                                        @if($value->state == 1)
+                                        <td style="color: rgba(0,128,0,0.8)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                <circle cx="8" cy="8" r="8"/>
+                                            </svg>
+                                            {{Lang::get('site.Online')}}
+                                        </td>
+                                            @else
+                                            <td>
+                                                <svg style="color: rgba(110,0,0,0.8)" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                    <circle cx="8" cy="8" r="8"/>
+                                                </svg>
+                                                {{Lang::get('site.Active')}} {{$value->updated_at->diffForHumans()}}
+                                            </td>
+                                        @endif
                                         <td>{{$value->created_at}}</td>
                                         <td style="width: 120px;">
                                             <a class="ed" href="{{route('editemployee', ['id' => $value->id])}}">

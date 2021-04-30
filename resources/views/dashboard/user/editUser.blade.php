@@ -136,11 +136,10 @@
                                         <div class="row">
                                             <div class="col-lg-11">
                                                 <div class="custom-file">
-                                                    <input value="{{\App\Store::findOrFail(auth()->user()->store_id)->signature}}" name="signature" type="file" class="custom-file-input"
+                                                    <input value="" name="signature" type="file" class="custom-file-input"
                                                            id="inputGroupFile03">
                                                     <label style="text-align: left; color: rgba(76,86,103,0.53)"
-                                                           class="custom-file-label" for="inputGroupFile03">your
-                                                        signature</label>
+                                                           class="custom-file-label" for="inputGroupFile03">{{Lang::get('site.your signature')}}</label>
                                                 </div>
                                             </div>
                                         </div><br>
