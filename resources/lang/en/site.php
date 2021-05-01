@@ -156,7 +156,9 @@ return [
     'state' => 'state',
     'Online' => 'Online',
     'Active' => 'Active',
-    'your signature' => 'your signature'
+    'your signature' => 'your signature',
+    'Yes' => 'Yes',
+    'Not Yet' => 'Not Yet'
 
 
 

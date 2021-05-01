@@ -110,7 +110,7 @@ function billsnum($condition){
                                             $condition = ['category_id' => $value->id, 'deleted' => '0'];
                                             $item = \App\Transaction::where($condition)->get();
                                             $sum = $item->sum('quantity');
-                                            if ($sum < $notify){
+                                            if ($sum <= $notify){
 
                                         @endphp
                                         @if(auth()->user()->level == 1 || auth()->user()->level == 2 || auth()->user()->level == 4)

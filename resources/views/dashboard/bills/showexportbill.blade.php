@@ -82,11 +82,11 @@
                                         <td>{{$value->category_id}}</td>
                                         <td>{{$value->quantity}}</td>
                                         @if($value->processing == 0)
-                                            <td>Not Yet</td>
+                                            <td>{{Lang::get('site.Not Yet')}}</td>
                                         @elseif($value->processing == 2)
                                             <td>Rejected</td>
                                         @else
-                                            <td>Yes</td>
+                                            <td>{{Lang::get('site.Yes')}}</td>
                                         @endif
 
                                         <td>{{\App\User::findOrFail($value->user_id)->name}}</td>

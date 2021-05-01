@@ -122,7 +122,7 @@ class ExportBillController extends Controller
 
 
                 ]);
-                $export->update(['processing' => 1]);
+                $export->update(['processing' => '1']);
                 return redirect()->back()->with('success', 'conformed');
             }
 

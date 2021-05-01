@@ -123,6 +123,7 @@
                         <a href='' class='removes_buttons btn btn-danger btn-sm '>{{Lang::get('site.Delete')}}</a>
 
                     </div>
+                    <hr>
 
 
                 </div>
@@ -143,7 +144,7 @@
                 var addButton = $('.add_button'); //Add button selector
                 var wrapper = $('.field_wrapper'); //Input field wrapper
 
-                var fieldHTML = "<hr><div class='row'>" +
+                var fieldHTML = "<div class='row'>" +
                     "<div class='col-md-2'><div class='form-group'><label>{{Lang::get('site.Description')}}</label><input  type='text' name='description[]'  class='form-control '></div></div>" +
                     "<div class='col-md-2'><div class='form-group'><label>{{Lang::get('site.quantity')}}</label><input type='text' name='quantity[]'  class='form-control' ></div></div>" +
                     "<div class='col-md-3'><div class='form-group'><label>{{Lang::get('site.Suppliers')}}</label><select name='supplier_id[]' class=\"custom-select\" id=\"inputGroupSelect04\">\n" +

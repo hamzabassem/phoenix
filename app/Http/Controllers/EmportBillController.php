@@ -117,7 +117,7 @@ class EmportBillController extends Controller
 
 
             ]);
-            $import->update(['processing' => 1]);
+            $import->update(['processing' => '1']);
             return redirect()->back()->with('success', 'conformed');
         }
         return redirect()->back()->with('error', 'you can not do this action');

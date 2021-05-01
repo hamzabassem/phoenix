@@ -1,7 +1,7 @@
 <?php
 return [
     'Notification' =>'اشعارات',
-    'You have' =>'لديك العنصر',
+    'You have' =>'لديك الصنف',
     'category less than' =>'اقل من',
     'Edit My Info' =>'تعديل بياناتي',
     'Language' =>'اللغه',
@@ -167,6 +167,8 @@ return [
     'state' => 'الحاله',
     'Online' => 'متصل',
     'Active' => 'نشط',
-    'your signature' => 'التوقيع'
+    'your signature' => 'التوقيع',
+    'Yes' => 'نعم',
+    'Not Yet' => 'ليس بعد'
 
 ];
