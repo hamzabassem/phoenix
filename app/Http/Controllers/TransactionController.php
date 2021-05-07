@@ -235,7 +235,7 @@ class TransactionController extends Controller
     public function createPDF($id)
     {
         // retreive all records from db
-        $items = Transaction::where('category_id', $id)->paginate(10);
+        $items = Transaction::where('category_id', $id)->where('deleted','0')->get();
         $quantity = $items->sum('quantity');
         $category = Category::findOrFail($id);
         $signature = Store::findOrFail(Auth::user()->store_id);
