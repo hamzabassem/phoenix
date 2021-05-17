@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr">
+<html dir="{{LaravelLocalization::getCurrentLocaleDirection()}}" lang="{{app()->getLocale()}}">
 
 <head>
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon.png')}}">
-    <title>login</title>
+    <title>The blue phoenix</title>
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -47,7 +47,7 @@
             <div class="col-lg-5 col-md-7 bg-white">
                 <div class="p-3">
                     <img src="{{asset('assets/images/big/icon.png')}}" alt="wrapkit">
-                    <h2 class="mt-3 text-center">Sign Up for Free</h2>
+                    <h2 class="mt-3 text-center">{{Lang::get('site.Sign Up for Free')}}</h2>
                     @include('dashboard.layout.messages')
                     <form action="{{route('registercompany')}}" method="post" enctype="multipart/form-data" class="mt-4">
                         @csrf
@@ -59,20 +59,20 @@
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="name" placeholder="your company">
+                                    <input class="form-control" type="text" name="name" placeholder="{{Lang::get('site.Enter Your Company Name')}}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="custom-file">
                                     <input name="signature" type="file" class="custom-file-input" id="inputGroupFile03">
-                                    <label style="text-align: left; color: rgba(76,86,103,0.53)" class="custom-file-label" for="inputGroupFile03">your signature</label>
+                                    <label style="text-align: left; color: rgba(76,86,103,0.53)" class="custom-file-label" for="inputGroupFile03">{{Lang::get('site.Select Your Signature')}}</label>
                                 </div>
                             </div>
                             <div style="    margin-top: 15px;" class="col-lg-12 text-center">
-                                <button type="submit" class="btn btn-block btn-dark">Sign Up The Copmany</button>
+                                <button type="submit" class="btn btn-block btn-dark">{{Lang::get('site.Sign Up The Company')}}</button>
                             </div>
                             <div class="col-lg-12 text-center mt-5">
-                                Already have an account? <a href="{{route('login')}}" class="text-danger">Sign In</a>
+                                {{Lang::get('site.Already have an account?')}}  <a href="{{route('login')}}" class="text-danger">{{Lang::get('site.Sign In')}}</a>
                             </div>
                         </div>
                     </form>

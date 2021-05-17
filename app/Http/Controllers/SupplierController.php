@@ -6,6 +6,7 @@ use App\Store;
 use App\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class SupplierController extends Controller
 {
@@ -30,10 +31,10 @@ class SupplierController extends Controller
         if (Auth::user()->level == 1 || Auth::user()->level == 4) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             return view('dashboard.customer&supplier.addsupplier');
-        }return redirect()->back()->with('error','you can not do this action');
+        }return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
     }
 
     /**
@@ -54,7 +55,7 @@ class SupplierController extends Controller
         $data = $request->all();
         $data['store_id'] = Auth::user()->store_id;
         Supplier::create($data);
-        return redirect()->back()->with('success','supplier added successfully');
+        return redirect()->back()->with('success', Lang::get('site.supplier added successfully'));
     }
 
     /**
@@ -80,12 +81,12 @@ class SupplierController extends Controller
         if (Auth::user()->level == 1 || Auth::user()->level == 4) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             $supplier = Supplier::findOrFail($id);
             if ($supplier->store_id == Auth::user()->store_id) {
                 return view('dashboard.customer&supplier.editsupplier', compact(['supplier', 'id']));
-            }return redirect()->back()->with('error','you can not do this action');
+            }return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
     /**
@@ -107,7 +108,7 @@ class SupplierController extends Controller
 
         $supplier = Supplier::findOrFail($id);
         $supplier->update($request->all());
-        return redirect()->back()->with('success','supplier added successfully');
+        return redirect()->back()->with('success', Lang::get('site.supplier added successfully'));
     }
 
     /**

@@ -4,7 +4,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Success - </strong> {{\Illuminate\Support\Facades\Session::get('success')}}
+        <strong> {{Lang::get('site.Success')}} - </strong> {{\Illuminate\Support\Facades\Session::get('success')}}
     </div>
 @endif
 @if($errors->any())
@@ -13,7 +13,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Error - </strong> @foreach($errors->all() as $error)
+        <strong>{{Lang::get('site.Error')}} - </strong> @foreach($errors->all() as $error)
             {{$error}} <br>
         @endforeach
     </div>
@@ -23,7 +23,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Warning - </strong> {{\Illuminate\Support\Facades\Session::get('warning')}}
+        <strong>{{Lang::get('site.Warning')}} - </strong> {{\Illuminate\Support\Facades\Session::get('warning')}}
     </div>
 @endif
 @if(\Illuminate\Support\Facades\Session::has('error'))
@@ -32,7 +32,7 @@
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <strong>Error - </strong>
+        <strong>{{Lang::get('site.Error')}} - </strong>
         {{\Illuminate\Support\Facades\Session::get('error')}}
     </div>
 @endif

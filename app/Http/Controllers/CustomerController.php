@@ -6,6 +6,7 @@ use App\Customer;
 use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class CustomerController extends Controller
 {
@@ -30,10 +31,10 @@ class CustomerController extends Controller
         if (auth()->user()->level == 1 || auth()->user()->level == 3) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             return view('dashboard.customer&supplier.addcustomer');
-        }return redirect()->back()->with('error','you can not do this action');
+        }return redirect()->back()->with('error',Lang::get('site.you can not do this action'));
     }
 
     /**
@@ -54,7 +55,7 @@ class CustomerController extends Controller
         $data = $request->all();
         $data['store_id'] = Auth::user()->store_id;
         Customer::create($data);
-        return redirect()->back()->with('success', 'customer added successfully');
+        return redirect()->back()->with('success', Lang::get('site.customer added successfully'));
     }
 
     /**
@@ -80,13 +81,13 @@ class CustomerController extends Controller
         if (auth()->user()->level == 1 || auth()->user()->level == 3) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             $customer = Customer::findOrFail($id);
             if ($customer->store_id == Auth::user()->store_id) {
                 return view('dashboard.customer&supplier.editcustomer', compact(['customer', 'id']));
             }
-        }return redirect()->back()->with('error','you can not do this action');
+        }return redirect()->back()->with('error',Lang::get('site.you can not do this action'));
     }
 
     /**
@@ -108,7 +109,7 @@ class CustomerController extends Controller
 
         $customer = Customer::findOrFail($id);
         $customer->update($request->all());
-        return redirect()->back()->with('success', 'customer added successfully');
+        return redirect()->back()->with('success', Lang::get('site.customer added successfully'));
     }
 
     /**

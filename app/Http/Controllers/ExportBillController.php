@@ -10,6 +10,7 @@ use App\Store;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class ExportBillController extends Controller
 {
@@ -34,14 +35,14 @@ class ExportBillController extends Controller
         if (Auth::user()->level == 1 || Auth::user()->level == 3) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             $conditions = ['store_id' => Auth::user()->store_id, 'deleted' => '0'];
             $categories = Category::where($conditions)->get();
             $customer = Customer::where('store_id', Auth::user()->store_id)->get();
             return view('dashboard.bills.addexportbill', compact(['customer', 'categories']));
         }
-        return redirect()->back()->with('error', 'you can not do this action');
+        return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
     }
 
     /**
@@ -75,7 +76,7 @@ class ExportBillController extends Controller
 
             ]);
         }
-        return redirect()->back()->with('success', 'supplier added successfully');
+        return redirect()->back()->with('success', Lang::get('site.bill added successfully'));
     }
 
     /**
@@ -100,14 +101,14 @@ class ExportBillController extends Controller
         if (Auth::user()->level == 2) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             $export = ExportBill::findOrFail($id);
             $condition = ['category_id' => $export->category_id, 'deleted' => '0'];
             $item = Transaction::where($condition)->get();
             $sum = $item->sum('quantity');
             if (($sum <= 0 || $sum + (-$export->quantity) < 0)) {
-                return redirect()->back()->with('error', 'you dont have enough items to make this action ');
+                return redirect()->back()->with('error', Lang::get('site.you dont have enough items to make this action'));
             } else {
                 Transaction::create([
                     'operation' => 'export',
@@ -123,11 +124,11 @@ class ExportBillController extends Controller
 
                 ]);
                 $export->update(['processing' => '1']);
-                return redirect()->back()->with('success', 'conformed');
+                return redirect()->back()->with('success', Lang::get('site.conformed'));
             }
 
         }
-        return redirect()->back()->with('error', 'you can not do this action');
+        return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
     }
 
     /**
@@ -153,12 +154,12 @@ class ExportBillController extends Controller
         if (Auth::user()->level == 2) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             $export = ExportBill::findOrFail($id);
             $export->update(['processing' => '2']);
-            return redirect()->back()->with('success', 'rejected');
+            return redirect()->back()->with('success', Lang::get('site.rejected'));
         }
-        return redirect()->back()->with('error', 'you can not do this action');
+        return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class TaskController extends Controller
 {
@@ -42,7 +43,7 @@ class TaskController extends Controller
             'end' => $request->end,
             'user_id' => Auth::user()->id,
         ]);
-        return redirect()->back()->with('success','your task has been added successfully');
+        return redirect()->back()->with('success',Lang::get('site.your task has been added successfully'));
     }
 
     /**

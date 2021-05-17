@@ -9,6 +9,7 @@ use App\Task;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 
 class DashboardController extends Controller
@@ -39,7 +40,7 @@ class DashboardController extends Controller
             $categories = Category::where($condition)->get();
             return view('dashboard.operations.trash', compact(['items', 'categories']));
         }
-        return redirect()->back()->with('error', 'only for manager');
+        return redirect()->back()->with('error', Lang::get('site.only for manager'));
     }
 
     /**
@@ -108,14 +109,14 @@ class DashboardController extends Controller
     {
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $item = Transaction::findOrFail($id);
         if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
             $item->update(['deleted' => '0']);
-            return redirect()->back()->with('success', 'the action has been restored successfully');
+            return redirect()->back()->with('success', Lang::get('site.the action has been restored successfully'));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 
@@ -129,14 +130,14 @@ class DashboardController extends Controller
     {
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $category = Category::findOrFail($id);
         if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
             $category->update(['deleted' => '0']);
-            return redirect()->back()->with('success', 'the category has been restored successfully');
+            return redirect()->back()->with('success', Lang::get('site.the category has been restored successfully'));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 
@@ -150,14 +151,14 @@ class DashboardController extends Controller
     {
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $item = Transaction::findOrFail($id);
         if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 1) {
             $item->delete();
-            return redirect()->back()->with('success', 'the action has been deleted successfully');
+            return redirect()->back()->with('success', Lang::get('site.the action has been deleted successfully'));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 
@@ -171,14 +172,14 @@ class DashboardController extends Controller
     {
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $category = Category::findOrFail($id);
         if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 1) {
             $category->delete();
-            return redirect()->back()->with('success', 'the category has been deleted successfully');
+            return redirect()->back()->with('success', Lang::get('site.the category has been deleted successfully'));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 
@@ -194,7 +195,7 @@ class DashboardController extends Controller
             $conditions = ['deleted' => '1', 'store_id' => Auth::user()->store_id];
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             $category = Category::where($conditions)->get();
             $items = Transaction::where($conditions)->get();
@@ -205,9 +206,9 @@ class DashboardController extends Controller
                 foreach ($category as $c) {
                     $c->delete();
                 }
-                return redirect()->back()->with('success', 'the action has been deleted successfully');
+                return redirect()->back()->with('success', Lang::get('site.the action has been deleted successfully'));
             } else {
-                return redirect()->back()->with('error', 'you can not do this action');
+                return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
             }
         }
     }

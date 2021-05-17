@@ -10,6 +10,7 @@ use App\Supplier;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class EmportBillController extends Controller
 {
@@ -34,14 +35,14 @@ class EmportBillController extends Controller
         if (Auth::user()->level == 1 || Auth::user()->level == 4) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             $conditions = ['store_id' => Auth::user()->store_id, 'deleted' => '0'];
             $categories = Category::where($conditions)->get();
             $supplier = Supplier::where('store_id', Auth::user()->store_id)->get();
             return view('dashboard.bills.addimportbill', compact(['supplier', 'categories']));
         }
-        return redirect()->back()->with('error', 'you can not do this action');
+        return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
     }
 
     /**
@@ -75,7 +76,7 @@ class EmportBillController extends Controller
 
             ]);
         }
-        return redirect()->back()->with('success', 'supplier added successfully');
+        return redirect()->back()->with('success', Lang::get('site.bill added successfully'));
     }
 
     /**
@@ -100,7 +101,7 @@ class EmportBillController extends Controller
         if (Auth::user()->level == 2) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             $import = EmportBill::findOrFail($id);
 
@@ -118,9 +119,9 @@ class EmportBillController extends Controller
 
             ]);
             $import->update(['processing' => '1']);
-            return redirect()->back()->with('success', 'conformed');
+            return redirect()->back()->with('success', Lang::get('site.conformed'));
         }
-        return redirect()->back()->with('error', 'you can not do this action');
+        return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
     }
 
     /**
@@ -146,12 +147,12 @@ class EmportBillController extends Controller
         if (Auth::user()->level == 2) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             $import = EmportBill::findOrFail($id);
             $import->update(['processing' => '2']);
-            return redirect()->back()->with('success', 'rejected');
+            return redirect()->back()->with('success', Lang::get('site.rejected'));
         }
-        return redirect()->back()->with('error', 'you can not do this action');
+        return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
     }
 }

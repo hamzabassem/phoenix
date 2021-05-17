@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="ltr">
+<html dir="{{LaravelLocalization::getCurrentLocaleDirection()}}" lang="{{app()->getLocale()}}">
 
 <head>
     <meta charset="utf-8">
@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon.png')}}">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <title>The blue phoenix</title>
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -57,30 +57,30 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="name" placeholder="your name">
+                                    <input class="form-control" type="text" name="name" placeholder="{{Lang::get('site.your name')}}">
 
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="phone" placeholder="your phone">
+                                    <input class="form-control" type="text" name="phone" placeholder="{{Lang::get('site.your phone')}}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="text" name="email" placeholder="email address">
+                                    <input class="form-control" type="text" name="email" placeholder="{{Lang::get('site.email address')}}">
                                 </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="password" name="password" placeholder="password">
+                                    <input class="form-control" type="password" name="password" placeholder="{{Lang::get('site.Password')}}">
                                 </div>
                             </div>
                             <div class="col-lg-12 text-center">
-                                <button type="submit" class="btn btn-block btn-dark">Sign Up</button>
+                                <button type="submit" class="btn btn-block btn-dark">{{Lang::get('site.Sign Up')}}</button>
                             </div>
                             <div class="col-lg-12 text-center mt-5">
-                                Already have an account? <a href="{{route('login')}}" class="text-danger">Sign In</a>
+                                {{Lang::get('site.Already have an account?')}}  <a href="{{route('login')}}" class="text-danger">{{Lang::get('site.Sign In')}}</a>
                             </div>
                         </div>
                     </form>

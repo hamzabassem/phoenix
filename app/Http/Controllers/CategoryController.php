@@ -6,6 +6,7 @@ use App\Category;
 use App\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class CategoryController extends Controller
 {
@@ -31,10 +32,10 @@ class CategoryController extends Controller
         if (Auth::user()->level == 1 || Auth::user()->level == 2 || Auth::user()->level == 4) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
-                return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+                return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
             }
             return view('dashboard.categories.addCategory');
-        }return redirect()->back()->with('error', 'you can not do this action');
+        }return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
     }
 
     /**
@@ -57,7 +58,7 @@ class CategoryController extends Controller
         $data = $request->all();
         $data['store_id'] = Auth::user()->store_id;
         Category::create($data);
-        return redirect()->back()->with('success', 'category has been added successfully');
+        return redirect()->back()->with('success', Lang::get('site.category has been added successfully'));
     }
 
     /**
@@ -82,7 +83,7 @@ class CategoryController extends Controller
     {
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $category = Category::all()->where('id', $id);
         foreach ($category as $value) {
@@ -90,7 +91,7 @@ class CategoryController extends Controller
 
                 return view('dashboard.categories.editCategory', compact('category'));
             } else {
-                return redirect()->back()->with('error', 'you can not do this action');
+                return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
             }
         }
     }
@@ -117,9 +118,9 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         if ($category->store_id == Auth::user()->store_id) {
             $category->update($request->all());
-            return redirect()->route('categoriesinfo')->with('success', 'category has been edited successfully');
+            return redirect()->route('categoriesinfo')->with('success', Lang::get('site.category has been edited successfully'));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 
@@ -135,14 +136,14 @@ class CategoryController extends Controller
     {
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $category = Category::findOrFail($id);
         if ($category->store_id == Auth::user()->store_id && (Auth::user()->level == 2)) {
             $category->update(['deleted' => '1']);
-            return redirect()->back()->with('success', 'category has been deleted successfully');
+            return redirect()->back()->with('success', Lang::get('site.category has been deleted successfully'));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 

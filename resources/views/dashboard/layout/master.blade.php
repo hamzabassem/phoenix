@@ -27,11 +27,11 @@
             text-align: right;
         }
         #noti{
-            margin-left: -115px;
+            margin-left: -144px;
             text-align: right;
         }
         #noti2{
-            margin-left: -128px;
+            margin-left: -112px;
             text-align: right;
         }
         .navbar-header{

@@ -6,13 +6,13 @@ use App\Category;
 use App\Customer;
 use App\EmportBill;
 use App\ExportBill;
-use App\Item;
 use App\Store;
 use App\Supplier;
 use App\Transaction;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class TransactionController extends Controller
 {
@@ -33,7 +33,7 @@ class TransactionController extends Controller
         if ($category->store_id == Auth::user()->store_id && $category->deleted == '0') {
             return view('dashboard.operations.items', compact(['items', 'quantity', 'category','export_bill','import_bill']));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 
@@ -50,7 +50,7 @@ class TransactionController extends Controller
 
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $category = Category::findOrFail($id);
         $supplier = Supplier::where('store_id',Auth::user()->store_id)->get();
@@ -60,7 +60,7 @@ class TransactionController extends Controller
         if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
             return view('dashboard.operations.operation', compact(['id', 'action', 'category','supplier','customer','import','export']));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 
@@ -123,7 +123,7 @@ class TransactionController extends Controller
         $item = Transaction::where($condition)->get();
         $sum = $item->sum('quantity');
         if ($request->action == 'export' && ($sum <= 0 || $sum + $quantity < 0)) {
-            return redirect()->back()->with('error', 'you dont have enough items to make this action ');
+            return redirect()->back()->with('error', Lang::get('site.you dont have enough items to make this action'));
         } else {
             Transaction::create([
                 'operation' => $request->action,
@@ -139,25 +139,14 @@ class TransactionController extends Controller
 
 
             ]);
-            return redirect()->route('items', ['id' => $request->category_id])->with('success', 'action has been added successfully');
+            return redirect()->route('items', ['id' => $request->category_id])->with('success', Lang::get('site.action has been added successfully'));
         }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Item $item
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Item $item)
-    {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Item $item
+     *
      * @param int $id
      * @return \Illuminate\Http\Response
      */
@@ -165,14 +154,14 @@ class TransactionController extends Controller
     {
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $item = Transaction::where('id', $id)->get();
         foreach ($item as $value) {
             if ($value->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
                 return view('dashboard.operations.editItem', compact(['item']));
             } else {
-                return redirect()->back()->with('error', 'you can not do this action');
+                return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
             }
         }
     }
@@ -198,9 +187,9 @@ class TransactionController extends Controller
                 'description' => $request->description,
                 'quantity' => $request->quantity
             ]);
-            return redirect()->route('items', ['id' => $request->categoryid])->with('success', 'the action has been edited successfully');
+            return redirect()->route('items', ['id' => $request->categoryid])->with('success', Lang::get('site.the action has been edited successfully'));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 
@@ -215,14 +204,14 @@ class TransactionController extends Controller
     {
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
-            return redirect()->back()->with('warning', 'Your subscription has expired. Please renew your subscription');
+            return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $item = Transaction::findOrFail($id);
         if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
             $item->update(['deleted' => '1']);
-            return redirect()->back()->with('success', 'the action has been deleted successfully');
+            return redirect()->back()->with('success', Lang::get('site.the action has been deleted successfully'));
         } else {
-            return redirect()->back()->with('error', 'you can not do this action');
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
         }
     }
 
