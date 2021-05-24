@@ -106,7 +106,7 @@
                                         <option selected>{{Lang::get('site.Category')}}</option>
                                         @foreach($categories as $value)
                                             <option
-                                                value="{{$value->id}}">{{$value->name}}</option>
+                                                value="{{$value->id}}">{{$value->name}} - ({{\App\Transaction::where('category_id', $value->id)->where('deleted','0')->get()->sum('quantity')}})</option>
 
                                         @endforeach
                                     </select>
@@ -159,7 +159,7 @@
                     "                                    <option selected>{{Lang::get('site.Category')}}</option>\n" +
                     "                                        @foreach($categories as $value)\n" +
                     "                                            <option \n" +
-                    "                                                    value=\"{{$value->id}}\">{{$value->name}}</option>\n" +
+                    "                                                    value=\"{{$value->id}}\">{{$value->name}} - ({{\App\Transaction::where('category_id', $value->id)->where('deleted','0')->get()->sum('quantity')}})</option>\n" +
                     "\n" +
                     "                                        @endforeach\n" +
                     "                                </select></div></div>" +
