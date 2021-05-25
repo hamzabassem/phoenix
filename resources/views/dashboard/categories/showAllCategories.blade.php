@@ -72,7 +72,7 @@
                                     @php
                                         $count ++
                                     @endphp
-                                    <tr>
+                                    <tr href="" id="table">
                                         <th scope="row">{{$count}}</th>
                                         <td>{{$value->name}}</td>
                                         <td>{{$value->description}}</td>
@@ -81,7 +81,13 @@
                                         <td>{{$value->selling_price}}</td>
                                         <td>{{$value->notify}}</td>
                                         <td>{{$value->created_at}}</td>
-                                        <td style="width: 120px;">
+                                        <td style="width: 166px;">
+                                            <a class="in" href="{{route('items',['id' => $value->id])}}">
+                                                <button type="button" class="btn btn-info"><i
+                                                        class="fas fa-eye"></i>
+                                                    <span class="tooltiptext">{{Lang::get('site.View')}}</span>
+                                                </button>
+                                            </a>
                                             <a class="ed" href="{{route('editcategory', ['id' => $value->id])}}">
                                                 <button type="button" class="btn btn-success"><i
                                                         class=" fas fa-pencil-alt"></i>
@@ -96,6 +102,7 @@
                                             </a>
                                         </td>
                                     </tr>
+
                                 @endforeach
                                 </tbody>
                             </table>
@@ -106,4 +113,9 @@
             </div>
         </div>
     </div>
+    <style>
+        #table:hover{
+            background-color: rgba(0, 0, 0, 0.11);
+        }
+    </style>
 @endsection

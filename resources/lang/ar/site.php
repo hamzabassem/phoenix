@@ -206,5 +206,6 @@ return [
     'Success' => 'نجاح',
     'Error' => 'خطاء',
     'Warning' => 'تحذير',
+    'View' => 'عرض'
 
 ];

@@ -195,7 +195,7 @@ return [
     'Success' => 'Success',
     'Error' => 'Error',
     'Warning' => 'Warning',
-    '' => '',
+    'View' => 'View',
     '' => '',
     '' => '',
     '' => '',

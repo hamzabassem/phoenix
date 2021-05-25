@@ -5,6 +5,9 @@
 
 @if($lang == 'ar')
     <style>
+        body h1 a p td  {
+            font-size: 11px;
+        }
         #side{
             margin-right: -260px;
         }
@@ -53,7 +56,11 @@
             margin-top: -50px;
             margin-right: -68px;
         }
+        .in:hover .tooltiptext {
+            visibility: visible;
+            background-color: #201f64;
 
+        }
         .ed:hover .tooltiptext {
             visibility: visible;
             background-color: #1d643b;
@@ -92,7 +99,11 @@
         margin-top: -50px;
         margin-left: -68px;
     }
+    .in:hover .tooltiptext {
+        visibility: visible;
+        background-color: #343c8b;
 
+    }
     .ed:hover .tooltiptext {
         visibility: visible;
         background-color: #1d643b;
