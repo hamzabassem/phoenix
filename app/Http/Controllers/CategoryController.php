@@ -81,6 +81,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        if (Auth::user()->level == 1) {
         $store = Store::findOrFail(auth()->user()->store_id);
         if ($store->days == 0) {
             return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
@@ -94,6 +95,7 @@ class CategoryController extends Controller
                 return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
             }
         }
+        }return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
     }
 
     /**
