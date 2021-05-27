@@ -244,7 +244,7 @@ class TransactionController extends Controller
      */
     public function imports()
     {
-        $condition = ['operation' => 'import', 'store_id' => Auth::user()->store_id];
+        $condition = ['operation' => 'import', 'store_id' => Auth::user()->store_id,'deleted' => '0'];
         $items = Transaction::where($condition)->paginate(10);
         $category = Category::all();
 
@@ -260,7 +260,7 @@ class TransactionController extends Controller
      */
     public function exports()
     {
-        $condition = ['operation' => 'export', 'store_id' => Auth::user()->store_id];
+        $condition = ['operation' => 'export', 'store_id' => Auth::user()->store_id,'deleted' => '0'];
         $items = Transaction::where($condition)->paginate(10);
         $category = Category::all();
 
