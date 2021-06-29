@@ -28,7 +28,7 @@ function billsnum($condition){
         $i = $I->count('id');
         $E = \App\ExportBill::where($condition)->get();
         $e = $E->count('id');
-            echo ($i + $e);
+            return ($i + $e);
         }
 }
 
@@ -293,15 +293,15 @@ function billsnum($condition){
                 <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
                                             aria-expanded="false"><i data-feather="file-text"
                                                                      class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.Categories')}} <span class="badge badge-pill badge-primary">@php $cond = ['processing' => '0']; billsnum($cond); @endphp</span> </span></a>
+                            class="hide-menu">{{Lang::get('site.Categories')}} <span class="badge badge-pill badge-primary">@php $cond = ['processing' => '0']; echo(billsnum($cond)); @endphp</span> </span></a>
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                         @foreach($categories as $value)
                             <li class="sidebar-item"><a href="{{route('items',['id' => $value->id])}}"
                                                         class="sidebar-link"><span
-                                        class="hide-menu"> {{$value->name}} <span class="badge badge-pill badge-primary">@php
+                                        class="hide-menu"> {{$value->name}} @php
                                             $condition = ['category_id' => $value->id, 'processing' => '0'];
-                                            billsnum($condition)
-                                            @endphp</span>
+                                            if(billsnum($condition) != 0){
+                                        @endphp <span class="badge badge-pill badge-primary">@php echo(billsnum($condition));} @endphp</span>
                                         </span></a>
                             </li>
                         @endforeach

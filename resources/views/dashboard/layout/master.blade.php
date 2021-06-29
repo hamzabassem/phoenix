@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<?php $lang = app()->getLocale();
-?>
+@php $lang = app()->getLocale();
+@endphp
 <html dir="{{LaravelLocalization::getCurrentLocaleDirection()}}" lang="{{app()->getLocale()}}">
 
 @if($lang == 'ar')
