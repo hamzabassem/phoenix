@@ -8,6 +8,10 @@
         body h1 a p td  {
             font-size: 11px;
         }
+        #search{
+            margin-left: -179px;
+            margin-right: 158px;
+        }
         #side{
             margin-right: -260px;
         }
@@ -19,14 +23,14 @@
         }
         #user{
             margin-left: 100px;
-            margin-right: 535px;
+            margin-right: 210px;
         }
         .page-wrapper{
             width: 1087px;
             text-align: right;
         }
         #top{
-            margin-right: 500px;
+            margin-right: 170px;
             text-align: right;
         }
         #noti{

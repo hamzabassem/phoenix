@@ -20,8 +20,12 @@
     if($days <= 5){
         $count++;
     }
-
-
+    $tasks = \App\Task::where('user_id', auth()->user()->id)->get();
+foreach($tasks as $value){
+    if($value->start == date('Y-m-d') || $value->end == date('Y-m-d')){
+        $count++;
+    }
+}
 function billsnum($condition){
         if (auth()->user()->level == 1 || auth()->user()->level == 2){
         $I = \App\EmportBill::where($condition)->get();
@@ -130,9 +134,6 @@ function billsnum($condition){
                                         @php  } @endphp
                                     @endforeach
                                     @if($days <= 5)
-                                        @php
-                                            $count++
-                                        @endphp
                                         <a href=""
                                            class="message-item d-flex align-items-center border-bottom px-3 py-2">
                                             <div class="btn btn-info rounded-circle btn-circle"><i
@@ -146,6 +147,22 @@ function billsnum($condition){
                                             </div>
                                         </a>
                                     @endif
+                                    @foreach($tasks as $value)
+                                        @if($value->start == date('Y-m-d') || $value->end == date('Y-m-d'))
+                                            <a href=""
+                                               class="message-item d-flex align-items-center border-bottom px-3 py-2">
+                                                <div class="btn btn-success text-white rounded-circle btn-circle"><i
+                                                        data-feather="calendar" class="text-white"></i></div>
+
+                                                <div class="w-75 d-inline-block v-middle pl-2">
+                                                    <h6 class="message-title mb-0 mt-1">{{Lang::get('site.event today')}}</h6>
+                                                    <span
+                                                        class="font-12 text-nowrap d-block text-muted">{{Lang::get('site.you have')}} {{$value->name}} {{Lang::get('site.event today')}}</span>
+
+                                                </div>
+                                            </a>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </li>
                             @if($count == 0)
@@ -215,20 +232,22 @@ function billsnum($condition){
                 <!-- ============================================================== -->
                 <!-- Search -->
                 <!-- ==============================================================-->
-            {{-- <li class="nav-item d-none d-md-block">
-                 <a class="nav-link" href="javascript:void(0)">
-                     <form>
-                         <div class="customize-input">
-                             <input autocomplete="off" id="employee_search"
-                                    class="form-control custom-shadow custom-radius border-0 bg-white"
-                                    type="search" placeholder="{{Lang::get('site.search')}}" aria-label="Search">
-                             <i class="form-control-icon" data-feather="search"></i>
-                         </div>
-                     </form>
-                 </a>
-             </li>--}}
+                <li id="search" class="nav-item d-none d-md-block">
+                    <a class="nav-link" href="javascript:void(0)">
+                        <form action="{{route('searchCategory')}}" method="post">
+                            @csrf
+                            <div class="customize-input">
+                                <input autocomplete="off" id="employee_search"
+                                       class="form-control custom-shadow custom-radius border-0 bg-white"
+                                       type="search" placeholder="{{Lang::get('site.search')}}" aria-label="Search"
+                                       name="search">
+                                <i class="form-control-icon" data-feather="search"></i>
+                            </div>
+                        </form>
+                    </a>
+                </li>
 
-            <!-- ============================================================== -->
+                <!-- ============================================================== -->
                 <!-- User profile and search -->
                 <!-- ============================================================== -->
                 <li class="nav-item dropdown">
@@ -283,9 +302,10 @@ function billsnum($condition){
                                             aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                             class="hide-menu">{{Lang::get('site.Dashboard')}}</span></a></li>
                 @if(auth()->user()->level == 1)
-                <li class="sidebar-item"><a class="sidebar-link sidebar-link" href="{{route('employees')}}"
-                                            aria-expanded="false"><i data-feather="users" class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.users')}}</span></a></li>
+                    <li class="sidebar-item"><a class="sidebar-link sidebar-link" href="{{route('employees')}}"
+                                                aria-expanded="false"><i data-feather="users"
+                                                                         class="feather-icon"></i><span
+                                class="hide-menu">{{Lang::get('site.users')}}</span></a></li>
                 @endif
                 <li class="list-divider"></li>
                 <li class="nav-small-cap"><span class="hide-menu">{{Lang::get('site.My Categories')}}</span></li>
@@ -293,7 +313,8 @@ function billsnum($condition){
                 <li class="sidebar-item"><a class="sidebar-link has-arrow" href="javascript:void(0)"
                                             aria-expanded="false"><i data-feather="file-text"
                                                                      class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.Categories')}} <span class="badge badge-pill badge-primary">@php $cond = ['processing' => '0']; echo(billsnum($cond)); @endphp</span> </span></a>
+                            class="hide-menu">{{Lang::get('site.Categories')}} <span
+                                class="badge badge-pill badge-primary">@php $cond = ['processing' => '0']; echo(billsnum($cond)); @endphp</span> </span></a>
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                         @foreach($categories as $value)
                             <li class="sidebar-item"><a href="{{route('items',['id' => $value->id])}}"
@@ -301,7 +322,8 @@ function billsnum($condition){
                                         class="hide-menu"> {{$value->name}} @php
                                             $condition = ['category_id' => $value->id, 'processing' => '0'];
                                             if(billsnum($condition) != 0){
-                                        @endphp <span class="badge badge-pill badge-primary">@php echo(billsnum($condition));} @endphp</span>
+                                        @endphp <span
+                                            class="badge badge-pill badge-primary">@php echo(billsnum($condition));} @endphp</span>
                                         </span></a>
                             </li>
                         @endforeach
@@ -464,13 +486,13 @@ function billsnum($condition){
                     </li>
                 @endif
                 @if(auth()->user()->level == 1 || auth()->user()->level == 2)
-                <li class="sidebar-item"><a class="sidebar-link" href="{{route('trash')}}"
-                                            aria-expanded="false"><i data-feather="trash"
-                                                                     class="feather-icon"></i><span
-                            class="hide-menu">{{Lang::get('site.Trash')}}
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('trash')}}"
+                                                aria-expanded="false"><i data-feather="trash"
+                                                                         class="feather-icon"></i><span
+                                class="hide-menu">{{Lang::get('site.Trash')}}
                                 </span></a>
-                </li>
-                    @endif
+                    </li>
+                @endif
 
             </ul>
         </nav>

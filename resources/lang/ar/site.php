@@ -5,7 +5,7 @@ return [
     'category less than' =>'اقل من',
     'Edit My Info' =>'تعديل بياناتي',
     'Language' =>'اللغه',
-    'search' =>'بحث',
+    'search' =>'ابحث في الاصناف',
     'Hello' =>'مرحبا',
     'Account Setting' =>'اعدادات الحساب',
     'Logout' =>'تسجيل خروج',
@@ -206,6 +206,8 @@ return [
     'Success' => 'نجاح',
     'Error' => 'خطاء',
     'Warning' => 'تحذير',
-    'View' => 'عرض'
+    'View' => 'عرض',
+    'event today' => 'حدث اليوم',
+    'you have' => 'لديك'
 
 ];

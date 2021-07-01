@@ -149,4 +149,18 @@ class CategoryController extends Controller
         }
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function searchC(Request $request)
+    {
+
+        $conditons =['store_id' => Auth::user()->store_id,'deleted' => '0'];
+        $categories = Category::where($conditons)->where('name' ,'like','%' . $request->search . '%' )->paginate(10);
+        return view('dashboard.categories.showAllCategories', compact('categories'));
+    }
+
 }

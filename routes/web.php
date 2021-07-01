@@ -65,6 +65,7 @@ Route::group(
         Route::post('/storecategory', 'CategoryController@store')->name('storecategory');
         Route::get('/editcategory/{id}', 'CategoryController@edit')->name('editcategory');
         Route::post('/updatecategory/{id}', 'CategoryController@update')->name('updatecategory');
+        Route::post('/searchCategory', 'CategoryController@searchC')->name('searchCategory');
         Route::get('/deletecategory/{id}', 'CategoryController@destroy')->name('deletecategory');
 
 
