@@ -95,8 +95,10 @@ class UserController extends Controller
     {
         $data = $request->all();
         $employee = User::findOrFail($id);
-        $employee>$this->update($data);
-        return redirect()->route('employees')->with('success','Employee information has been updated');
+        if ($employee->store_id == Auth::user()->store_id && Auth::user()->level == 1) {
+            $employee > $this->update($data);
+            return redirect()->route('employees')->with('success', 'Employee information has been updated');
+        }
     }
 
     /**
