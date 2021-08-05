@@ -66,22 +66,21 @@
                             <div class="form-group">
                                 <label>{{Lang::get('site.Description')}}</label>
                                 <input type="text" name="description[]" value="{{ old('description[]') }}"
-                                       class="form-control">
+                                       class="form-control" >
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>{{Lang::get('site.quantity')}}</label>
-                                <input type="text" name="quantity[]" value="{{ old('quantity[]') }}"
-                                       class="form-control">
+                                <input type="number" name="quantity[]" value="{{ old('quantity[]') }}"
+                                       class="form-control" required="required" pattern="{1,1000000}">
                             </div>
                         </div>
                         <div class="col-md-3">
                             <div class="form-group">
                                 <label>{{Lang::get('site.Suppliers')}}</label>
                                 <div class="input-group">
-                                    <select name="supplier_id[]" class="custom-select" id="inputGroupSelect04">
-                                        <option selected>{{Lang::get('site.Suppliers')}}</option>
+                                    <select name="supplier_id[]" class="custom-select" id="inputGroupSelect04" required="required">
                                         @foreach($supplier as $value)
                                             <option
                                                 value="{{$value->id}}">{{$value->name}}</option>
@@ -102,8 +101,7 @@
                             <div class="form-group">
                                 <label>{{Lang::get('site.Category')}}</label>
                                 <div class="input-group">
-                                    <select name="category_id[]" class="custom-select" id="inputGroupSelect04">
-                                        <option selected>{{Lang::get('site.Category')}}</option>
+                                    <select name="category_id[]" class="custom-select" id="inputGroupSelect04" required="required">
                                         @foreach($categories as $value)
                                             <option
                                                 value="{{$value->id}}">{{$value->name}} - ({{\App\Transaction::where('category_id', $value->id)->where('deleted','0')->get()->sum('quantity')}})</option>
@@ -146,9 +144,9 @@
 
                 var fieldHTML = "<div class='row'>" +
                     "<div class='col-md-2'><div class='form-group'><label>{{Lang::get('site.Description')}}</label><input  type='text' name='description[]'  class='form-control '></div></div>" +
-                    "<div class='col-md-2'><div class='form-group'><label>{{Lang::get('site.quantity')}}</label><input type='text' name='quantity[]'  class='form-control' ></div></div>" +
+                    "<div class='col-md-2'><div class='form-group'><label>{{Lang::get('site.quantity')}}</label><input type='number' name='quantity[]'  class='form-control' required='required' pattern='{1,1000000}' ></div></div>" +
                     "<div class='col-md-3'><div class='form-group'><label>{{Lang::get('site.Suppliers')}}</label><select name='supplier_id[]' class=\"custom-select\" id=\"inputGroupSelect04\">\n" +
-                    "                                    <option selected>{{Lang::get('site.Suppliers')}}</option>\n" +
+                    "                                    \n" +
                     "                                    @foreach($supplier as $value)\n" +
                     "                                        <option \n" +
                     "                                                value=\"{{$value->id}}\">{{$value->name}}</option>\n" +
@@ -156,7 +154,7 @@
                     "                                    @endforeach\n" +
                     "                                </select></div></div>" +
                     "<div class='col-md-3'><div class='form-group'><label>{{Lang::get('site.Category')}}</label><select name='category_id[]' class=\"custom-select\" id=\"inputGroupSelect04\">\n" +
-                    "                                    <option selected>{{Lang::get('site.Category')}}</option>\n" +
+                    "                                    \n" +
                     "                                        @foreach($categories as $value)\n" +
                     "                                            <option \n" +
                     "                                                    value=\"{{$value->id}}\">{{$value->name}} - ({{\App\Transaction::where('category_id', $value->id)->where('deleted','0')->get()->sum('quantity')}})</option>\n" +

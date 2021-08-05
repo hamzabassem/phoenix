@@ -53,13 +53,13 @@ class ExportBillController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        /*$request->validate([
             'quantity[]' => 'required',
             'customer_id[]' => 'required',
             'category_id[]' => 'required',
 
 
-        ]);
+        ]);*/
         $rand = 0;
         $e = ExportBill::latest()->first();
         if ($e != null) {
