@@ -27,7 +27,21 @@ Route::group(
     Route::get('/signupstore/{store}', 'UserController@create')->name('signupstore');
     Route::post('/registercompany', 'StoreController@store')->name('registercompany');
     Route::post('/registeruser', 'UserController@store')->name('registeruser');
+    // admin auth
+    Route::get('/Alogin', 'AuthController@adminLogin')->name('adminLogin');
+    Route::post('/Aauth', 'AuthController@adminAuth')->name('adminAuth');
+    Route::get('/Alogout', 'AuthController@adminLogout')->name('adminLogout');
 
+    Route::prefix('adminCPanel')->middleware('auth:admin')->group(function () {
+        Route::get('/', 'ManagerController@index')->name('manager');
+        Route::get('/users', 'ManagerController@myusers')->name('myusers');
+        Route::get('/stores', 'ManagerController@stores')->name('stores');
+        Route::get('/deleteuser/{id}', 'ManagerController@destroy')->name('deleteuser');
+        Route::get('/editmanagerinfo', 'ManagerController@edit')->name('editmanagerinfo');
+        Route::post('/updatemanager', 'ManagerController@update')->name('updatemanager');
+        Route::get('/addmanager', 'ManagerController@create')->name('addmanager');
+        Route::post('/storemanager', 'ManagerController@store')->name('storemanager');
+    });
 
     Route::prefix('dashboard')->middleware('auth')->group(function () {
 
@@ -52,12 +66,7 @@ Route::group(
 
 
         // manager routes
-        Route::get('/manager', 'ManagerController@index')->name('manager');
-        Route::get('/deleteuser/{id}', 'ManagerController@destroy')->name('deleteuser');
-        Route::get('/editmanagerinfo', 'ManagerController@edit')->name('editmanagerinfo');
-        Route::post('/updatemanager', 'ManagerController@update')->name('updatemanager');
-        Route::get('/addmanager', 'ManagerController@create')->name('addmanager');
-        Route::post('/storemanager', 'ManagerController@store')->name('storemanager');
+
 
         // category routes
         Route::get('/categoriesinfo', 'CategoryController@index')->name('categoriesinfo');
@@ -100,6 +109,7 @@ Route::group(
         Route::get('/addimport', 'EmportBillController@create')->name('addimport');
         Route::post('storeimport', 'EmportBillController@store')->name('storeimport');
         Route::get('/editimport/{id}', 'EmportBillController@edit')->name('editimport');
+        Route::get('/ibillinfo/{id}', 'EmportBillController@show')->name('ibillinfo');
         Route::get('/deleteimport/{id}', 'EmportBillController@destroy')->name('deleteimport');
 
 
@@ -108,6 +118,7 @@ Route::group(
         Route::get('/addexport', 'ExportBillController@create')->name('addexport');
         Route::post('storeexport', 'ExportBillController@store')->name('storeexport');
         Route::get('/editexport/{id}', 'ExportBillController@edit')->name('editexport');
+        Route::get('/ebillinfo/{id}', 'ExportBillController@show')->name('ebillinfo');
         Route::get('/deleteexport/{id}', 'ExportBillController@destroy')->name('deleteexport');
 
 

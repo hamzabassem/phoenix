@@ -208,6 +208,7 @@ return [
     'Warning' => 'تحذير',
     'View' => 'عرض',
     'event today' => 'حدث اليوم',
-    'you have' => 'لديك'
+    'you have' => 'لديك',
+    'for inventory' => 'لفريق نظام المستودعات'
 
 ];

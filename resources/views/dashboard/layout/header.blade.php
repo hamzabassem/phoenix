@@ -55,21 +55,21 @@ function billsnum($condition){
                 <a href="{{route('dashhome')}}">
                     <b class="logo-icon">
 
-                        <img style="width: 30%; margin-left: -10px" src="{{asset('assets/images/pheonix-2.png')}}"
+                        <img style="width: 166%; margin-left: -70px; margin-top: 45px" src="{{asset('assets/images/favicon.png')}}"
                              alt="homepage" class="dark-logo"/>
 
                         {{--<img src="{{asset('assets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />--}}
                     </b>
 
-                    <span class="logo-text">
+                   {{-- <span class="logo-text">
 
                                 <img src="{{asset('assets/images/text.png')}}" alt="homepage" class="dark-logo"/>
 
-                                {{--<img src="{{asset('assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" />--}}
-                            </span>
+                                --}}{{--<img src="{{asset('assets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" />--}}{{--
+                            </span>--}}
                 </a>
             </div>
-
+<hr>
             <!-- ============================================================== -->
             <!-- End Logo -->
             <!-- ============================================================== -->

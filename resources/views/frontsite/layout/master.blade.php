@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets\images\favicon.png')}}">
-    <title>The Blue Pheonix</title>
+    <link style="width: 100%" rel="icon" type="image/png" sizes="16x16" href="{{asset('assets\images\favicon.png')}}">
+    <title>FIST</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 

@@ -137,8 +137,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="">
-    <title>The Blue Pheonix</title>
+    <link style="width: 100%" rel="icon" type="image/png" sizes="16x16" href="{{asset('assets\images\favicon.png')}}">
+    <title>FIST</title>
     <!-- Custom CSS -->
     <link href="{{asset('assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">

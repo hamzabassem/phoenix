@@ -57,6 +57,8 @@
                                     <th scope="col">{{Lang::get('site.id')}}</th>
                                     <th scope="col">{{Lang::get('site.Bill Number')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
+                                    <th scope="col">{{Lang::get('site.Category Name')}}</th>
+                                    <th scope="col">{{Lang::get('site.Category Number')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
                                     <th scope="col">{{Lang::get('site.Delivered')}}</th>
                                     <th scope="col">{{Lang::get('site.Added By')}}</th>
@@ -68,16 +70,18 @@
                                 @php
                                     $count = 0;
                                 @endphp
-                                @foreach($export->unique('bill_number') as $value)
+                                @foreach($export as $value)
                                     @php
                                         $count ++
                                     @endphp
 
                                     <tr>
                                         <th scope="row">{{$count}}</th>
-                                        <td><a href="{{route('ebillinfo', ['id' => $value->bill_number])}}">{{$value->bill_number}}</a></td>
+                                        <td>{{$value->bill_number}}</td>
                                         <td>{{$value->description}}</td>
-                                        <td>{{\App\ExportBill::where('bill_number', $value->bill_number)->sum('quantity')}}</td>
+                                        <td>{{\App\Category::findOrFail($value->category_id)->name}}</td>
+                                        <td>{{$value->category_id}}</td>
+                                        <td>{{$value->quantity}}</td>
                                         @if($value->processing == 0)
                                             <td>{{Lang::get('site.Not Yet')}}</td>
                                         @elseif($value->processing == 2)

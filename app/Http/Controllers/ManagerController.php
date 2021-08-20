@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Manager;
+use App\Store;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -44,14 +45,6 @@ class ManagerController extends Controller
             'name' => 'required|string',
             'phone' => 'required|unique:users',
             'password' => 'required',
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'phone' => $request->phone,
-            'days' => $request->days,
         ]);
         Manager::create([
             'name' => $request->name,
@@ -146,5 +139,17 @@ foreach ($manager as $value) {
         $user->delete();
 
         return redirect()->back()->with('success','the user has been deleted successfully');
+    }
+
+    public function myusers(){
+        $users = User::paginate(10);
+        $total =User::all()->count('id');
+        return view('dashboard.manager.users',compact('users'),compact('total'));
+    }
+
+    public function stores(){
+        $stores = Store::paginate(10);
+        $total =Store::all()->count('id');
+        return view('dashboard.manager.stores',compact('stores'),compact('total'));
     }
 }

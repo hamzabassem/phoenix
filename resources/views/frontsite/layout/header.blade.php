@@ -36,8 +36,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-                <h1>{{Lang::get('site.The Blue Phoenix For Inventory Management')}}</h1>
-                <h2>{{Lang::get('site.System to manage all your actions in your inventory')}}</h2>
+                <h1>FIST</h1>
+                <h2>{{Lang::get('site.for inventory')}}</h2>
                 <div class="d-lg-flex">
                     <a href="#about" class="btn-get-started scrollto">{{Lang::get('site.Get Started')}}</a>
 

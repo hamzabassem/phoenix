@@ -198,7 +198,7 @@ return [
     'View' => 'View',
     'event today' => 'Event Today',
     'you have' => 'You have',
-    '' => '',
+    'for inventory' => 'For Inventory System Team',
     '' => '',
     '' => '',
     '' => '',

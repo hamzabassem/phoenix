@@ -10,15 +10,14 @@
         <div class="page-breadcrumb">
             <div class="row">
                 <div class="col-7 align-self-center">
-                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Export Bills')}}</h4>
+                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">{{Lang::get('site.Import Bills')}}</h4>
                     <div class="d-flex align-items-center">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb m-0 p-0">
                                 <li class="breadcrumb-item"><a href="{{route('dashhome')}}"
                                                                class="text-muted">{{Lang::get('site.Home')}}</a></li>
                                 <li class="breadcrumb-item text-muted active"
-                                    aria-current="page">{{Lang::get('site.Bill info')}}
-                                </li>
+                                    aria-current="page">{{Lang::get('site.Bill info')}}</li>
                             </ol>
                         </nav>
                     </div>
@@ -57,6 +56,8 @@
                                     <th scope="col">{{Lang::get('site.id')}}</th>
                                     <th scope="col">{{Lang::get('site.Bill Number')}}</th>
                                     <th scope="col">{{Lang::get('site.Description')}}</th>
+                                    <th scope="col">{{Lang::get('site.Category Name')}}</th>
+                                    <th scope="col">{{Lang::get('site.Category Number')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
                                     <th scope="col">{{Lang::get('site.Delivered')}}</th>
                                     <th scope="col">{{Lang::get('site.Added By')}}</th>
@@ -68,16 +69,17 @@
                                 @php
                                     $count = 0;
                                 @endphp
-                                @foreach($export->unique('bill_number') as $value)
+                                @foreach($import as $value)
                                     @php
                                         $count ++
                                     @endphp
-
                                     <tr>
                                         <th scope="row">{{$count}}</th>
-                                        <td><a href="{{route('ebillinfo', ['id' => $value->bill_number])}}">{{$value->bill_number}}</a></td>
+                                        <td>{{$value->bill_number}}</td>
                                         <td>{{$value->description}}</td>
-                                        <td>{{\App\ExportBill::where('bill_number', $value->bill_number)->sum('quantity')}}</td>
+                                        <td>{{\App\Category::findOrFail($value->category_id)->name}}</td>
+                                        <td>{{$value->category_id}}</td>
+                                        <td>{{$value->quantity}}</td>
                                         @if($value->processing == 0)
                                             <td>{{Lang::get('site.Not Yet')}}</td>
                                         @elseif($value->processing == 2)
@@ -85,7 +87,6 @@
                                         @else
                                             <td>{{Lang::get('site.Yes')}}</td>
                                         @endif
-
                                         <td>{{\App\User::findOrFail($value->user_id)->name}}</td>
                                         <td>{{$value->created_at}}</td>
                                         {{--<td><a href="{{route('editcategory', ['id' => $value->id])}}">
@@ -100,13 +101,12 @@
                                             </a>
                                         </td>--}}
                                     </tr>
-
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    {{$export->links()}}
+                    {{$import->links()}}
                 </div>
             </div>
         </div>

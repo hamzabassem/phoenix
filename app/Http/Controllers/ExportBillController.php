@@ -64,9 +64,9 @@ class ExportBillController extends Controller
         $e = ExportBill::latest()->first();
         if ($e != null) {
             $number = substr($e->bill_number, -7);
-            $rand = '1'.date('Ymd').(++$number);
-        }else{
-            $rand = '1'.date('Ymd').'1000001';
+            $rand = '1' . date('Ymd') . (++$number);
+        } else {
+            $rand = '1' . date('Ymd') . '1000001';
         }
         $data = $request->all();
         foreach ($request->get('description', []) as $key => $val) {
@@ -88,13 +88,19 @@ class ExportBillController extends Controller
 
     /**
      * Display the specified resource.
-     *
+     * @param int $id
      * @param \App\ExportBill $exportBill
      * @return \Illuminate\Http\Response
      */
-    public function show(ExportBill $exportBill)
+    public function show($id)
     {
-        //
+        $export = ExportBill::where('bill_number',$id)->paginate(10);
+        if (auth()->user()->store_id == $export->first()->store_id) {
+            return view('dashboard.bills.exportBillInfo', compact('export'));
+
+        } else {
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
+        }
     }
 
     /**

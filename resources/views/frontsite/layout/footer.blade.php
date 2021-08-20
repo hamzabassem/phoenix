@@ -9,7 +9,7 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6 footer-contact">
-                    <h3>{{Lang::get('site.Blue Phoenix')}}</h3>
+                    <h3>FIST</h3>
                     <p>
                         {{Lang::get('site.Palestine Street')}} <br>
                         {{Lang::get('site.Gaza Strip, Aremal')}}<br>
@@ -49,7 +49,7 @@
 
     <div class="container footer-bottom clearfix">
         <div class="copyright">
-             &copy; {{Lang::get('site.Copyright')}} <strong><span>{{Lang::get('site.Blue Phoenix')}}</span></strong>{{Lang::get('site.All Rights Reserved')}}.
+             &copy; {{Lang::get('site.Copyright')}} <strong><span>FIST </span></strong>{{Lang::get('site.All Rights Reserved')}}.
         </div>
         {{--<div class="credits">
             <!-- All the links in the footer should remain intact. -->

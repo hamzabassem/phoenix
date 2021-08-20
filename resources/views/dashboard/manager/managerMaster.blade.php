@@ -16,7 +16,7 @@
     <!-- Custom CSS -->
     <link href="{{asset('assets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/libs/chartist/dist/chartist.min.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet"/>
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/style.min.css')}}" rel="stylesheet">
 
@@ -92,7 +92,7 @@
                 <!-- ============================================================== -->
                 <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                     <!-- Notification -->
-                    
+
                     <!-- End Notification -->
                     <!-- ============================================================== -->
                     <!-- create new -->
@@ -114,9 +114,12 @@
                         <span class="ml-2 d-none d-lg-inline-block"><span>Language</span> <span
                                 class="text-dark"></span> <i data-feather="chevron-down" class="svg-icon"></i></span>
                         </a>
-                        <div style="margin-right: -80px;" class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                        <div style="margin-right: -80px;"
+                             class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
                             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                <a style="padding: 0.65rem 4rem;" class="dropdown-item" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}" ><i class="svg-icon mr-2 ml-1">
+                                <a style="padding: 0.65rem 4rem;" class="dropdown-item" hreflang="{{ $localeCode }}"
+                                   href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"><i
+                                        class="svg-icon mr-2 ml-1">
                                         {{ $properties['native'] }}
                                     </i>
                                 </a>
@@ -161,16 +164,17 @@
 
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{route('editmanagerinfo')}}"><i data-feather="settings"
-                                                                class="svg-icon mr-2 ml-1"></i>
+                                                                                            class="svg-icon mr-2 ml-1"></i>
                                 Account Setting</a>
 
                             <div class="dropdown-divider"></div>
                             <div class="pl-4 p-3">
-                                <form id="logout-form" action="{{route('logout')}}">
-                                    <button  class="btn btn-sm btn-info" type="submit"><i data-feather="power" class="svg-icon mr-2 ml-1">
-
+                                <form id="logout-form" action="{{route('adminLogout')}}">
+                                    <button class="btn btn-sm btn-info" type="submit"><i data-feather="power"
+                                                                                         class="svg-icon mr-2 ml-1">
                                         </i>
-                                        Logout</button>
+                                        Logout
+                                    </button>
 
                                 </form>
                             </div>
@@ -191,11 +195,32 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="{{route('manager')}}"
-                                                 aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
+                    <li class="sidebar-item"><a class="sidebar-link sidebar-link" href="{{route('manager')}}"
+                                                aria-expanded="false"><i data-feather="home"
+                                                                         class="feather-icon"></i><span
                                 class="hide-menu">Dashboard</span></a></li>
                     <li class="list-divider"></li>
-                    </ul>
+                    <li class="nav-small-cap"><span class="hide-menu"></span></li>
+                    <br>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('stores')}}"
+                                                aria-expanded="false"><i data-feather="file-text"
+                                                                         class="feather-icon"></i><span
+                                class="hide-menu">companies<span
+                                    class="badge badge-pill badge-primary"></span> </span></a>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('myusers')}}"
+                                                aria-expanded="false"><i data-feather="users"
+                                                                         class="feather-icon"></i><span
+                                class="hide-menu">users<span
+                                    class="badge badge-pill badge-primary"></span> </span></a>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link" href="{{route('addmanager')}}"
+                                                aria-expanded="false"><i data-feather="users"
+                                                                         class="feather-icon"></i><span
+                                class="hide-menu">add manager<span
+                                    class="badge badge-pill badge-primary"></span> </span></a>
+                    </li>
+                </ul>
             </nav>
             <!-- End Sidebar navigation -->
         </div>
@@ -204,8 +229,6 @@
     <div class="page-wrapper">
         @yield('managercontent')
     </div>
-
-
 
 
 </div>

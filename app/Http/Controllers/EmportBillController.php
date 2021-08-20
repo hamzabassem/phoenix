@@ -64,9 +64,9 @@ class EmportBillController extends Controller
         $e = EmportBill::latest()->first();
         if ($e != null) {
             $number = substr($e->bill_number, -7);
-            $rand = '2'.date('Ymd').(++$number);
-        }else{
-            $rand = '2'.date('Ymd').'1000001';
+            $rand = '2' . date('Ymd') . (++$number);
+        } else {
+            $rand = '2' . date('Ymd') . '1000001';
         }
         $data = $request->all();
         foreach ($request->get('description', []) as $key => $val) {
@@ -94,7 +94,13 @@ class EmportBillController extends Controller
      */
     public function show($id)
     {
+        $import = EmportBill::where('bill_number',$id)->paginate(10);
+        if (auth()->user()->store_id == $import->first()->store_id) {
+            return view('dashboard.bills.importBillInfo', compact('import'));
 
+        } else {
+            return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
+        }
     }
 
     /**
