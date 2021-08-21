@@ -57,7 +57,7 @@ class TransactionController extends Controller
         $customer = Customer::where('store_id',Auth::user()->store_id)->get();
         $export = ExportBill::where('category_id',$id)->get()->unique('bill_number');
         $import = EmportBill::where('category_id',$id)->get()->unique('bill_number');
-        if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
+        if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 2 || Auth::user()->level == 1) {
             return view('dashboard.operations.operation', compact(['id', 'action', 'category','supplier','customer','import','export']));
         } else {
             return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
@@ -158,7 +158,7 @@ class TransactionController extends Controller
         }
         $item = Transaction::where('id', $id)->get();
         foreach ($item as $value) {
-            if ($value->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
+            if ($value->store_id == Auth::user()->store_id && Auth::user()->level == 2 || Auth::user()->level == 1) {
                 return view('dashboard.operations.editItem', compact(['item']));
             } else {
                 return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
@@ -207,7 +207,7 @@ class TransactionController extends Controller
             return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $item = Transaction::findOrFail($id);
-        if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
+        if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 2 || Auth::user()->level == 1) {
             $item->update(['deleted' => '1']);
             return redirect()->back()->with('success', Lang::get('site.the action has been deleted successfully'));
         } else {

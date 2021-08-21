@@ -112,7 +112,7 @@ class DashboardController extends Controller
             return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $item = Transaction::findOrFail($id);
-        if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
+        if ($item->store_id == Auth::user()->store_id && Auth::user()->level == 2 || Auth::user()->level == 1) {
             $item->update(['deleted' => '0']);
             return redirect()->back()->with('success', Lang::get('site.the action has been restored successfully'));
         } else {
@@ -133,7 +133,7 @@ class DashboardController extends Controller
             return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));
         }
         $category = Category::findOrFail($id);
-        if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 2) {
+        if ($category->store_id == Auth::user()->store_id && Auth::user()->level == 2 || Auth::user()->level == 1) {
             $category->update(['deleted' => '0']);
             return redirect()->back()->with('success', Lang::get('site.the category has been restored successfully'));
         } else {

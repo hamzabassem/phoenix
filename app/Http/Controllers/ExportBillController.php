@@ -96,7 +96,7 @@ class ExportBillController extends Controller
     {
         $export = ExportBill::where('bill_number',$id)->paginate(10);
         if (auth()->user()->store_id == $export->first()->store_id) {
-            return view('dashboard.bills.exportBillInfo', compact('export'));
+            return view('dashboard.bills.exportBillInfo', compact('export'),compact('id'));
 
         } else {
             return redirect()->back()->with('error', Lang::get('site.you can not do this action'));
@@ -111,7 +111,7 @@ class ExportBillController extends Controller
      */
     public function edit($id)
     {
-        if (Auth::user()->level == 2) {
+        if (Auth::user()->level == 2 || Auth::user()->level == 1) {
             $store = Store::findOrFail(auth()->user()->store_id);
             if ($store->days == 0) {
                 return redirect()->back()->with('warning', Lang::get('site.Your subscription has expired. Please renew your subscription'));

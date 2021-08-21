@@ -314,13 +314,13 @@ function billsnum($condition){
                                             aria-expanded="false"><i data-feather="file-text"
                                                                      class="feather-icon"></i><span
                             class="hide-menu">{{Lang::get('site.Categories')}} <span
-                                class="badge badge-pill badge-primary">@php $cond = ['processing' => '0']; echo(billsnum($cond)); @endphp</span> </span></a>
+                                class="badge badge-pill badge-primary">@php $cond = ['processing' => '0', 'store_id' => auth()->user()->store_id]; echo(billsnum($cond)); @endphp</span> </span></a>
                     <ul aria-expanded="false" class="collapse  first-level base-level-line">
                         @foreach($categories as $value)
                             <li class="sidebar-item"><a href="{{route('items',['id' => $value->id])}}"
                                                         class="sidebar-link"><span
                                         class="hide-menu"> {{$value->name}} @php
-                                            $condition = ['category_id' => $value->id, 'processing' => '0'];
+                                            $condition = ['category_id' => $value->id, 'processing' => '0', 'store_id' => auth()->user()->store_id];
                                             if(billsnum($condition) != 0){
                                         @endphp <span
                                             class="badge badge-pill badge-primary">@php echo(billsnum($condition));} @endphp</span>

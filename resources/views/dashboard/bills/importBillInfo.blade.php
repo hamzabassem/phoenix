@@ -47,20 +47,21 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">{{Lang::get('site.Bill Information')}}</h4>
+                            <h4 class="card-title">{{Lang::get('site.Bill Number')}} {{$id}}</h4>
                         </div>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table id="countit" class="table">
                                 <thead class="thead-light">
                                 <tr>
                                     <th scope="col">{{Lang::get('site.id')}}</th>
-                                    <th scope="col">{{Lang::get('site.Bill Number')}}</th>
-                                    <th scope="col">{{Lang::get('site.Description')}}</th>
                                     <th scope="col">{{Lang::get('site.Category Name')}}</th>
                                     <th scope="col">{{Lang::get('site.Category Number')}}</th>
+                                    <th scope="col">{{Lang::get('site.price')}}</th>
                                     <th scope="col">{{Lang::get('site.quantity')}}</th>
+                                    <th scope="col">{{Lang::get('site.total price')}}</th>
                                     <th scope="col">{{Lang::get('site.Delivered')}}</th>
                                     <th scope="col">{{Lang::get('site.Added By')}}</th>
+                                    <th scope="col">{{Lang::get('site.Description')}}</th>
                                     <th scope="col">{{Lang::get('site.created at')}}</th>
                                     {{--<th scope="col">{{Lang::get('site.Edit')}}</th>--}}
                                 </tr>
@@ -75,11 +76,11 @@
                                     @endphp
                                     <tr>
                                         <th scope="row">{{$count}}</th>
-                                        <td>{{$value->bill_number}}</td>
-                                        <td>{{$value->description}}</td>
                                         <td>{{\App\Category::findOrFail($value->category_id)->name}}</td>
                                         <td>{{$value->category_id}}</td>
+                                        <td>{{\App\Category::findOrFail($value->category_id)->selling_price}}</td>
                                         <td>{{$value->quantity}}</td>
+                                        <td class="count-me">{{\App\Category::findOrFail($value->category_id)->buying_price * $value->quantity}}</td>
                                         @if($value->processing == 0)
                                             <td>{{Lang::get('site.Not Yet')}}</td>
                                         @elseif($value->processing == 2)
@@ -88,6 +89,7 @@
                                             <td>{{Lang::get('site.Yes')}}</td>
                                         @endif
                                         <td>{{\App\User::findOrFail($value->user_id)->name}}</td>
+                                        <td>{{$value->description}}</td>
                                         <td>{{$value->created_at}}</td>
                                         {{--<td><a href="{{route('editcategory', ['id' => $value->id])}}">
                                                 <button type="button" class="btn btn-success"><i
@@ -111,4 +113,14 @@
             </div>
         </div>
     </div>
+    <script language="javascript" type="text/javascript">
+        var tds = document.getElementById('countit').getElementsByTagName('td');
+        var sum = 0;
+        for(var i = 0; i < tds.length; i ++) {
+            if(tds[i].className == 'count-me') {
+                sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+            }
+        }
+        document.getElementById('countit').innerHTML += '<tr><td>total</td><td>' + sum + '</td></tr>';
+    </script>
 @endsection
