@@ -63,8 +63,12 @@ class EmportBillController extends Controller
         $rand = 0;
         $e = EmportBill::latest()->first();
         if ($e != null) {
-            $number = substr($e->bill_number, -7);
-            $rand = '2' . date('Ymd') . (++$number);
+            if (substr($e->bill_number, 0, 9) == '2' . date('Ymd')) {
+                $number = $e->bill_number;
+                $rand = (++$number);
+            } else {
+                $rand = '2' . date('Ymd') . '1000001';
+            }
         } else {
             $rand = '2' . date('Ymd') . '1000001';
         }
@@ -92,7 +96,8 @@ class EmportBillController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public
+    function show($id)
     {
         $import = EmportBill::where('bill_number', $id)->paginate(10);
         //return response()->json($import['data']);
@@ -110,7 +115,8 @@ class EmportBillController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public
+    function edit($id)
     {
         if (Auth::user()->level == 2 || Auth::user()->level == 1) {
             $store = Store::findOrFail(auth()->user()->store_id);
@@ -145,7 +151,8 @@ class EmportBillController extends Controller
      * @param \App\EmportBill $emportBill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, EmportBill $emportBill)
+    public
+    function update(Request $request, EmportBill $emportBill)
     {
         //
     }
@@ -156,7 +163,8 @@ class EmportBillController extends Controller
      * @param \App\EmportBill $emportBill
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public
+    function destroy($id)
     {
         if (Auth::user()->level == 2) {
             $store = Store::findOrFail(auth()->user()->store_id);

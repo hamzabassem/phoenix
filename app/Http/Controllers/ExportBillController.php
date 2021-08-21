@@ -63,8 +63,12 @@ class ExportBillController extends Controller
         $rand = 0;
         $e = ExportBill::latest()->first();
         if ($e != null) {
-            $number = substr($e->bill_number, -7);
-            $rand = '1' . date('Ymd') . (++$number);
+            if (substr($e->bill_number, 0, 9) == '1' . date('Ymd')) {
+                $number = $e->bill_number;
+                $rand = (++$number);
+            } else {
+                $rand = '1' . date('Ymd') . '1000001';
+            }
         } else {
             $rand = '1' . date('Ymd') . '1000001';
         }

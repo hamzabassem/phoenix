@@ -121,8 +121,8 @@
     <script language="javascript" type="text/javascript">
         var tds = document.getElementById('countit').getElementsByTagName('td');
         var sum = 0;
-        for(var i = 0; i < tds.length; i ++) {
-            if(tds[i].className == 'count-me') {
+        for (var i = 0; i < tds.length; i++) {
+            if (tds[i].className == 'count-me') {
                 sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
             }
         }

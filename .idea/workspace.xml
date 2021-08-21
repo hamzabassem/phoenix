@@ -3,17 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d89837a2-ca9e-405b-bcb1-42228a7f7c7f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EmportBillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EmportBillController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ExportBillController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ExportBillController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TransactionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/ar/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/ar/site.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/en/site.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/site.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/bills/exportBillInfo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/exportBillInfo.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard/bills/importBillInfo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/importBillInfo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/bills/showexportbill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/showexportbill.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/bills/showimportbill.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/bills/showimportbill.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/layout/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -292,7 +285,7 @@
       <workItem from="1629214361792" duration="9806000" />
       <workItem from="1629306413892" duration="2548000" />
       <workItem from="1629477492718" duration="8266000" />
-      <workItem from="1629553865162" duration="11798000" />
+      <workItem from="1629553865162" duration="14337000" />
     </task>
     <servers />
   </component>
