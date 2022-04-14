@@ -78,7 +78,7 @@
                                         <th scope="row">{{$count}}</th>
                                         <td>{{\App\Category::findOrFail($value->category_id)->name}}</td>
                                         <td>{{$value->category_id}}</td>
-                                        <td>{{\App\Category::findOrFail($value->category_id)->selling_price}}</td>
+                                        <td>{{\App\Category::findOrFail($value->category_id)->buying_price}}</td>
                                         <td>{{$value->quantity}}</td>
                                         <td class="count-me">{{\App\Category::findOrFail($value->category_id)->buying_price * $value->quantity}}</td>
                                         @if($value->processing == 0)

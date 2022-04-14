@@ -60,19 +60,18 @@
                     </a>
 
 
-
                     <div class="row">
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>{{Lang::get('site.Description')}}</label>
                                 <input type="text" name="description[]" value="{{ old('description[]') }}"
-                                       class="form-control" >
+                                       class="form-control">
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label>{{Lang::get('site.quantity')}}</label>
-                                <input type="number" name="quantity[]" value="{{ old('quantity[]') }}"
+                                <input id="q" type="number" name="quantity[]" value="{{ old('quantity[]') }}"
                                        class="form-control" required="required" pattern="{1,1000000}">
                             </div>
                         </div>
@@ -80,7 +79,8 @@
                             <div class="form-group">
                                 <label>{{Lang::get('site.Suppliers')}}</label>
                                 <div class="input-group">
-                                    <select name="supplier_id[]" class="custom-select" id="inputGroupSelect04" required="required">
+                                    <select name="supplier_id[]" class="custom-select" id="inputGroupSelect04"
+                                            required="required">
                                         @foreach($supplier as $value)
                                             <option
                                                 value="{{$value->id}}">{{$value->name}}</option>
@@ -88,7 +88,8 @@
                                         @endforeach
                                     </select>
                                     <div class="input-group-append">
-                                        <a href="{{route('addsupplier')}}" style="color: white" class="btn btn-success" type="button">{{Lang::get('site.Add New')}}
+                                        <a href="{{route('addsupplier')}}" style="color: white" class="btn btn-success"
+                                           type="button">{{Lang::get('site.Add New')}}
                                         </a>
                                     </div>
                                 </div>
@@ -101,15 +102,20 @@
                             <div class="form-group">
                                 <label>{{Lang::get('site.Category')}}</label>
                                 <div class="input-group">
-                                    <select name="category_id[]" class="custom-select" id="inputGroupSelect04" required="required">
+                                    <select name="category_id[]" class="custom-select" id="inputGroupSelect04"
+                                            required="required">
                                         @foreach($categories as $value)
                                             <option
-                                                value="{{$value->id}}">{{$value->name}} - ({{\App\Transaction::where('category_id', $value->id)->where('deleted','0')->get()->sum('quantity')}})</option>
+                                                value="{{$value->id}}">{{$value->name}} -
+                                                ({{\App\Transaction::where('category_id', $value->id)->where('deleted','0')->get()->sum('quantity')}}
+                                                )
+                                            </option>
 
                                         @endforeach
                                     </select>
                                     <div class="input-group-append">
-                                        <a href="{{route('addcategory')}}" style="color: white" class="btn btn-success" type="button">{{Lang::get('site.Add New')}}
+                                        <a href="{{route('addcategory')}}" style="color: white" class="btn btn-success"
+                                           type="button">{{Lang::get('site.Add New')}}
                                         </a>
                                     </div>
                                 </div>
@@ -125,13 +131,17 @@
 
 
                 </div>
-                <div class="form-actions" >
+                <div class="form-actions">
                     <div class="text-right">
                         <button type="submit" class="btn btn-info">{{Lang::get('site.Submit')}}</button>
                         <button type="reset" class="btn btn-dark">{{Lang::get('site.Reset')}}</button>
                     </div>
                 </div>
             </form>
+            <button onclick="countit()"></button>
+            <div id="countit" class="row">
+
+            </div>
         </div>
     </div>
 
@@ -189,6 +199,15 @@
 
 
         </script>
-    @endpush
 
+    @endpush
+    {{--<script language="javascript" type="text/javascript">
+        function countit() {
+            var tds = document.getElementById('countit');
+            var sum = document.getElementById('q').value;
+            document.getElementById('countit').innerHTML = 'total/' + sum;
+        }
+
+    </script>
+--}}
 @endsection
